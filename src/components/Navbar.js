@@ -8,7 +8,8 @@ import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -22,20 +23,122 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 export default function Navbar() {
 	const theme = useTheme();
-	const styles = { link: { textTransform: "none", color: "white" } };
-	const matches = useMediaQuery(theme.breakpoints.up("sm"));
+	const styles = { link: { textTransform: "none" } };
+	const xs = useMediaQuery(theme.breakpoints.down("sm"));
 	const [isOpen, setIsOpen] = useState(false);
-	const toggleDrawer = (open) => () => {
-		setIsOpen(open);
+	const toggleDrawer = () => {
+		setIsOpen(!isOpen);
 	};
+	const home = useLocation().pathname === "/";
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar
 				position="fixed"
 				sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+				color={home ? "homepageNavbar" : "primary"}
+				elevation={home ? "4" : "4"}
 			>
 				<Toolbar variant="dense">
-					{matches ? (
+					{xs ? (
+						<>
+							<Box sx={{ flexGrow: 1 }}>
+								<IconButton
+									size="large"
+									edge="start"
+									color="inherit"
+									onClick={toggleDrawer}
+									sx={{
+										transform: isOpen
+											? "rotate(90deg)"
+											: "rotate(0)",
+										transition:
+											"transform 0.3s ease-in-out",
+									}}
+								>
+									{isOpen ? <ClearIcon /> : <MenuIcon />}
+								</IconButton>
+								<Drawer
+									anchor="left"
+									open={isOpen}
+									onClose={toggleDrawer}
+								>
+									<Box sx={{ flexGrow: 1 }}>
+										<List
+											sx={{
+												marginTop: "56px",
+												padding: 0,
+											}}
+										>
+											<ListItemButton
+												component={Link}
+												to="/experience"
+												onClick={toggleDrawer}
+											>
+												<ListItemIcon>
+													<BadgeIcon />
+												</ListItemIcon>
+												<ListItemText primary="Experience" />
+											</ListItemButton>
+
+											<ListItemButton
+												component={Link}
+												to="/skillset"
+												onClick={toggleDrawer}
+											>
+												<ListItemIcon>
+													<AutoGraphIcon />
+												</ListItemIcon>
+												<ListItemText primary="Skillset" />
+											</ListItemButton>
+											<ListItemButton
+												component={Link}
+												to="/Education"
+												onClick={toggleDrawer}
+											>
+												<ListItemIcon>
+													<SchoolIcon />
+												</ListItemIcon>
+												<ListItemText primary="Education" />
+											</ListItemButton>
+											<ListItemButton
+												component={Link}
+												to="/about"
+												onClick={toggleDrawer}
+											>
+												<ListItemIcon>
+													<EmojiPeopleIcon />
+												</ListItemIcon>
+												<ListItemText primary="About Me" />
+											</ListItemButton>
+										</List>
+									</Box>
+									<Box p={1}>
+										<Typography variant="caption">
+											Copyright © Daryl Chua 2023.{" "}
+										</Typography>
+										<br></br>
+										<Typography variant="caption">
+											All rights reserved
+										</Typography>
+									</Box>
+								</Drawer>
+							</Box>
+
+							<Link
+								to="/"
+								style={{
+									display: "flex",
+									alignItems: "center",
+								}}
+							>
+								<img
+									src="/images/logo.png"
+									alt="Logo"
+									style={{ height: "30px" }}
+								/>
+							</Link>
+						</>
+					) : (
 						<>
 							<Box>
 								<Link
@@ -81,122 +184,6 @@ export default function Navbar() {
 							>
 								About Me
 							</Button>
-						</>
-					) : (
-						<>
-							<Box sx={{ flexGrow: 1 }}>
-								<IconButton
-									size="large"
-									edge="start"
-									color="inherit"
-									onClick={
-										isOpen
-											? toggleDrawer(false)
-											: toggleDrawer(true)
-									}
-									sx={{
-										transform: isOpen
-											? "rotate(90deg)"
-											: "rotate(0)",
-										transition:
-											"transform 0.3s ease-in-out",
-									}}
-								>
-									{isOpen ? <ClearIcon /> : <MenuIcon />}
-								</IconButton>
-								<Drawer
-									anchor="left"
-									open={isOpen}
-									onClose={toggleDrawer(false)}
-								>
-									<Box sx={{ flexGrow: 1 }}>
-										<List
-											sx={{
-												marginTop: "56px",
-												padding: 0,
-											}}
-										>
-											<ListItemButton
-												component={Link}
-												to="/experience"
-												onClick={toggleDrawer(false)}
-											>
-												<ListItemIcon>
-													<BadgeIcon />
-												</ListItemIcon>
-												<ListItemText primary="Experience" />
-											</ListItemButton>
-
-											<ListItemButton
-												component={Link}
-												to="/skillset"
-												onClick={toggleDrawer(false)}
-											>
-												<ListItemIcon>
-													<AutoGraphIcon />
-												</ListItemIcon>
-												<ListItemText primary="Skillset" />
-											</ListItemButton>
-											<ListItemButton
-												component={Link}
-												to="/Education"
-												onClick={toggleDrawer(false)}
-											>
-												<ListItemIcon>
-													<SchoolIcon />
-												</ListItemIcon>
-												<ListItemText primary="Education" />
-											</ListItemButton>
-											<ListItemButton
-												component={Link}
-												to="/about"
-												onClick={toggleDrawer(false)}
-											>
-												<ListItemIcon>
-													<EmojiPeopleIcon />
-												</ListItemIcon>
-												<ListItemText primary="About Me" />
-											</ListItemButton>
-										</List>
-									</Box>
-									<Box>
-										<List
-											sx={{
-												padding: 0,
-											}}
-										>
-											<ListItemButton
-												component={Link}
-												to="https://github.com/darylcwx"
-												target="_blank"
-											>
-												<ListItemIcon>
-													<GitHubIcon />
-												</ListItemIcon>
-												<ListItemText primary="Github" />
-											</ListItemButton>
-											<ListItemButton
-												component={Link}
-												to="http://www.linkedin.com/in/darylchuawx"
-												target="_blank"
-											>
-												<ListItemIcon>
-													<LinkedInIcon />
-												</ListItemIcon>
-												<ListItemText primary="LinkedIn" />
-											</ListItemButton>
-										</List>
-									</Box>
-								</Drawer>
-							</Box>
-
-							<Link to="/">
-								<img
-									src="/images/logo.png"
-									alt="Logo"
-									style={{ height: "30px" }}
-								/>
-							</Link>
 						</>
 					)}
 				</Toolbar>
