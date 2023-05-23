@@ -5,19 +5,22 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
+import { Element } from "react-scroll";
 import Avatar from "@mui/material/Avatar";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Link } from "react-router-dom";
+import Experience from "./Experience.js";
+import Education from "./Education.js";
+import Skillset from "./Skillset.js";
+import About from "./About.js";
 export default function Home() {
-	const theme = useTheme();
+	const { theme, xs } = GetThemeAndXSBP();
 	const styles = {
 		overlay: {
 			backgroundColor: "rgba(0, 0, 0, 0)",
 		},
 	};
-	const xs = useMediaQuery(theme.breakpoints.down("sm"));
 	const [mouse, setMouse] = useState({ x: 0, y: 0 });
 	const handleMouseMove = (e) => {
 		setMouse({ x: e.clientX, y: e.clientY });
@@ -26,8 +29,8 @@ export default function Home() {
 	const outOfScreen =
 		mouse.x <= 5 ||
 		mouse.y <= 5 ||
-		mouse.x >= window.innerWidth - 5 ||
-		mouse.y >= window.innerHeight - 5;
+		mouse.x >= window.width - 5 ||
+		mouse.y >= window.height - 5;
 	const hoverEffect = {
 		background:
 			inAppbar || outOfScreen
@@ -37,82 +40,55 @@ export default function Home() {
 
 	return (
 		<>
-			<video
-				loop
-				muted
-				playsInline
-				autoPlay
-				style={{
-					position: "fixed",
-					top: 0,
-					left: 0,
-					width: "100%",
-					height: "100%",
-					objectFit: "cover",
-					zIndex: "-1",
-				}}
-			>
-				<source src="/images/space particles.mp4" type="video/mp4" />
-				Your browser does not support the video tag.
-			</video>
-			<Box
-				sx={{
-					height: "calc(100vh - 48px)",
-					width: "100%",
-					display: "flex",
-					alignItems: "center",
-				}}
-				onMouseMove={handleMouseMove}
-				style={hoverEffect}
-			>
-				<Container maxWidth="sm">
-					<Box>
-						{xs ? (
-							<>
-								<Box display="flex" justifyContent="center">
-									<Avatar
-										src="/images/me.jpeg"
-										alt="Me"
-										style={{
-											width: 200,
-											height: 200,
-										}}
-									/>
-								</Box>
-								<Typography variant="h3" my={2}>
-									Hello!
-								</Typography>
-								<Typography variant="h5">I'm Daryl.</Typography>
-								<Typography variant="h5">
-									Welcome to my website.
-								</Typography>
-							</>
-						) : (
-							<>
-								<Box>
-									<Box
-										sx={{
-											display: " flex",
-											justifyContent: "space-between",
-										}}
-									>
-										<Stack
-											sx={{
-												display: "flex",
-												justifyContent: "end",
-											}}
+			<Box>
+				<video
+					loop
+					muted
+					playsInline
+					autoPlay
+					style={{
+						position: "fixed",
+						top: 0,
+						left: 0,
+						width: "100%",
+						height: "100%",
+						objectFit: "cover",
+						zIndex: "-1",
+					}}
+				>
+					<source
+						src="/images/space particles.mp4"
+						type="video/mp4"
+					/>
+					Your browser does not support the video tag.
+				</video>
+				<Box
+					sx={{
+						height: "100%",
+						width: "100%",
+					}}
+					onMouseMove={handleMouseMove}
+					style={hoverEffect}
+				>
+					<Element name="index">
+						<Container
+							id="index"
+							maxWidth="sm"
+							style={{
+								height: "100vh",
+								display: "flex",
+								flexDirection: "column",
+								justifyContent: "center",
+								paddingBottom: 100,
+							}}
+						>
+							<Box>
+								{xs ? (
+									<>
+										<Box
+											display="flex"
+											justifyContent="center"
 										>
-											<Typography variant="h3" my={2}>
-												Hello!
-											</Typography>
-											<Typography variant="h5">
-												I'm Daryl.
-											</Typography>
-											<Typography variant="h5">
-												Welcome to my website.
-											</Typography>
-										</Stack>
-										<Box>
 											<Avatar
 												src="/images/me.jpeg"
 												alt="Me"
@@ -122,41 +98,117 @@ export default function Home() {
 												}}
 											/>
 										</Box>
-									</Box>
-								</Box>
-							</>
-						)}
-					</Box>
+										<Typography variant="h3" my={2}>
+											Hello!
+										</Typography>
+										<Typography variant="h5">
+											I'm Daryl.
+										</Typography>
+										<Typography variant="h5">
+											Welcome to my website.
+										</Typography>
+									</>
+								) : (
+									<>
+										<Box
+											sx={{
+												display: " flex",
+												justifyContent: "space-between",
+											}}
+										>
+											<Stack
+												sx={{
+													display: "flex",
+													justifyContent: "end",
+												}}
+											>
+												<Typography variant="h3" my={2}>
+													Hello!
+												</Typography>
+												<Typography variant="h5">
+													I'm Daryl.
+												</Typography>
+												<Typography variant="h5">
+													Welcome to my website.
+												</Typography>
+											</Stack>
+											<Box>
+												<Avatar
+													src="/images/me.jpeg"
+													alt="Me"
+													style={{
+														width: 200,
+														height: 200,
+													}}
+												/>
+											</Box>
+										</Box>
+									</>
+								)}
+							</Box>
 
-					<Typography variant="body2" my={2}>
-						Here, you can find the highlights of my career,
-						education, and skill sets, and perhaps even get to know
-						me a little better.
-					</Typography>
-					<Typography variant="body2" my={2}>
-						Enjoy your visit!
-					</Typography>
-					<Stack
-						direction={{ xs: "column", sm: "row" }}
-						spacing={{ xs: 1, sm: 2 }}
-					>
-						<Button
-							component={Link}
-							to="/experience"
-							variant="contained"
+							<Typography variant="body2" my={2}>
+								Here, you can find the highlights of my career,
+								education, and skill sets, and perhaps even get
+								to know me a little better.
+							</Typography>
+							<Typography variant="body2" my={2}>
+								Enjoy your visit!
+							</Typography>
+							<Stack
+								direction={{ xs: "column", sm: "row" }}
+								spacing={{ xs: 1, sm: 2 }}
+							>
+								<Button
+									component={Link}
+									to="/experience"
+									variant="contained"
+								>
+									Experience
+								</Button>
+								<Button
+									component={Link}
+									to="/about"
+									variant="contained"
+									endIcon={<ChevronRightIcon />}
+								>
+									Read more
+								</Button>
+							</Stack>
+						</Container>
+					</Element>
+					<Element name="experience">
+						<Container
+							id="experience"
+							maxWidth="md"
+							style={{ paddingTop: 100, paddingBottom: 100 }}
 						>
-							Experience
-						</Button>
-						<Button
-							component={Link}
-							to="/about"
-							variant="contained"
-							endIcon={<ChevronRightIcon />}
+							<Experience />
+						</Container>
+					</Element>
+					<Element name="skillset">
+						<Container
+							id="skillset"
+							maxWidth="md"
+							style={{ paddingTop: 100, paddingBottom: 100 }}
 						>
-							Read more
-						</Button>
-					</Stack>
-				</Container>
+							<Skillset />
+						</Container>
+					</Element>
+					<Element name="education">
+						<Container
+							id="education"
+							style={{ padding: "100px 0" }}
+						>
+							<Education />
+						</Container>
+					</Element>
+					<Element name="about">
+						<Container id="about" maxWidth="md">
+							<About />
+						</Container>
+					</Element>
+				</Box>
 			</Box>
 		</>
 	);

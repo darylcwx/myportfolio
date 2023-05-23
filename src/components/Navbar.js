@@ -1,5 +1,9 @@
 import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
+import Slide from "@mui/material/Slide";
+import PropTypes from "prop-types";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
+import { scroller } from "react-scroll";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Drawer from "@mui/material/Drawer";
@@ -21,13 +25,20 @@ import SchoolIcon from "@mui/icons-material/School";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-export default function Navbar() {
+export default function Navbar(props) {
 	const theme = useTheme();
 	const styles = { link: { textTransform: "none" } };
 	const xs = useMediaQuery(theme.breakpoints.down("sm"));
 	const [isOpen, setIsOpen] = useState(false);
 	const toggleDrawer = () => {
 		setIsOpen(!isOpen);
+	};
+	const scrollTo = (element) => {
+		scroller.scrollTo(element, {
+			duration: 1000,
+			delay: 100,
+			smooth: true,
+		});
 	};
 	const home = useLocation().pathname === "/";
 	return (
@@ -70,9 +81,12 @@ export default function Navbar() {
 											}}
 										>
 											<ListItemButton
-												component={Link}
-												to="/experience"
-												onClick={toggleDrawer}
+												// component={Link}
+												// to="/experience"
+												onClick={() => {
+													toggleDrawer();
+													scrollTo("experience");
+												}}
 											>
 												<ListItemIcon>
 													<BadgeIcon />
@@ -81,9 +95,12 @@ export default function Navbar() {
 											</ListItemButton>
 
 											<ListItemButton
-												component={Link}
-												to="/skillset"
-												onClick={toggleDrawer}
+												// component={Link}
+												// to="/skillset"
+												onClick={() => {
+													toggleDrawer();
+													scrollTo("skillset");
+												}}
 											>
 												<ListItemIcon>
 													<AutoGraphIcon />
@@ -91,9 +108,10 @@ export default function Navbar() {
 												<ListItemText primary="Skillset" />
 											</ListItemButton>
 											<ListItemButton
-												component={Link}
-												to="/Education"
-												onClick={toggleDrawer}
+												onClick={() => {
+													toggleDrawer();
+													scrollTo("education");
+												}}
 											>
 												<ListItemIcon>
 													<SchoolIcon />
@@ -101,9 +119,10 @@ export default function Navbar() {
 												<ListItemText primary="Education" />
 											</ListItemButton>
 											<ListItemButton
-												component={Link}
-												to="/about"
-												onClick={toggleDrawer}
+												onClick={() => {
+													toggleDrawer();
+													scrollTo("about");
+												}}
 											>
 												<ListItemIcon>
 													<EmojiPeopleIcon />

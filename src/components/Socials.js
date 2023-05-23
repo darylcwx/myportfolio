@@ -10,6 +10,9 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import EmailIcon from "@mui/icons-material/Email";
+import SpeedDial from "@mui/material/SpeedDial";
+import SpeedDialIcon from "@mui/material/SpeedDialIcon";
+import SpeedDialAction from "@mui/material/SpeedDialAction";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useSpring, animated } from "@react-spring/web";
@@ -32,94 +35,67 @@ export default function Socials() {
 			x: isOpen ? 0 : 215,
 		},
 	});
+	const socials = [
+		{
+			icon: <EmailIcon sx={{ fontSize: "24px" }} />,
+			name: "Email",
+			link: "mailto:darylchua@hotmail.sg",
+		},
+		{
+			icon: <TelegramIcon sx={{ fontSize: "24px" }} />,
+			name: "Telegram",
+			link: "https://t.me/damnsope",
+		},
+		{
+			icon: <GitHubIcon sx={{ fontSize: "24px" }} />,
+			name: "Github",
+			link: "https://github.com/darylcwx",
+		},
+		{
+			icon: <LinkedInIcon sx={{ fontSize: "24px" }} />,
+			name: "LinkedIn",
+			link: "https://www.linkedin.com/in/darylchuawx/",
+		},
+	];
 	return (
-		<Box sx={{ position: "fixed", bottom: "5px", right: "15px" }}>
-			<ClickAwayListener onClickAway={handleClickAway}>
-				<animated.div style={springs}>
-					<Stack direction="row" spacing={1}>
-						<Tooltip
-							title="Connect with me!"
-							placement="left"
-							arrow
-						>
-							<Fab
-								size="medium"
-								color="secondary"
-								onClick={toggleStack}
-								sx={{
-									marginRight: "8px",
-									transform: isOpen
-										? "rotate(90deg)"
-										: "rotate(0)",
-									transition: "transform 0.5s ease-in-out",
-								}}
-							>
-								{isOpen ? <ClearIcon /> : <LinkIcon />}
-							</Fab>
-						</Tooltip>
-						<Tooltip title="LinkedIn" placement="top" arrow>
-							<a
-								href="https://www.linkedin.com/in/darylchuawx/"
-								target="_blank"
-								rel="noopener noreferrer"
-								style={{ marginLeft: "0" }}
-							>
-								<IconButton
-									color="secondary"
-									onClick={toggleStack}
-								>
-									<LinkedInIcon fontSize="large" />
-								</IconButton>
-							</a>
-						</Tooltip>
-						<Tooltip title="GitHub" placement="top" arrow>
-							<a
-								href="https://github.com/darylcwx"
-								target="_blank"
-								rel="noopener noreferrer"
-								style={{ marginLeft: "0" }}
-							>
-								<IconButton
-									color="secondary"
-									onClick={toggleStack}
-								>
-									<GitHubIcon fontSize="large" />
-								</IconButton>
-							</a>
-						</Tooltip>
-						<Tooltip title="Telegram" placement="top" arrow>
-							<a
-								href="https://t.me/damnsope"
-								target="_blank"
-								rel="noopener noreferrer"
-								style={{ marginLeft: "0" }}
-							>
-								<IconButton
-									color="secondary"
-									onClick={toggleStack}
-								>
-									<TelegramIcon fontSize="large" />
-								</IconButton>
-							</a>
-						</Tooltip>
-						<Tooltip title="Email" placement="top" arrow>
-							<a
-								href="mailto:darylchua@hotmail.sg"
-								target="_blank"
-								rel="noopener noreferrer"
-								style={{ marginLeft: "0" }}
-							>
-								<IconButton
-									color="secondary"
-									onClick={toggleStack}
-								>
-									<EmailIcon fontSize="large" />
-								</IconButton>
-							</a>
-						</Tooltip>
-					</Stack>
-				</animated.div>
-			</ClickAwayListener>
+		<Box sx={{ position: "fixed", bottom: 0, right: 0 }}>
+			<SpeedDial
+				ariaLabel="Quick Actions Button"
+				sx={{
+					position: "absolute",
+					bottom: 16,
+					right: 16,
+				}}
+				FabProps={{
+					style: {
+						backgroundColor: theme.palette.secondary.main,
+						color: theme.palette.primary.main,
+					},
+				}}
+				icon={<LinkIcon sx={{ fontSize: "24px" }} />}
+				transitionDuration={{ appear: 300, enter: 300, exit: 300 }}
+			>
+				{socials.map((social) => (
+					<SpeedDialAction
+						key={social.name}
+						icon={social.icon}
+						tooltipTitle={social.name}
+						arrow
+						FabProps={{
+							style: {
+								backgroundColor: theme.palette.secondary.main,
+								color: theme.palette.primary.main,
+							},
+						}}
+					>
+						<a
+							href={social.link}
+							target="_blank"
+							rel="noopener noreferrer"
+						></a>
+					</SpeedDialAction>
+				))}
+			</SpeedDial>
 		</Box>
 	);
 }
