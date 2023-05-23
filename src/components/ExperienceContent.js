@@ -141,7 +141,7 @@ export default function ExperienceContent() {
 	];
 	return (
 		<>
-			<Box py={3}>
+			<Box>
 				<Typography variant="h6">Work Experience</Typography>
 				<Typography variant="body1">
 					My part-time experience ranges from professional internships

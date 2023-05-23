@@ -37,7 +37,6 @@ export default function Home() {
 				? "none"
 				: `radial-gradient(600px circle at var(--mouse-x, ${mouse.x}px) var(--mouse-y, ${mouse.y}px), rgba(255, 255, 255, 0.065), transparent 40%)`,
 	};
-
 	return (
 		<>
 			<Box>
@@ -68,11 +67,10 @@ export default function Home() {
 						width: "100%",
 					}}
 					onMouseMove={handleMouseMove}
-					style={hoverEffect}
+					//style={hoverEffect}
 				>
 					<Element name="index">
 						<Container
-							id="index"
 							maxWidth="sm"
 							style={{
 								height: "100vh",
@@ -109,41 +107,39 @@ export default function Home() {
 										</Typography>
 									</>
 								) : (
-									<>
-										<Box
+									<Box
+										sx={{
+											display: " flex",
+											justifyContent: "space-between",
+										}}
+									>
+										<Stack
 											sx={{
-												display: " flex",
-												justifyContent: "space-between",
+												display: "flex",
+												justifyContent: "end",
 											}}
 										>
-											<Stack
-												sx={{
-													display: "flex",
-													justifyContent: "end",
+											<Typography variant="h3" my={2}>
+												Hello!
+											</Typography>
+											<Typography variant="h5">
+												I'm Daryl.
+											</Typography>
+											<Typography variant="h5">
+												Welcome to my website.
+											</Typography>
+										</Stack>
+										<Box>
+											<Avatar
+												src="/images/me.jpeg"
+												alt="Me"
+												style={{
+													width: 200,
+													height: 200,
 												}}
-											>
-												<Typography variant="h3" my={2}>
-													Hello!
-												</Typography>
-												<Typography variant="h5">
-													I'm Daryl.
-												</Typography>
-												<Typography variant="h5">
-													Welcome to my website.
-												</Typography>
-											</Stack>
-											<Box>
-												<Avatar
-													src="/images/me.jpeg"
-													alt="Me"
-													style={{
-														width: 200,
-														height: 200,
-													}}
-												/>
-											</Box>
+											/>
 										</Box>
-									</>
+									</Box>
 								)}
 							</Box>
 
@@ -155,31 +151,10 @@ export default function Home() {
 							<Typography variant="body2" my={2}>
 								Enjoy your visit!
 							</Typography>
-							<Stack
-								direction={{ xs: "column", sm: "row" }}
-								spacing={{ xs: 1, sm: 2 }}
-							>
-								<Button
-									component={Link}
-									to="/experience"
-									variant="contained"
-								>
-									Experience
-								</Button>
-								<Button
-									component={Link}
-									to="/about"
-									variant="contained"
-									endIcon={<ChevronRightIcon />}
-								>
-									Read more
-								</Button>
-							</Stack>
 						</Container>
 					</Element>
 					<Element name="experience">
 						<Container
-							id="experience"
 							maxWidth="md"
 							style={{ paddingTop: 100, paddingBottom: 100 }}
 						>
@@ -188,7 +163,6 @@ export default function Home() {
 					</Element>
 					<Element name="skillset">
 						<Container
-							id="skillset"
 							maxWidth="md"
 							style={{ paddingTop: 100, paddingBottom: 100 }}
 						>
@@ -196,15 +170,12 @@ export default function Home() {
 						</Container>
 					</Element>
 					<Element name="education">
-						<Container
-							id="education"
-							style={{ padding: "100px 0" }}
-						>
+						<Container style={{ padding: "100px 0" }}>
 							<Education />
 						</Container>
 					</Element>
 					<Element name="about">
-						<Container id="about" maxWidth="md">
+						<Container maxWidth="md">
 							<About />
 						</Container>
 					</Element>

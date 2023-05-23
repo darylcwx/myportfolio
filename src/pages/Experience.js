@@ -29,7 +29,7 @@ export default function Experience() {
 					flexDirection: xs ? "column" : "row",
 					justifyContent: xs ? "center" : "space-between",
 				}}
-				py={5}
+				pb={5}
 			>
 				<Typography
 					variant="h4"

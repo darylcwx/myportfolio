@@ -38,12 +38,19 @@ const darkTheme = createTheme({
 			disabled: "rgba(255, 255, 255, 0.5)",
 			icon: "rgba(255,255,255,0.5)",
 		},
-		homepageNavbar: {
-			main: "rgba(29, 36, 53, 0.7)",
+		navbarStart: {
+			main: "rgba(0, 0, 0, 0.0)",
+		},
+		navbar: {
+			//main: "rgba(29, 36, 53, 0.7)",
+			main: "rgba(29, 36, 53, 0.9)",
 		},
 		background: {
 			paper: "#1D2435",
 			default: "#121212",
+		},
+		white: {
+			main: "#ffffff",
 		},
 	},
 	components: {
