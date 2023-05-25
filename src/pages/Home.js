@@ -170,7 +170,10 @@ export default function Home() {
 						</Container>
 					</Element>
 					<Element name="about">
-						<Container maxWidth="md">
+						<Container
+							maxWidth="md"
+							style={{ paddingTop: 150, paddingBottom: 150 }}
+						>
 							<About />
 						</Container>
 					</Element>

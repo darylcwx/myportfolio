@@ -45,7 +45,7 @@ export default function SkillDetails({ skill, onClose }) {
 					components={{ Thumb: "false" }}
 					componentsProps={{ Track: { ...styles.sec } }}
 				/>
-				<Typography variant="body1">{skill.level}</Typography>
+				{/* <Typography variant="body1">{skill.level}</Typography> */}
 			</Paper>
 		</Box>
 	);

@@ -142,7 +142,6 @@ export default function ExperienceContent() {
 	return (
 		<>
 			<Box>
-				<Typography variant="h6">Work Experience</Typography>
 				<Typography variant="body1">
 					My part-time experience ranges from professional internships
 					to retail, to F&B. It includes most of my major part-time

@@ -4,7 +4,7 @@ import Paper from "@mui/material/Paper";
 import Carousel from "react-material-ui-carousel";
 import Typography from "@mui/material/Typography";
 import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
-import SkillsComponent from "../components/SkillGrid.js";
+import SkillsGrid from "../components/SkillGrid.js";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import SpeakerNotesIcon from "@mui/icons-material/SpeakerNotes";
 import Diversity2Icon from "@mui/icons-material/Diversity2";
@@ -147,8 +147,16 @@ export default function Skillset() {
 	];
 	return (
 		<Box>
-			<Typography variant="h2" sx={{ textAlign: "center" }} pb={5}>
+			<Typography variant="h2" sx={{ textAlign: "center" }} pb={2}>
 				Skillsets
+			</Typography>
+			<Typography variant="body1" pb={5}>
+				Here are my skillsets, which I believe are above average
+				compared to peers at my level. However, I recognize that there
+				is always room for improvement and growth, which makes my
+				self-rating highly subjective. Therefore, I am committed to
+				expanding my skills and knowledge, and I welcome any feedback
+				that can help me achieve my goals.
 			</Typography>
 			<Carousel
 				animation={"slide"}
@@ -170,13 +178,13 @@ export default function Skillset() {
 					return (
 						<Box key={i}>
 							<Typography
-								variant="h5"
+								variant="h4"
 								pb={2}
 								sx={{ textAlign: "center" }}
 							>
 								{skillset.name}
 							</Typography>
-							<SkillsComponent skills={skillset.skills} />
+							<SkillsGrid skills={skillset.skills} />
 						</Box>
 					);
 				})}

@@ -228,7 +228,6 @@ export default function ProjectsContent() {
 	return (
 		<>
 			<Box>
-				<Typography variant="h6">Programming Projects</Typography>
 				<Typography variant="body1">
 					As a highly motivated and enthusiastic individual, I thrive
 					on taking on new challenges and collaborating with others to

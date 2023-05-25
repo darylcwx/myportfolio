@@ -31,27 +31,59 @@ export default function Experience() {
 					display: "flex",
 					flexDirection: xs ? "column" : "row",
 					justifyContent: xs ? "center" : "space-between",
+					paddingBottom: xs ? 0 : "16px",
 				}}
-				pb={5}
 			>
-				<Typography
-					variant="h4"
-					sx={{
-						textAlign: xs ? "center" : "left",
-						paddingBottom: xs ? 2 : 0,
-					}}
-				>
-					{isProjects ? "Projects" : "Part-Time Experience"}
-				</Typography>
-				<Button
-					variant="contained"
-					onClick={handleSwap}
-					startIcon={
-						isProjects ? <Diversity3Icon /> : <TerminalIcon />
-					}
-				>
-					{isProjects ? "Part-Time Experience" : "Projects"}
-				</Button>
+				{xs ? (
+					<>
+						<Button
+							variant="contained"
+							onClick={handleSwap}
+							startIcon={
+								isProjects ? (
+									<Diversity3Icon />
+								) : (
+									<TerminalIcon />
+								)
+							}
+						>
+							{isProjects ? "Part-Time Experience" : "Projects"}
+						</Button>
+						<Typography
+							variant="h4"
+							sx={{
+								textAlign: xs ? "center" : "left",
+							}}
+							py={2}
+						>
+							{isProjects ? "Projects" : "Part-Time Experience"}
+						</Typography>
+					</>
+				) : (
+					<>
+						<Typography
+							variant="h4"
+							sx={{
+								textAlign: xs ? "center" : "left",
+							}}
+						>
+							{isProjects ? "Projects" : "Part-Time Experience"}
+						</Typography>
+						<Button
+							variant="contained"
+							onClick={handleSwap}
+							startIcon={
+								isProjects ? (
+									<Diversity3Icon />
+								) : (
+									<TerminalIcon />
+								)
+							}
+						>
+							{isProjects ? "Part-Time Experience" : "Projects"}
+						</Button>
+					</>
+				)}
 			</Box>
 
 			<Box>
