@@ -26,16 +26,11 @@ export default function Home() {
 		setMouse({ x: e.clientX, y: e.clientY });
 	};
 	const inAppbar = mouse.y <= 48;
-	const outOfScreen =
-		mouse.x <= 5 ||
-		mouse.y <= 5 ||
-		mouse.x >= window.width - 5 ||
-		mouse.y >= window.height - 5;
+
 	const hoverEffect = {
-		background:
-			inAppbar || outOfScreen
-				? "none"
-				: `radial-gradient(600px circle at var(--mouse-x, ${mouse.x}px) var(--mouse-y, ${mouse.y}px), rgba(255, 255, 255, 0.065), transparent 40%)`,
+		background: inAppbar
+			? "none"
+			: `radial-gradient(600px circle at var(--mouse-x, ${mouse.x}px) var(--mouse-y, ${mouse.y}px), rgba(255, 255, 255, 0.065), transparent 40%)`,
 	};
 	return (
 		<>
@@ -67,7 +62,7 @@ export default function Home() {
 						width: "100%",
 					}}
 					onMouseMove={handleMouseMove}
-					//style={hoverEffect}
+					style={hoverEffect}
 				>
 					<Element name="index">
 						<Container

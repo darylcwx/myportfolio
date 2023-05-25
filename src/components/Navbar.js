@@ -10,28 +10,26 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
 import { Link, useLocation } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ClearIcon from "@mui/icons-material/Clear";
+import CloseIcon from "@mui/icons-material/Close";
 import BadgeIcon from "@mui/icons-material/Badge";
 import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import SchoolIcon from "@mui/icons-material/School";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 export default function Navbar(props) {
-	const theme = useTheme();
+	const { theme, xs } = GetThemeAndXSBP();
 	const trigger = useScrollTrigger({ threshold: 5 });
 	const styles = {
 		sec: {
 			color: theme.palette.secondary.main,
 		},
 	};
-	const xs = useMediaQuery(theme.breakpoints.down("sm"));
 	const [isOpen, setIsOpen] = useState(false);
 	const toggleDrawer = () => {
 		setIsOpen(!isOpen);
@@ -77,7 +75,7 @@ export default function Navbar(props) {
 										}}
 									>
 										{isOpen ? (
-											<ClearIcon sx={styles.sec} />
+											<CloseIcon sx={styles.sec} />
 										) : (
 											<MenuIcon />
 										)}
@@ -206,29 +204,33 @@ export default function Navbar(props) {
 								</Box>
 								<Box sx={{ flexGrow: 1 }} />
 								<Button
-									component={Link}
-									to="/experience"
+									onClick={() => {
+										scrollTo("experience");
+									}}
 									style={styles.link}
 								>
 									Experience
 								</Button>
 								<Button
-									component={Link}
-									to="/skillset"
+									onClick={() => {
+										scrollTo("skillset");
+									}}
 									style={styles.link}
 								>
 									Skillset
 								</Button>
 								<Button
-									component={Link}
-									to="/education"
+									onClick={() => {
+										scrollTo("education");
+									}}
 									style={styles.link}
 								>
 									Education
 								</Button>
 								<Button
-									component={Link}
-									to="/about"
+									onClick={() => {
+										scrollTo("about");
+									}}
 									style={styles.link}
 								>
 									About Me

@@ -4,7 +4,7 @@ import Paper from "@mui/material/Paper";
 import Carousel from "react-material-ui-carousel";
 import Typography from "@mui/material/Typography";
 import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
-import SkillsComponent from "../components/SkillsComponent.js";
+import SkillsComponent from "../components/SkillGrid.js";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 export default function Skillset() {
 	const { theme, xs } = GetThemeAndXSBP();

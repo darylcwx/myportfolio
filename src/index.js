@@ -74,6 +74,15 @@ const darkTheme = createTheme({
 				},
 			},
 		},
+		MuiSlider: {
+			styleOverrides: {
+				root: {
+					"&.Mui-disabled": {
+						color: "#f9ebe0",
+					},
+				},
+			},
+		},
 	},
 	shape: {
 		borderRadius: 4,
