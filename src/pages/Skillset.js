@@ -6,6 +6,12 @@ import Typography from "@mui/material/Typography";
 import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
 import SkillsComponent from "../components/SkillGrid.js";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import SpeakerNotesIcon from "@mui/icons-material/SpeakerNotes";
+import Diversity2Icon from "@mui/icons-material/Diversity2";
+import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
+import FollowTheSignsIcon from "@mui/icons-material/FollowTheSigns";
+import TimerIcon from "@mui/icons-material/Timer";
+import ContentPasteSearchIcon from "@mui/icons-material/ContentPasteSearch";
 export default function Skillset() {
 	const { theme, xs } = GetThemeAndXSBP();
 	const styles = {
@@ -15,7 +21,8 @@ export default function Skillset() {
 		},
 		// adjusting pseudo classes doesn't work
 		navButtonsWrapperProps: {
-			opacity: 1,
+			backgroundColor: `${theme.palette.primary.main}30`,
+
 			"&:hover": {
 				"& $button": {
 					backgroundColor: undefined,
@@ -44,38 +51,33 @@ export default function Skillset() {
 			skills: [
 				{
 					name: "Communication skills",
-					src: "fa-solid fa-person-chalkboard",
-					size: "xl",
+					src: <SpeakerNotesIcon />,
 					level: 85,
 				},
 				{
 					name: "Teamwork and collaboration",
-					src: "fa-solid fa-people-group",
-					size: "xl",
+					src: <Diversity2Icon />,
 					level: 90,
 				},
 				{
 					name: "Adaptability and flexibility",
-					src: "fa-solid fa-arrows-rotate",
-					size: "xl",
+					src: <ChangeCircleIcon />,
 					level: 90,
 				},
 				{
 					name: "Leadership",
-					src: "fa-solid fa-person-chalkboard",
+					src: <FollowTheSignsIcon />,
 					size: "xl",
 					level: 85,
 				},
 				{
 					name: "Time management",
-					src: "fa-solid fa-clock",
-					size: "xl",
+					src: <TimerIcon />,
 					level: 80,
 				},
 				{
 					name: "Attention to detail",
-					src: "fa-solid fa-rectangle-list",
-					size: "xl",
+					src: <ContentPasteSearchIcon />,
 					level: 85,
 				},
 			],
@@ -101,6 +103,11 @@ export default function Skillset() {
 					src: "illustrator.png",
 					level: 10,
 				},
+				{
+					name: "Postman",
+					src: "postman.png",
+					level: 50,
+				},
 			],
 		},
 		{
@@ -111,13 +118,17 @@ export default function Skillset() {
 				{ name: "HTML", src: "html.png", level: 80 },
 				{ name: "CSS", src: "css.png", level: 70 },
 				{ name: "Javascript", src: "js.png", level: 70 },
+				{ name: "Bootstrap", src: "bootstrap.png", level: 70 },
 				{ name: "React", src: "react.png", level: 25 },
+				{ name: "React Spring", src: "reactspring.png", level: 70 },
 				{ name: "Next.js", src: "nextjs.png", level: 25 },
+				{ name: "Chakra UI", src: "chakraui.jpg", level: 80 },
 				{ name: "Mantine UI", src: "mantine.png", level: 70 },
-				{ name: "Telegram API", src: "telegram.png", level: 60 },
 				{ name: "Vue.js", src: "vue.png", level: 70 },
+				{ name: "Quasar", src: "quasar.png", level: 70 },
 				{ name: "Vuetify", src: "vuetify.png", level: 50 },
 				{ name: "GSAP", src: "gsap.png", level: 50 },
+				{ name: "Telegram API", src: "telegram.png", level: 60 },
 				{ name: "Tableau", src: "tableau.png", level: 55 },
 				{ name: "SQL", src: "sql.png", level: 70 },
 				{ name: "PHP", src: "php.png", level: 30 },
@@ -127,16 +138,18 @@ export default function Skillset() {
 		{
 			name: "Others",
 			skills: [
-				{ name: "Video editing", src: "", level: 60 },
-				{ name: "Horology", src: "", level: 60 },
-				{ name: "Guitar", src: "", level: 70 },
-				{ name: "DIY", src: "", level: 85 },
-				{ name: "", src: "", level: 0 },
+				{ name: "Video editing", src: "videoediting.jpg", level: 60 },
+				{ name: "Horology", src: "horology.png", level: 60 },
+				{ name: "Guitar", src: "guitar.png", level: 70 },
+				{ name: "DIY", src: "guitar.jpg", level: 85 },
 			],
 		},
 	];
 	return (
-		<Box py={5}>
+		<Box>
+			<Typography variant="h2" sx={{ textAlign: "center" }} pb={5}>
+				Skillsets
+			</Typography>
 			<Carousel
 				animation={"slide"}
 				duration={600}
@@ -155,30 +168,15 @@ export default function Skillset() {
 			>
 				{skillsets.map((skillset, i) => {
 					return (
-						<Box
-							key={i}
-							sx={{
-								display: "flex",
-								flexDirection: "column",
-								alignItems: "center",
-							}}
-						>
-							<Box
-								sx={{
-									display: "flex",
-									flexDirection: "column",
-									alignItems: "center",
-								}}
+						<Box key={i}>
+							<Typography
+								variant="h5"
+								pb={2}
+								sx={{ textAlign: "center" }}
 							>
-								<Typography
-									variant="h4"
-									sx={{ textAlign: "center" }}
-									pb={5}
-								>
-									{skillset.name}
-								</Typography>
-								<SkillsComponent skills={skillset.skills} />
-							</Box>
+								{skillset.name}
+							</Typography>
+							<SkillsComponent skills={skillset.skills} />
 						</Box>
 					);
 				})}

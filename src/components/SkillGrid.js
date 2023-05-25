@@ -1,9 +1,10 @@
+import React from "react";
 import { useState, useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
-import { Typography } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import SkillDetails from "./SkillDetails.js";
 import { useSpring, useTransition, animated } from "@react-spring/web";
 export default function SkillGrid({ skills }) {
@@ -22,6 +23,7 @@ export default function SkillGrid({ skills }) {
 			transition: "transform 0.3s ease-in-out",
 		},
 	};
+
 	const [image, setImage] = useState(null);
 	const handleMouseEnter = (image) => {
 		setImage(image);
@@ -53,19 +55,29 @@ export default function SkillGrid({ skills }) {
 		};
 	}, []);
 
+	const [height, setHeight] = useState(0);
+	const boxRef = useRef(null);
+	useEffect(() => {
+		if (boxRef) {
+			const height = boxRef.current.clientHeight;
+			if (height != 0) {
+				setHeight(height);
+			}
+		}
+	}, []);
+
 	// animation from image to position
 	const transitions = useSpring({
 		opacity: animateIn ? 1 : 0,
 		scale: animateIn ? 1 : 0,
 		x: animateIn ? 0 : mouse.x,
-		y: animateIn ? -400 : mouse.y,
+		y: animateIn ? -height : mouse.y,
 	});
 
 	const handleClick = (skill, e) => {
 		setAnimateIn(true);
 		setSelectedSkill(skill);
 	};
-
 	useEffect(() => {
 		const updateMouse = (e) => {
 			if (paperRef.current != null) {
@@ -83,9 +95,10 @@ export default function SkillGrid({ skills }) {
 			window.removeEventListener("mousemove", updateMouse);
 		};
 	}, []);
+
 	return (
 		<>
-			<Box>
+			<Box ref={boxRef}>
 				<Grid container spacing={2}>
 					{skills.map((skill) => (
 						<Grid
@@ -96,16 +109,45 @@ export default function SkillGrid({ skills }) {
 							md={3}
 							sx={{ display: "flex", justifyContent: "center" }}
 						>
-							{skill.src.slice(-1) == "g" ? (
-								<Box
-									sx={{
-										width: "100px",
-										height: "100px",
-										display: "flex",
-										alignItems: "center",
-										justifyContent: "center",
-									}}
-								>
+							<Box
+								sx={{
+									width: "100px",
+									height: "100px",
+									display: "flex",
+									alignItems: "center",
+									justifyContent: "center",
+								}}
+							>
+								{typeof skill.src === "object" ? (
+									<IconButton
+										onMouseEnter={() =>
+											handleMouseEnter(
+												skill.src.type.type.render
+													.displayName
+											)
+										}
+										onMouseLeave={handleMouseLeave}
+										onClick={(e) => handleClick(skill, e)}
+										objectFit="contain"
+										style={{
+											maxWidth: "100%",
+											maxHeight: "100%",
+											...styles.onUnhover,
+											...(image ===
+												skill.src.type.type.render
+													.displayName &&
+												styles.onHover),
+										}}
+									>
+										{React.cloneElement(skill.src, {
+											sx: {
+												fontSize: "100px",
+												color: theme.palette.secondary
+													.main,
+											},
+										})}
+									</IconButton>
+								) : (
 									<img
 										src={require(`../../public/images/software/${skill.src}`)}
 										alt={skill.name}
@@ -124,10 +166,8 @@ export default function SkillGrid({ skills }) {
 										onClick={(e) => handleClick(skill, e)}
 										objectFit="contain"
 									/>
-								</Box>
-							) : (
-								"test"
-							)}
+								)}
+							</Box>
 						</Grid>
 					))}
 				</Grid>

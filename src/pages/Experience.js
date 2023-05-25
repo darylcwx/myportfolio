@@ -23,6 +23,9 @@ export default function Experience() {
 	};
 	return (
 		<Container maxWidth="md">
+			<Typography variant="h2" sx={{ textAlign: "center" }} pb={5}>
+				Experience and Projects
+			</Typography>
 			<Box
 				sx={{
 					display: "flex",

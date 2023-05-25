@@ -151,7 +151,7 @@ export default function Home() {
 					<Element name="experience">
 						<Container
 							maxWidth="md"
-							style={{ paddingTop: 100, paddingBottom: 100 }}
+							style={{ paddingTop: 150, paddingBottom: 150 }}
 						>
 							<Experience />
 						</Container>
@@ -159,13 +159,13 @@ export default function Home() {
 					<Element name="skillset">
 						<Container
 							maxWidth="md"
-							style={{ paddingTop: 100, paddingBottom: 100 }}
+							style={{ paddingTop: 150, paddingBottom: 150 }}
 						>
 							<Skillset />
 						</Container>
 					</Element>
 					<Element name="education">
-						<Container style={{ padding: "100px 0" }}>
+						<Container style={{ padding: "150px 0" }}>
 							<Education />
 						</Container>
 					</Element>

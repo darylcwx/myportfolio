@@ -38,7 +38,7 @@ export default function Education() {
 			],
 			period: "2016  2019",
 			gpa: "Cumulative GPA: 3.61",
-			image: "./images/education/np1.jpg",
+			image: "./images/education/np.jpg",
 		},
 		{
 			id: 0,
