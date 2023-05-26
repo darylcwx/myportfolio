@@ -5,6 +5,15 @@ import Carousel from "react-material-ui-carousel";
 import Typography from "@mui/material/Typography";
 import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
 import SkillsGrid from "../components/SkillGrid.js";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, {
+	EffectCoverflow,
+	Pagination,
+	Navigation,
+	Autoplay,
+} from "swiper";
+import "swiper/swiper-bundle.css";
+import "swiper/css";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import SpeakerNotesIcon from "@mui/icons-material/SpeakerNotes";
 import Diversity2Icon from "@mui/icons-material/Diversity2";
@@ -12,6 +21,7 @@ import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
 import FollowTheSignsIcon from "@mui/icons-material/FollowTheSigns";
 import TimerIcon from "@mui/icons-material/Timer";
 import ContentPasteSearchIcon from "@mui/icons-material/ContentPasteSearch";
+SwiperCore.use([Navigation]);
 export default function Skillset() {
 	const { theme, xs } = GetThemeAndXSBP();
 	const styles = {
@@ -158,37 +168,45 @@ export default function Skillset() {
 				expanding my skills and knowledge, and I welcome any feedback
 				that can help me achieve my goals.
 			</Typography>
-			<Carousel
-				animation={"slide"}
-				duration={600}
-				autoPlay={false}
-				navButtonsWrapperProps={{
-					style: styles.navButtonsWrapperProps,
+			<Swiper
+				modules={[Pagination, Navigation, Autoplay]}
+				slidesPerView={1}
+				loop={true}
+				autoplay={{ delay: 10000 }}
+				centeredSlides={true}
+				spaceBetween={20}
+				pagination={{
+					clickable: true,
 				}}
-				navButtonsProps={{ style: styles.navButtonsProps }}
-				indicatorIconButtonProps={{
-					style: styles.indicators,
+				navigation
+				onSwiper={(swiper) => console.log(swiper)}
+				style={{
+					height: 700,
+					width: "100%",
+					"--swiper-pagination-color": "#f9ebe0",
+					"--swiper-pagination-bullet-inactive-color": "#f9ebe0",
+					"--swiper-navigation-color": "#f9ebe0",
+					"--swiper-navigation-size": "32px",
+					"--swiper-navigation-sides-offset": "0px",
 				}}
-				activeIndicatorIconButtonProps={{
-					style: styles.activeIndicator,
-				}}
-				IndicatorIcon={<FiberManualRecordIcon size="small" />}
 			>
 				{skillsets.map((skillset, i) => {
 					return (
-						<Box key={i}>
-							<Typography
-								variant="h4"
-								pb={2}
-								sx={{ textAlign: "center" }}
-							>
-								{skillset.name}
-							</Typography>
-							<SkillsGrid skills={skillset.skills} />
-						</Box>
+						<SwiperSlide key={i}>
+							<Box>
+								<Typography
+									variant="h4"
+									pb={2}
+									sx={{ textAlign: "center" }}
+								>
+									{skillset.name}
+								</Typography>
+								<SkillsGrid skills={skillset.skills} />
+							</Box>
+						</SwiperSlide>
 					);
 				})}
-			</Carousel>
+			</Swiper>
 		</Box>
 	);
 }
