@@ -35,7 +35,7 @@ export default function SkillGrid({ skills }) {
 	// handles animation
 	const [animateIn, setAnimateIn] = useState(false);
 	const [selectedSkill, setSelectedSkill] = useState(null);
-	const [mouse, setMouse] = useState({ x: 0, y: -400 });
+	const [mouse, setMouse] = useState({ x: 0, y: -500 });
 	// paper still there (selectedSkill != null), just animated away
 	const handleClose = () => {
 		setAnimateIn(false);
@@ -96,9 +96,19 @@ export default function SkillGrid({ skills }) {
 		};
 	}, []);
 
+	// to fix clickAway, can ignore for now
 	return (
 		<>
-			<Box ref={boxRef}>
+			<Box
+				ref={boxRef}
+				sx={{
+					width: "100%",
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+					position: "absolute",
+				}}
+			>
 				<Grid container spacing={2}>
 					{skills.map((skill) => (
 						<Grid

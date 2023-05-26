@@ -18,6 +18,7 @@ export default function SkillDetails({ skill, onClose }) {
 	return (
 		<Box>
 			<Paper
+				elevation={12}
 				sx={{
 					padding: "24px",
 				}}
