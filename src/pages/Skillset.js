@@ -60,7 +60,7 @@ export default function Skillset() {
 			name: "Soft skills",
 			skills: [
 				{
-					name: "Communication skills",
+					name: "Effective communication",
 					src: <SpeakerNotesIcon />,
 					level: 85,
 				},
@@ -70,7 +70,7 @@ export default function Skillset() {
 					level: 90,
 				},
 				{
-					name: "Adaptability and flexibility",
+					name: "Adaptability",
 					src: <ChangeCircleIcon />,
 					level: 90,
 				},
@@ -86,7 +86,7 @@ export default function Skillset() {
 					level: 80,
 				},
 				{
-					name: "Attention to detail",
+					name: "Meticulousness",
 					src: <ContentPasteSearchIcon />,
 					level: 85,
 				},

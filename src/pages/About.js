@@ -118,24 +118,24 @@ export default function About() {
 				},
 			],
 		},
-		{
-			tab: "Fun facts",
-			header: "Some fun facts",
-			items: [
-				{
-					title: "Do calisthenics",
-					icon: "",
-					description:
-						"I believe men have a duty to mould his physical body into the most capable and resilient version of itself as much as possible. By training a couple of times a week, I am able to maintain discipline, improve my physical appearance, and promote overall health and well-being.",
-				},
-				{
-					title: "Build watches",
-					icon: "",
-					description:
-						"On a fine day, my friend and I found ourselves pondering the rationale regarding Rolex's exorbitant price point and the intricacies of their construction. This initial curiosity later developed into a hobby whereby we built our very own Seikos. This trained our patience, precision, and attention to detail, and ultimately allowing us to don a unique, personalized, and one-of-a-kind timepiece on our wrists.",
-				},
-			],
-		},
+		// {
+		// 	tab: "Fun facts",
+		// 	header: "Some fun facts",
+		// 	items: [
+		// 		{
+		// 			title: "Sweet drinks",
+		// 			icon: "",
+		// 			description:
+		// 				"I believe men have a duty to mould his physical body into the most capable and resilient version of itself as much as possible. By training a couple of times a week, I am able to maintain discipline, improve my physical appearance, and promote overall health and well-being.",
+		// 		},
+		// 		{
+		// 			title: "By nature, I'm an introvert",
+		// 			icon: "",
+		// 			description:
+		// 				"However, a few drinks will turn me into quite the opposite 😅",
+		// 		},
+		// 	],
+		// },
 		{
 			tab: "Pictures",
 			header: "While a picture speaks a thousand words, here are some of mine.",
@@ -193,7 +193,7 @@ export default function About() {
 			>
 				<Tab label="values" />
 				<Tab label="hobbies" />
-				<Tab label="fun facts" />
+				{/* <Tab label="fun facts" /> */}
 				<Tab label="Pictures" />
 			</Tabs>
 			<Swiper
@@ -223,7 +223,7 @@ export default function About() {
 								about.items.map((item, j) => {
 									return (
 										<Box key={j}>
-											<Typography variant="h5">
+											<Typography variant="h6">
 												{item.title}
 												<span
 													style={{
