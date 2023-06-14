@@ -45,7 +45,12 @@ export default function Project({
 						spacing={2}
 						sx={{ display: "flex", alignItems: "center" }}
 					>
-						<Typography variant="body2">Built on:</Typography>
+						<Typography
+							variant="body2"
+							sx={{ whiteSpace: "nowrap" }}
+						>
+							Built on:
+						</Typography>
 						{frameworks.map((framework) => (
 							<Link
 								href={framework.link}
@@ -75,7 +80,11 @@ export default function Project({
 										}}
 									/>
 								</Box>
-								<Typography variant="caption" mt={1}>
+								<Typography
+									variant="caption"
+									mt={1}
+									sx={{ textAlign: "center" }}
+								>
 									{framework.name}
 								</Typography>
 							</Link>
@@ -86,7 +95,12 @@ export default function Project({
 						spacing={2}
 						sx={{ display: "flex", alignItems: "center" }}
 					>
-						<Typography variant="body2">Live on:</Typography>
+						<Typography
+							variant="body2"
+							sx={{ whiteSpace: "nowrap" }}
+						>
+							Live on:
+						</Typography>
 						{platforms.map((platform) => (
 							<Link
 								href={platform.link}

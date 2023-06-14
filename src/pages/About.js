@@ -169,6 +169,11 @@ export default function About() {
 					description:
 						"A friend brought us around Ho Chi Minh for all the good food and drinks 🤤",
 				},
+				{
+					src: "csp.jpg",
+					description:
+						"A small gesture of goodwill for SPC MINDS Car Wash with the boys during Christmas '22",
+				},
 			],
 		},
 	];
