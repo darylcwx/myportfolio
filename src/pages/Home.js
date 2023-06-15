@@ -36,10 +36,13 @@ export default function Home() {
 		<>
 			<Box>
 				<video
-					loop
+					autoplay="autoplay"
+					loop="loop"
 					muted
-					playsInline
-					autoPlay
+					defaultMuted
+					playsinline
+					preload="auto"
+					id="myVideo"
 					style={{
 						position: "fixed",
 						top: 0,
