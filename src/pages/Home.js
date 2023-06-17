@@ -1,187 +1,200 @@
 import * as React from "react";
-import { useState } from "react";
-import Button from "@mui/material/Button";
+import { useState, useEffect, useRef } from "react";
+//import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
-import { Element } from "react-scroll";
 import Avatar from "@mui/material/Avatar";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { Link } from "react-router-dom";
 import Experience from "./Experience.js";
 import Education from "./Education.js";
 import Skillset from "./Skillset.js";
 import About from "./About.js";
+import { motion } from "framer-motion";
+import SouthIcon from "@mui/icons-material/South";
+import { Element } from "react-scroll";
 export default function Home() {
-	const { theme, xs } = GetThemeAndXSBP();
-	const styles = {
-		overlay: {
-			backgroundColor: "rgba(0, 0, 0, 0)",
-		},
-	};
-	const [mouse, setMouse] = useState({ x: 0, y: 0 });
-	const handleMouseMove = (e) => {
-		setMouse({ x: e.clientX, y: e.clientY });
-	};
-	const inAppbar = mouse.y <= 48;
-
-	const hoverEffect = {
-		background: inAppbar
-			? "none"
-			: `radial-gradient(600px circle at var(--mouse-x, ${mouse.x}px) var(--mouse-y, ${mouse.y}px), rgba(255, 255, 255, 0.065), transparent 40%)`,
-	};
+	const { xs } = GetThemeAndXSBP();
 	return (
-		<>
-			<Box>
-				<video
-					autoplay="autoplay"
-					loop="loop"
-					muted
-					defaultMuted
-					playsinline
-					preload="auto"
-					id="myVideo"
-					style={{
-						position: "fixed",
-						top: 0,
-						left: 0,
-						width: "100%",
-						height: "100%",
-						objectFit: "cover",
-						zIndex: "-1",
-					}}
-				>
-					<source
-						src="/images/space particles.mp4"
-						type="video/mp4"
-					/>
-					Your browser does not support the video tag.
-				</video>
+		<Container
+			name="index"
+			sx={{
+				height: "calc(100vh - 48px)",
+				width: "80%",
+				display: "flex",
+				flexDirection: "column",
+				justifyContent: "center",
+				paddingLeft: 0,
+				paddingRight: 0,
+				marginBottom: "500px",
+			}}
+		>
+			{xs ? (
+				<>
+					<Box display="flex" justifyContent="center">
+						<Avatar
+							src="/images/me.jpeg"
+							alt="Me"
+							style={{
+								width: 200,
+								height: 200,
+							}}
+						/>
+					</Box>
+					<motion.div
+						initial={{ opacity: 0, scale: 0.5 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{ duration: 0.5 }}
+					>
+						<div variant="h3" my={2}>
+							Hello!
+						</div>
+					</motion.div>
+					<Typography variant="h5">I'm Daryl.</Typography>
+					<Typography variant="h5">Welcome to my website.</Typography>
+				</>
+			) : (
 				<Box
 					sx={{
-						height: "100%",
-						width: "100%",
+						display: "flex",
+						justifyContent: "space-between",
 					}}
-					onMouseMove={handleMouseMove}
-					style={hoverEffect}
 				>
-					<Element name="index">
-						<Container
-							maxWidth="sm"
-							style={{
-								height: "100vh",
-								display: "flex",
-								flexDirection: "column",
-								justifyContent: "center",
-								paddingBottom: 100,
+					<Stack
+						sx={{
+							display: "flex",
+							justifyContent: "end",
+						}}
+					>
+						<motion.div
+							animate={{
+								opacity: [0, 1.2, 1.2, 1, 1],
+								scale: [0, 1.2, 1.2, 1, 1],
+								x: [325, 325, 325, 0, 0],
+								y: [100, 100, 100, 0, 0],
+							}}
+							transition={{
+								duration: 6,
+								times: [0, 0.1, 0.5, 0.6, 1],
+								delay: 0.75,
 							}}
 						>
-							<Box>
-								{xs ? (
-									<>
-										<Box
-											display="flex"
-											justifyContent="center"
-										>
-											<Avatar
-												src="/images/me.jpeg"
-												alt="Me"
-												style={{
-													width: 200,
-													height: 200,
-												}}
-											/>
-										</Box>
-										<Typography variant="h3" my={2}>
-											Hello!
-										</Typography>
-										<Typography variant="h5">
-											I'm Daryl.
-										</Typography>
-										<Typography variant="h5">
-											Welcome to my website.
-										</Typography>
-									</>
-								) : (
-									<Box
-										sx={{
-											display: " flex",
-											justifyContent: "space-between",
-										}}
-									>
-										<Stack
-											sx={{
-												display: "flex",
-												justifyContent: "end",
-											}}
-										>
-											<Typography variant="h3" my={2}>
-												Hello!
-											</Typography>
-											<Typography variant="h5">
-												I'm Daryl.
-											</Typography>
-											<Typography variant="h5">
-												Welcome to my website.
-											</Typography>
-										</Stack>
-										<Box>
-											<Avatar
-												src="/images/me.jpeg"
-												alt="Me"
-												style={{
-													width: 200,
-													height: 200,
-												}}
-											/>
-										</Box>
-									</Box>
-								)}
-							</Box>
-
-							<Typography variant="body2" my={2}>
-								Here, you can find the highlights of my career,
-								education, and skill sets, and perhaps even get
-								to know me a little better.
+							<Typography variant="h3" my={2}>
+								Hello!
 							</Typography>
-							<Typography variant="body2" my={2}>
-								Enjoy your visit!
+						</motion.div>
+						<motion.div
+							animate={{
+								opacity: [0, 0, 1, 1, 1, 1],
+								scale: [0, 0, 1, 1, 1, 1],
+								x: [325, 325, 325, 325, 0, 0],
+								y: [100, 100, 100, 100, 0, 0],
+							}}
+							transition={{
+								duration: 6,
+								times: [0, 0.15, 0.2, 0.55, 0.65, 1],
+								delay: 0.75,
+							}}
+						>
+							<Typography variant="h5">I'm Daryl.</Typography>
+						</motion.div>
+						<motion.div
+							animate={{
+								opacity: [0, 0, 1, 1, 1, 1],
+								scale: [0, 0, 1, 1, 1, 1],
+								x: [325, 325, 325, 325, 0, 0],
+								y: [100, 100, 100, 100, 0, 0],
+							}}
+							transition={{
+								duration: 6,
+								times: [0, 0.25, 0.3, 0.6, 0.7, 1],
+								delay: 0.75,
+							}}
+						>
+							<Typography variant="h5">
+								Welcome to my website.
 							</Typography>
-						</Container>
-					</Element>
-					<Element name="experience">
-						<Container
-							maxWidth="md"
-							style={{ paddingTop: 150, paddingBottom: 150 }}
-						>
-							<Experience />
-						</Container>
-					</Element>
-					<Element name="skillset">
-						<Container
-							maxWidth="md"
-							style={{ paddingTop: 150, paddingBottom: 150 }}
-						>
-							<Skillset />
-						</Container>
-					</Element>
-					<Element name="education">
-						<Container style={{ padding: "150px 0" }}>
-							<Education />
-						</Container>
-					</Element>
-					<Element name="about">
-						<Container
-							maxWidth="md"
-							style={{ paddingTop: 150, paddingBottom: 150 }}
-						>
-							<About />
-						</Container>
-					</Element>
+						</motion.div>
+					</Stack>
+					<motion.div
+						animate={{
+							opacity: [0, 1, 1, 1, 1],
+							scale: [0, 1, 1, 1, 1],
+							x: [-200, -200, -200, 0, 0],
+							y: [-50, -50, -50, 0, 0],
+						}}
+						transition={{
+							duration: 6,
+							times: [0, 0.1, 0.7, 0.8, 1],
+							delay: 0.75,
+						}}
+					>
+						<Avatar
+							src="/images/me.jpeg"
+							alt="Me"
+							style={{
+								width: 200,
+								height: 200,
+							}}
+						/>
+					</motion.div>
 				</Box>
-			</Box>
-		</>
+			)}
+			<motion.div
+				initial={{ opacity: 0, y: 500 }}
+				animate={{
+					opacity: 1,
+					y: 0,
+				}}
+				transition={{
+					duration: 1,
+					delay: 5.5,
+				}}
+			>
+				<Typography variant="body2" my={2}>
+					Here, you can find the highlights of my career, education,
+					and skill sets, and perhaps even get to know me a little
+					better.
+				</Typography>
+			</motion.div>
+			<motion.div
+				initial={{ opacity: 0, y: 500 }}
+				animate={{
+					opacity: 1,
+					y: 0,
+				}}
+				transition={{
+					duration: 1,
+					delay: 9,
+				}}
+			>
+				<Typography variant="body2" my={2}>
+					Enjoy your stay!
+				</Typography>
+			</motion.div>
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{
+					opacity: 1,
+				}}
+				transition={{
+					duration: 1,
+					delay: 10,
+				}}
+			>
+				<Box
+					sx={{
+						display: "flex",
+						justifyContent: "center",
+						position: "absolute",
+						bottom: "50px",
+						left: "50%",
+					}}
+				>
+					<SouthIcon sx={{ fontSize: "32px" }} />
+				</Box>
+			</motion.div>
+		</Container>
 	);
 }

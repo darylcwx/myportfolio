@@ -2,9 +2,7 @@ import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineItem from "@mui/lab/TimelineItem";
-import TimelineOppositeContent, {
-	timelineOppositeContentClasses,
-} from "@mui/lab/TimelineOppositeContent";
+import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 import Avatar from "@mui/material/Avatar";
 import Paper from "@mui/material/Paper";
@@ -16,7 +14,6 @@ export default function MyTimelineItem(experience) {
 	const { theme, xs } = GetThemeAndXSBP();
 	const dotSize = 100;
 	const avatarSize = 95;
-	const borderRadius = theme.shape.borderRadius;
 	return (
 		<Box>
 			{xs ? (
@@ -42,6 +39,7 @@ export default function MyTimelineItem(experience) {
 										width={avatarSize}
 										height={avatarSize}
 										style={{ borderRadius: "8px" }}
+										alt={experience.company}
 									/>
 								</Box>
 							</Stack>

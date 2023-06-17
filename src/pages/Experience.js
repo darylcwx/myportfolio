@@ -22,7 +22,16 @@ export default function Experience() {
 		},
 	};
 	return (
-		<Container maxWidth="md">
+		<Container
+			name="experience"
+			maxWidth="md"
+			sx={{
+				paddingTop: "50px",
+				paddingLeft: 0,
+				paddingRight: 0,
+				paddingBottom: "300px",
+			}}
+		>
 			<Typography variant="h2" sx={{ textAlign: "center" }} pb={5}>
 				Experience and Projects
 			</Typography>

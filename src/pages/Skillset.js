@@ -2,6 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Carousel from "react-material-ui-carousel";
+import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
 import SkillsGrid from "../components/SkillGrid.js";
@@ -14,7 +15,6 @@ import SwiperCore, {
 } from "swiper";
 import "swiper/swiper-bundle.css";
 import "swiper/css";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import SpeakerNotesIcon from "@mui/icons-material/SpeakerNotes";
 import Diversity2Icon from "@mui/icons-material/Diversity2";
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
@@ -24,36 +24,36 @@ import ContentPasteSearchIcon from "@mui/icons-material/ContentPasteSearch";
 SwiperCore.use([Navigation]);
 export default function Skillset() {
 	const { theme, xs } = GetThemeAndXSBP();
-	const styles = {
-		overlay: {
-			backgroundColor: "rgba(0, 0, 0, 0.85)",
-			minHeight: "calc(100vh - 48px)",
-		},
-		// adjusting pseudo classes doesn't work
-		navButtonsWrapperProps: {
-			backgroundColor: `${theme.palette.primary.main}30`,
+	// const styles = {
+	// 	overlay: {
+	// 		backgroundColor: "rgba(0, 0, 0, 0.85)",
+	// 		minHeight: "calc(100vh - 48px)",
+	// 	},
+	// 	// adjusting pseudo classes doesn't work
+	// 	navButtonsWrapperProps: {
+	// 		backgroundColor: `${theme.palette.primary.main}30`,
 
-			"&:hover": {
-				"& $button": {
-					backgroundColor: undefined,
-					filter: undefined,
-					opacity: undefined,
-				},
-			},
-		},
-		navButtonsProps: {
-			margin: 0,
-			color: theme.palette.white.main,
-			backgroundColor: theme.palette.primary.main,
-			"&:hover": undefined,
-		},
-		indicators: {
-			color: theme.palette.primary.main,
-		},
-		activeIndicator: {
-			color: theme.palette.secondary.main,
-		},
-	};
+	// 		"&:hover": {
+	// 			"& $button": {
+	// 				backgroundColor: undefined,
+	// 				filter: undefined,
+	// 				opacity: undefined,
+	// 			},
+	// 		},
+	// 	},
+	// 	navButtonsProps: {
+	// 		margin: 0,
+	// 		color: theme.palette.white.main,
+	// 		backgroundColor: theme.palette.primary.main,
+	// 		"&:hover": undefined,
+	// 	},
+	// 	indicators: {
+	// 		color: theme.palette.primary.main,
+	// 	},
+	// 	activeIndicator: {
+	// 		color: theme.palette.secondary.main,
+	// 	},
+	// };
 
 	const skillsets = [
 		{
@@ -156,7 +156,16 @@ export default function Skillset() {
 		},
 	];
 	return (
-		<Box>
+		<Container
+			name="skillset"
+			maxWidth="md"
+			sx={{
+				paddingTop: "50px",
+				paddingLeft: 0,
+				paddingRight: 0,
+				paddingBottom: "300px",
+			}}
+		>
 			<Typography variant="h2" sx={{ textAlign: "center" }} pb={2}>
 				Skillsets
 			</Typography>
@@ -207,6 +216,6 @@ export default function Skillset() {
 					);
 				})}
 			</Swiper>
-		</Box>
+		</Container>
 	);
 }

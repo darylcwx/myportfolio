@@ -75,7 +75,7 @@ export default function EducationComponent({
 		>
 			<Box sx={{ ...styles.blur }}>
 				<ParallaxBannerLayer
-					speed={-10}
+					speed={-20}
 					image={image}
 					style={{
 						...styles.bg,
@@ -91,36 +91,58 @@ export default function EducationComponent({
 			)}
 			<ParallaxBannerLayer style={{ ...styles.center }}>
 				<Container maxWidth="md">
-					<Typography variant={xs ? "h5" : "h2"}>{school}</Typography>
-					<Typography variant={xs ? "h6" : "h4"}>{degree}</Typography>
-					{tracks.map((track) => {
-						return (
-							<Typography key={track} variant={xs ? "h6" : "h5"}>
-								{track}
-							</Typography>
-						);
-					})}
-					{awards.map((award) => {
-						return (
-							<Typography
-								key={award}
-								variant={xs ? "body1" : "body1"}
-							>
-								{award}
-							</Typography>
-						);
-					})}
-					{coCurricular.map((cca) => {
-						return (
-							<Typography
-								key={cca}
-								variant={xs ? "body2" : "body1"}
-							>
-								{cca}
-							</Typography>
-						);
-					})}
-					<Typography variant={xs ? "body2" : "body1"}>
+					<Typography
+						sx={{ paddingBottom: "0.5rem" }}
+						variant={xs ? "h5" : "h2"}
+					>
+						{school}
+					</Typography>
+					<Typography
+						sx={{ paddingBottom: "1.5rem" }}
+						variant={xs ? "h6" : "h4"}
+					>
+						{degree}
+					</Typography>
+					<Box sx={{ paddingBottom: "1rem" }}>
+						{tracks.map((track) => {
+							return (
+								<Typography
+									key={track}
+									variant={xs ? "h6" : "h5"}
+								>
+									{track}
+								</Typography>
+							);
+						})}
+					</Box>
+					<Box sx={{ paddingBottom: "1rem" }}>
+						{awards.map((award) => {
+							return (
+								<Typography
+									key={award}
+									variant={xs ? "body1" : "body1"}
+								>
+									{award}
+								</Typography>
+							);
+						})}
+					</Box>
+					<Box sx={{ paddingBottom: "1rem" }}>
+						{coCurricular.map((cca) => {
+							return (
+								<Typography
+									key={cca}
+									variant={xs ? "body2" : "body1"}
+								>
+									{cca}
+								</Typography>
+							);
+						})}
+					</Box>
+					<Typography
+						sx={{ paddingBottom: "0.5rem" }}
+						variant={xs ? "body2" : "body1"}
+					>
 						{period}
 					</Typography>
 					<Typography variant={xs ? "caption" : "body1"}>

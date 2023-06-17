@@ -17,8 +17,8 @@ export default function Education() {
 			degree: "Bachelor's Degree in Information Systems",
 			tracks: ["Digital Cloud Solutions", "Business Analytics"],
 			awards: [],
-			coCurricular: [],
-			period: "2021  Present",
+			coCurricular: ["SMU Blockchain Club", "SMU Muay Thai"],
+			period: "2021 to ~2025",
 			gpa: "Cumulative GPA: 3.43",
 			image: "./images/education/smu.jpg",
 			first: true,
@@ -36,7 +36,7 @@ export default function Education() {
 				"Group Leader for ICT Society Camp (2017)",
 				"Head of Welfare for ICT Welcoming Camp (2018)",
 			],
-			period: "2016  2019",
+			period: "2016 to 2019",
 			gpa: "Cumulative GPA: 3.61",
 			image: "./images/education/np.jpg",
 		},
@@ -44,16 +44,25 @@ export default function Education() {
 			id: 0,
 			school: "Anglo-Chinese School (Barker Road)",
 			degree: "GCE 'O' Levels",
-			tracks: ["Financial Analytics"],
+			tracks: [],
 			awards: [],
-			coCurricular: [],
-			period: "2012  2015",
+			coCurricular: ["Waterpolo (2013 - 2014)", "Handball (2015 - 2016)"],
+			period: "2012 to 2015",
 			image: "./images/education/acsbr.jpg",
 			last: true,
 		},
 	];
 	return (
-		<Box>
+		<Container
+			name="education"
+			maxWidth="md"
+			sx={{
+				paddingTop: "50px",
+				paddingLeft: 0,
+				paddingRight: 0,
+				paddingBottom: "300px",
+			}}
+		>
 			<Typography variant="h2" pb={5} sx={{ textAlign: "center" }}>
 				My Education
 			</Typography>
@@ -114,6 +123,6 @@ export default function Education() {
 					</ParallaxBannerLayer>
 				</ParallaxBanner> */}
 			</Parallax>
-		</Box>
+		</Container>
 	);
 }

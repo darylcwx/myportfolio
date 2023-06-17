@@ -15,7 +15,6 @@ import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
 import ClearIcon from "@mui/icons-material/Clear";
-import { useSpring, animated } from "@react-spring/web";
 import { useTheme } from "@mui/material/styles";
 export default function Socials() {
 	const theme = useTheme();
@@ -29,12 +28,6 @@ export default function Socials() {
 			toggleStack();
 		}
 	};
-	const springs = useSpring({
-		from: { x: isOpen ? 215 : 0 },
-		to: {
-			x: isOpen ? 0 : 215,
-		},
-	});
 	const socials = [
 		{
 			icon: <EmailIcon sx={{ fontSize: "24px" }} />,

@@ -7,6 +7,7 @@ import TimelineOppositeContent, {
 	timelineOppositeContentClasses,
 } from "@mui/lab/TimelineOppositeContent";
 import MyTimelineItem from "../utils/timelineItem.js";
+import { motion } from "framer-motion";
 export default function ExperienceContent() {
 	const { theme, xs } = GetThemeAndXSBP();
 	const experiences = [
@@ -163,12 +164,22 @@ export default function ExperienceContent() {
 							padding: 0,
 							margin: 0,
 						}}
-					>
+					>1
 						{experiences.map((experience) => (
-							<MyTimelineItem
-								key={experience.id}
-								{...experience}
-							/>
+							<motion.div
+								initial={{ opacity: 0, y: 200 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								transition={{
+									delay: 0,
+									type: "spring",
+									stiffness: 150,
+								}}
+							>
+								<MyTimelineItem
+									key={experience.id}
+									{...experience}
+								/>
+							</motion.div>
 						))}
 					</Timeline>
 				</Box>

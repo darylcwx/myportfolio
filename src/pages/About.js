@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Carousel from "react-material-ui-carousel";
+import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
 import Tabs from "@mui/material/Tabs";
@@ -179,7 +180,16 @@ export default function About() {
 	];
 
 	return (
-		<Box>
+		<Container
+			name="about"
+			maxWidth="md"
+			sx={{
+				paddingTop: "50px",
+				paddingLeft: 0,
+				paddingRight: 0,
+				paddingBottom: "300px",
+			}}
+		>
 			<Typography variant="h2" sx={{ textAlign: "center" }} pb={2}>
 				About
 			</Typography>
@@ -248,6 +258,6 @@ export default function About() {
 					);
 				})}
 			</Swiper>
-		</Box>
+		</Container>
 	);
 }

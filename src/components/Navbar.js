@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Slide from "@mui/material/Slide";
-import PropTypes from "prop-types";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { scroller } from "react-scroll";
 import Box from "@mui/material/Box";
