@@ -6,11 +6,11 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 export default function Experience() {
-	const { theme, xs } = GetThemeAndXSBP();
+	const { theme, xs } = GetThemeAndBP();
 	const [isProjects, setIsProjects] = useState(true);
 	const handleSwap = () => {
 		setIsProjects(!isProjects);

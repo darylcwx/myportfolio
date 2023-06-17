@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar.js";
 import Socials from "./components/Socials.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -21,6 +22,7 @@ export default function App() {
 						playsinline
 						preload="auto"
 						id="myVideo"
+						playbackRate={0.2}
 						style={{
 							position: "fixed",
 							top: 0,
@@ -37,11 +39,11 @@ export default function App() {
 						/>
 						Your browser does not support the video tag.
 					</video>
-					<Home />
-					<Experience />
-					<Skillset />
-					<Education />
-					<About />
+					<Home id="home" />
+					<Experience id="experience" />
+					<Skillset id="skillset" />
+					<Education id="education" />
+					<About id="about" />
 				</Container>
 			</div>
 			<Socials />

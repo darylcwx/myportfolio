@@ -6,10 +6,10 @@ import Slider from "@mui/material/Slider";
 import { Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 
 export default function SkillDetails({ skill, onClose }) {
-	const { theme, xs } = GetThemeAndXSBP();
+	const { theme, xs } = GetThemeAndBP();
 	const styles = {
 		sec: {
 			color: theme.palette.secondary.main,

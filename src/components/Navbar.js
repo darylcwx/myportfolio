@@ -9,7 +9,7 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
-import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 import { Link, useLocation } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
@@ -21,15 +21,12 @@ import BadgeIcon from "@mui/icons-material/Badge";
 import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import SchoolIcon from "@mui/icons-material/School";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
-export default function Navbar(props) {
-	const { theme, xs } = GetThemeAndXSBP();
+import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
+export default function Navbar() {
+	const { theme, xs, sm, md } = GetThemeAndBP();
 	const trigger = useScrollTrigger({ threshold: 5 });
-	const styles = {
-		sec: {
-			color: theme.palette.secondary.main,
-		},
-	};
 	const [isOpen, setIsOpen] = useState(false);
+	const [scrollPosition, setScrollPosition] = useState(0);
 	const toggleDrawer = () => {
 		setIsOpen(!isOpen);
 	};
@@ -40,153 +37,197 @@ export default function Navbar(props) {
 			smooth: "easeInOut",
 		});
 	};
-	const [scrollPosition, setScrollPosition] = useState(0);
-	const handleScroll = () => {
-		setScrollPosition(window.scrollY);
+	const styles = {
+		sec: {
+			color: theme.palette.secondary.main,
+		},
 	};
 	useEffect(() => {
+		const handleScroll = () => {
+			setScrollPosition(window.scrollY);
+		};
 		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
+	const [location, setLocation] = useState("home");
+	useEffect(() => {
+		console.log(location);
+		const handleScroll = () => {
+			const home = document.getElementById("home");
+			const experience = document.getElementById("experience");
+			const skillset = document.getElementById("skillset");
+			const education = document.getElementById("education");
+			const about = document.getElementById("about");
+			if (home && experience && skillset && education && about) {
+				const scrollPosition = window.scrollY;
+				console.log("Scroll Position:", scrollPosition);
+				console.log("Home Offset:", home.offsetTop);
+				console.log("Experience Offset:", experience.offsetTop);
+				console.log("Skillset Offset:", skillset.offsetTop);
+				console.log("Education Offset:", education.offsetTop);
+				console.log("About Offset:", about.offsetTop);
+				if (
+					scrollPosition >= home.offsetTop &&
+					scrollPosition < experience.offsetTop
+				) {
+					setLocation("home");
+				} else if (
+					scrollPosition >= experience.offsetTop &&
+					scrollPosition < skillset.offsetTop
+				) {
+					setLocation("experience");
+				} else if (
+					scrollPosition >= skillset.offsetTop &&
+					scrollPosition < education.offsetTop
+				) {
+					setLocation("skillset");
+				} else if (
+					scrollPosition >= education.offsetTop &&
+					scrollPosition < about.offsetTop
+				) {
+					setLocation("education");
+				} else if (scrollPosition >= about.offsetTop) {
+					setLocation("about");
+				}
+			}
+		};
+		window.addEventListener("scroll", handleScroll);
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
 	}, []);
 	return (
-		<Box sx={{ flexGrow: 1 }}>
-			<Slide appear={false} direction="down" in={!trigger}>
-				<AppBar
-					elevation={props.trigger ? 24 : 0}
-					position="fixed"
-					sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
-					color={scrollPosition < 100 ? "navbarStart" : "navbar"}
-				>
-					<Toolbar variant="dense">
-						{xs ? (
-							<>
-								<Box sx={{ flexGrow: 1 }}>
-									<IconButton
-										size="large"
-										edge="start"
-										color="inherit"
-										onClick={toggleDrawer}
-										sx={{
-											transform: isOpen
-												? "rotate(90deg)"
-												: "rotate(0)",
-											transition:
-												"transform 0.3s ease-in-out",
-										}}
-									>
-										{isOpen ? (
-											<CloseIcon sx={styles.sec} />
-										) : (
-											<MenuIcon />
-										)}
-									</IconButton>
-									<Drawer
-										anchor="left"
-										open={isOpen}
-										onClose={toggleDrawer}
-									>
-										<Box sx={{ flexGrow: 1 }}>
-											<List
-												sx={{
-													marginTop: "56px",
-													padding: 0,
-												}}
-											>
-												<ListItemButton
-													onClick={() => {
-														toggleDrawer();
-														scrollTo("experience");
+		<>
+			<Box sx={{ flexGrow: 1 }}>
+				<Slide appear={false} direction="down" in={!trigger}>
+					<AppBar
+						position="fixed"
+						sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+						color={scrollPosition < 100 ? "navbarStart" : "navbar"}
+					>
+						<Toolbar variant="dense">
+							{xs ? (
+								<>
+									<Box sx={{ flexGrow: 1 }}>
+										<IconButton
+											size="large"
+											edge="start"
+											color="inherit"
+											onClick={toggleDrawer}
+											sx={{
+												transform: isOpen
+													? "rotate(90deg)"
+													: "rotate(0)",
+												transition:
+													"transform 0.3s ease-in-out",
+											}}
+										>
+											{isOpen ? (
+												<CloseIcon sx={styles.sec} />
+											) : (
+												<MenuIcon />
+											)}
+										</IconButton>
+										<Drawer
+											anchor="left"
+											open={isOpen}
+											onClose={toggleDrawer}
+										>
+											<Box sx={{ flexGrow: 1 }}>
+												<List
+													sx={{
+														marginTop: "56px",
+														padding: 0,
 													}}
 												>
-													<ListItemIcon>
-														<BadgeIcon
+													<ListItemButton
+														onClick={() => {
+															toggleDrawer();
+															scrollTo(
+																"experience"
+															);
+														}}
+													>
+														<ListItemIcon>
+															<BadgeIcon
+																sx={styles.sec}
+															/>
+														</ListItemIcon>
+														<ListItemText
+															primary="Experience"
 															sx={styles.sec}
 														/>
-													</ListItemIcon>
-													<ListItemText
-														primary="Experience"
-														sx={styles.sec}
-													/>
-												</ListItemButton>
+													</ListItemButton>
 
-												<ListItemButton
-													onClick={() => {
-														toggleDrawer();
-														scrollTo("skillset");
-													}}
-												>
-													<ListItemIcon>
-														<AutoGraphIcon
+													<ListItemButton
+														onClick={() => {
+															toggleDrawer();
+															scrollTo(
+																"skillset"
+															);
+														}}
+													>
+														<ListItemIcon>
+															<AutoGraphIcon
+																sx={styles.sec}
+															/>
+														</ListItemIcon>
+														<ListItemText
+															primary="Skillset"
 															sx={styles.sec}
 														/>
-													</ListItemIcon>
-													<ListItemText
-														primary="Skillset"
-														sx={styles.sec}
-													/>
-												</ListItemButton>
-												<ListItemButton
-													onClick={() => {
-														toggleDrawer();
-														scrollTo("education");
-													}}
-												>
-													<ListItemIcon>
-														<SchoolIcon
+													</ListItemButton>
+													<ListItemButton
+														onClick={() => {
+															toggleDrawer();
+															scrollTo(
+																"education"
+															);
+														}}
+													>
+														<ListItemIcon>
+															<SchoolIcon
+																sx={styles.sec}
+															/>
+														</ListItemIcon>
+														<ListItemText
+															primary="Education"
 															sx={styles.sec}
 														/>
-													</ListItemIcon>
-													<ListItemText
-														primary="Education"
-														sx={styles.sec}
-													/>
-												</ListItemButton>
-												<ListItemButton
-													onClick={() => {
-														toggleDrawer();
-														scrollTo("about");
-													}}
-												>
-													<ListItemIcon>
-														<EmojiPeopleIcon
+													</ListItemButton>
+													<ListItemButton
+														onClick={() => {
+															toggleDrawer();
+															scrollTo("about");
+														}}
+													>
+														<ListItemIcon>
+															<EmojiPeopleIcon
+																sx={styles.sec}
+															/>
+														</ListItemIcon>
+														<ListItemText
+															primary="About Me"
 															sx={styles.sec}
 														/>
-													</ListItemIcon>
-													<ListItemText
-														primary="About Me"
-														sx={styles.sec}
-													/>
-												</ListItemButton>
-											</List>
-										</Box>
-										<Box p={1}>
-											<Typography variant="caption">
-												Copyright © Daryl Chua 2023.{" "}
-											</Typography>
-											<br></br>
-											<Typography variant="caption">
-												All rights reserved
-											</Typography>
-										</Box>
-									</Drawer>
-								</Box>
+													</ListItemButton>
+												</List>
+											</Box>
+											<Box p={1}>
+												<Typography variant="caption">
+													Copyright © Daryl Chua 2023.{" "}
+												</Typography>
+												<br></br>
+												<Typography variant="caption">
+													All rights reserved
+												</Typography>
+											</Box>
+										</Drawer>
+									</Box>
 
-								<Link
-									to="/"
-									style={{
-										display: "flex",
-										alignItems: "center",
-									}}
-								>
-									<img
-										src="/images/logo.png"
-										alt="Logo"
-										style={{ height: "30px" }}
-									/>
-								</Link>
-							</>
-						) : (
-							<>
-								<Box>
 									<Link
 										to="/"
 										style={{
@@ -200,45 +241,175 @@ export default function Navbar(props) {
 											style={{ height: "30px" }}
 										/>
 									</Link>
-								</Box>
-								<Box sx={{ flexGrow: 1 }} />
-								<Button
-									onClick={() => {
-										scrollTo("experience");
-									}}
-									style={styles.link}
-								>
-									Experience
-								</Button>
-								<Button
-									onClick={() => {
-										scrollTo("skillset");
-									}}
-									style={styles.link}
-								>
-									Skillset
-								</Button>
-								<Button
-									onClick={() => {
-										scrollTo("education");
-									}}
-									style={styles.link}
-								>
-									Education
-								</Button>
-								<Button
-									onClick={() => {
-										scrollTo("about");
-									}}
-									style={styles.link}
-								>
-									About Me
-								</Button>
-							</>
-						)}
-					</Toolbar>
-				</AppBar>
-			</Slide>
-		</Box>
+								</>
+							) : (
+								<>
+									<Box>
+										<Link
+											to="/"
+											style={{
+												display: "flex",
+												alignItems: "center",
+											}}
+										>
+											<img
+												src="/images/logo.png"
+												alt="Logo"
+												style={{ height: "30px" }}
+											/>
+										</Link>
+									</Box>
+									{/* <Box>
+									<Button
+										onClick={() => {
+											scrollTo("experience");
+										}}
+										style={styles.link}
+									>
+										Experience
+									</Button>
+									<Button
+										onClick={() => {
+											scrollTo("skillset");
+										}}
+										style={styles.link}
+									>
+										Skillset
+									</Button>
+									<Button
+										onClick={() => {
+											scrollTo("education");
+										}}
+										style={styles.link}
+									>
+										Education
+									</Button>
+									<Button
+										onClick={() => {
+											scrollTo("about");
+										}}
+										style={styles.link}
+									>
+										About Me
+									</Button>
+								</Box> */}
+								</>
+							)}
+						</Toolbar>
+					</AppBar>
+				</Slide>
+			</Box>
+			{md ? (
+				<></>
+			) : (
+				<Box
+					sx={{
+						position: "fixed",
+						left: "5px",
+						top: "45%",
+						display: "flex",
+						flexDirection: "column",
+					}}
+				>
+					<Box
+						sx={{
+							display: "flex",
+							flexDirection: "row",
+							alignItems: "center",
+							cursor: "pointer",
+							padding: "5px 5px",
+							...(location == "experience"
+								? {
+										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+								  }
+								: {}),
+						}}
+					>
+						<HorizontalRuleIcon />
+						<Typography
+							onClick={() => {
+								scrollTo("experience");
+							}}
+							sx={{ paddingLeft: "10px" }}
+						>
+							Experience
+						</Typography>
+					</Box>
+
+					<Box
+						sx={{
+							display: "flex",
+							flexDirection: "row",
+							alignItems: "center",
+							cursor: "pointer",
+							padding: "5px 5px",
+							...(location == "skillset"
+								? {
+										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+								  }
+								: {}),
+						}}
+					>
+						<HorizontalRuleIcon />
+						<Typography
+							onClick={() => {
+								scrollTo("skillset");
+							}}
+							sx={{ paddingLeft: "10px" }}
+						>
+							Skillset
+						</Typography>
+					</Box>
+					<Box
+						sx={{
+							display: "flex",
+							flexDirection: "row",
+							alignItems: "center",
+							cursor: "pointer",
+							padding: "5px 5px",
+							...(location == "education"
+								? {
+										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+								  }
+								: {}),
+						}}
+					>
+						<HorizontalRuleIcon />
+						<Typography
+							onClick={() => {
+								scrollTo("education");
+							}}
+							sx={{ paddingLeft: "10px" }}
+						>
+							Education
+						</Typography>
+					</Box>
+					<Box
+						sx={{
+							display: "flex",
+							flexDirection: "row",
+							alignItems: "center",
+							cursor: "pointer",
+							padding: "5px 5px",
+							...(location == "about"
+								? {
+										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+								  }
+								: {}),
+						}}
+					>
+						<HorizontalRuleIcon />
+						<Typography
+							onClick={() => {
+								scrollTo("about");
+							}}
+							sx={{ paddingLeft: "10px" }}
+						>
+							About Me
+						</Typography>
+					</Box>
+				</Box>
+			)}
+		</>
 	);
 }

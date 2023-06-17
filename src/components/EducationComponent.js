@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 export default function EducationComponent({
 	id,
@@ -18,7 +18,7 @@ export default function EducationComponent({
 	first,
 	last,
 }) {
-	const { theme, xs, sm } = GetThemeAndXSBP();
+	const { theme, xs, sm } = GetThemeAndBP();
 	const styles = {
 		bg: {
 			backgroundSize: "cover",

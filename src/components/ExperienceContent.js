@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem, { timelineItemClasses } from "@mui/lab/TimelineItem";
 import TimelineOppositeContent, {
@@ -9,7 +9,7 @@ import TimelineOppositeContent, {
 import MyTimelineItem from "../utils/timelineItem.js";
 import { motion } from "framer-motion";
 export default function ExperienceContent() {
-	const { theme, xs } = GetThemeAndXSBP();
+	const { theme, xs } = GetThemeAndBP();
 	const experiences = [
 		{
 			id: 9,

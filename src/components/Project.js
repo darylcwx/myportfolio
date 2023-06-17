@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Link from "@mui/material/Link";
-import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 export default function Project({
 	title,
 	src,
@@ -10,7 +10,7 @@ export default function Project({
 	platforms,
 	description,
 }) {
-	const { theme, xs } = GetThemeAndXSBP();
+	const { theme, xs } = GetThemeAndBP();
 	return (
 		<div key={title}>
 			<Box py={5}>

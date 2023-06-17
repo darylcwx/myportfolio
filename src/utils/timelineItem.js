@@ -9,9 +9,9 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
+import { GetThemeAndBP } from "./getThemeAndBP.js";
 export default function MyTimelineItem(experience) {
-	const { theme, xs } = GetThemeAndXSBP();
+	const { theme, xs } = GetThemeAndBP();
 	const dotSize = 100;
 	const avatarSize = 95;
 	return (

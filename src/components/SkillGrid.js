@@ -3,12 +3,12 @@ import { useState, useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 import { IconButton, Typography } from "@mui/material";
 import SkillDetails from "./SkillDetails.js";
 import { useSpring, useTransition, animated } from "@react-spring/web";
 export default function SkillGrid({ skills }) {
-	const { theme, xs } = GetThemeAndXSBP();
+	const { theme, xs } = GetThemeAndBP();
 	const styles = {
 		glow: {
 			maxWidth: "100%",

@@ -5,7 +5,7 @@ import Paper from "@mui/material/Paper";
 import Carousel from "react-material-ui-carousel";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
@@ -20,7 +20,7 @@ import SportsBarIcon from "@mui/icons-material/SportsBar";
 import AboutPicsComponent from "../components/AboutPicsComponent.js";
 export default function About() {
 	const swiper = useSwiper();
-	const { theme, xs } = GetThemeAndXSBP();
+	const { theme, xs } = GetThemeAndBP();
 	const styles = {
 		overlay: {
 			backgroundColor: "rgba(0, 0, 0, 0.85)",

@@ -4,7 +4,7 @@ import Paper from "@mui/material/Paper";
 import Carousel from "react-material-ui-carousel";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 import SkillsGrid from "../components/SkillGrid.js";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {
@@ -23,7 +23,7 @@ import TimerIcon from "@mui/icons-material/Timer";
 import ContentPasteSearchIcon from "@mui/icons-material/ContentPasteSearch";
 SwiperCore.use([Navigation]);
 export default function Skillset() {
-	const { theme, xs } = GetThemeAndXSBP();
+	const { theme, xs } = GetThemeAndBP();
 	// const styles = {
 	// 	overlay: {
 	// 		backgroundColor: "rgba(0, 0, 0, 0.85)",

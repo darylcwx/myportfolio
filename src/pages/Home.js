@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { GetThemeAndXSBP } from "../utils/getThemeAndXSBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 import Avatar from "@mui/material/Avatar";
 import Experience from "./Experience.js";
 import Education from "./Education.js";
@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 import SouthIcon from "@mui/icons-material/South";
 import { Element } from "react-scroll";
 export default function Home() {
-	const { xs } = GetThemeAndXSBP();
+	const { xs } = GetThemeAndBP();
 	return (
 		<Container
 			name="index"
