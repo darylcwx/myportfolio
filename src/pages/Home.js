@@ -7,13 +7,8 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 import Avatar from "@mui/material/Avatar";
-import Experience from "./Experience.js";
-import Education from "./Education.js";
-import Skillset from "./Skillset.js";
-import About from "./About.js";
 import { motion } from "framer-motion";
 import SouthIcon from "@mui/icons-material/South";
-import { Element } from "react-scroll";
 export default function Home() {
 	const { xs } = GetThemeAndBP();
 	return (

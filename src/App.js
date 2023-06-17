@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navbar from "./components/Navbar.js";
 import Socials from "./components/Socials.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -8,10 +8,20 @@ import Skillset from "./pages/Skillset";
 import Education from "./pages/Education";
 import About from "./pages/About";
 import Container from "@mui/material/Container";
+import ExperienceContent from "./components/ExperienceContent.js";
 export default function App() {
+	const [location, setLocation] = useState("experience");
+	useEffect(() => {
+		const handleScroll = () => {};
+		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
+
 	return (
 		<BrowserRouter>
-			<Navbar />
+			<Navbar location={location} />
 			<div style={{ marginTop: "48px" }}>
 				<Container maxWidth="md">
 					<video
@@ -39,11 +49,11 @@ export default function App() {
 						/>
 						Your browser does not support the video tag.
 					</video>
-					<Home id="home" />
-					<Experience id="experience" />
-					<Skillset id="skillset" />
-					<Education id="education" />
-					<About id="about" />
+					<Home />
+					<Experience />
+					<Skillset />
+					<Education />
+					<About />
 				</Container>
 			</div>
 			<Socials />

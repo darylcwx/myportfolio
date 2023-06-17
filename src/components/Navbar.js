@@ -22,7 +22,7 @@ import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import SchoolIcon from "@mui/icons-material/School";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
-export default function Navbar() {
+export default function Navbar({ location }) {
 	const { theme, xs, sm, md } = GetThemeAndBP();
 	const trigger = useScrollTrigger({ threshold: 5 });
 	const [isOpen, setIsOpen] = useState(false);
@@ -32,8 +32,8 @@ export default function Navbar() {
 	};
 	const scrollTo = (element) => {
 		scroller.scrollTo(element, {
-			duration: 1000,
-			delay: 100,
+			duration: 700,
+			delay: 50,
 			smooth: "easeInOut",
 		});
 	};
@@ -43,62 +43,54 @@ export default function Navbar() {
 		},
 	};
 	useEffect(() => {
-		const handleScroll = () => {
-			setScrollPosition(window.scrollY);
-		};
-		window.addEventListener("scroll", handleScroll);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
-	const [location, setLocation] = useState("home");
-	useEffect(() => {
-		console.log(location);
-		const handleScroll = () => {
-			const home = document.getElementById("home");
-			const experience = document.getElementById("experience");
-			const skillset = document.getElementById("skillset");
-			const education = document.getElementById("education");
-			const about = document.getElementById("about");
-			if (home && experience && skillset && education && about) {
-				const scrollPosition = window.scrollY;
-				console.log("Scroll Position:", scrollPosition);
-				console.log("Home Offset:", home.offsetTop);
-				console.log("Experience Offset:", experience.offsetTop);
-				console.log("Skillset Offset:", skillset.offsetTop);
-				console.log("Education Offset:", education.offsetTop);
-				console.log("About Offset:", about.offsetTop);
-				if (
-					scrollPosition >= home.offsetTop &&
-					scrollPosition < experience.offsetTop
-				) {
-					setLocation("home");
-				} else if (
-					scrollPosition >= experience.offsetTop &&
-					scrollPosition < skillset.offsetTop
-				) {
-					setLocation("experience");
-				} else if (
-					scrollPosition >= skillset.offsetTop &&
-					scrollPosition < education.offsetTop
-				) {
-					setLocation("skillset");
-				} else if (
-					scrollPosition >= education.offsetTop &&
-					scrollPosition < about.offsetTop
-				) {
-					setLocation("education");
-				} else if (scrollPosition >= about.offsetTop) {
-					setLocation("about");
-				}
-			}
-		};
-		window.addEventListener("scroll", handleScroll);
+		setScrollPosition(window.scrollY);
+		// 	const home = document.getElementById("home");
+		// 	const experience = document.getElementById("experience");
+		// 	const skillset = document.getElementById("skillset");
+		// 	const education = document.getElementById("education");
+		// 	const about = document.getElementById("about");
+		// 	console.log(home);
+		// 	if (home && experience && skillset && education && about) {
+		// 		const scrollPosition = window.scrollY;
+		// 		console.log(scrollPosition);
+		// 		console.log("Scroll Position:", scrollPosition);
+		// 		console.log("Home Offset:", home.offsetTop);
+		// 		console.log("Experience Offset:", experience.offsetTop);
+		// 		console.log("Skillset Offset:", skillset.offsetTop);
+		// 		console.log("Education Offset:", education.offsetTop);
+		// 		console.log("About Offset:", about.offsetTop);
+		// 		if (
+		// 			scrollPosition >= home.offsetTop &&
+		// 			scrollPosition < experience.offsetTop
+		// 		) {
+		// 			setLocation("home");
+		// 		} else if (
+		// 			scrollPosition >= experience.offsetTop &&
+		// 			scrollPosition < skillset.offsetTop
+		// 		) {
+		// 			setLocation("experience");
+		// 		} else if (
+		// 			scrollPosition >= skillset.offsetTop &&
+		// 			scrollPosition < education.offsetTop
+		// 		) {
+		// 			setLocation("skillset");
+		// 		} else if (
+		// 			scrollPosition >= education.offsetTop &&
+		// 			scrollPosition < about.offsetTop
+		// 		) {
+		// 			setLocation("education");
+		// 		} else if (scrollPosition >= about.offsetTop) {
+		// 			setLocation("about");
+		// 		}
+		// 	}
+		// };
 
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
+		// window.addEventListener("scroll", handleScroll);
+		// return () => {
+		// 	window.removeEventListener("scroll", handleScroll);
+		// };
 	}, []);
+
 	return (
 		<>
 			<Box sx={{ flexGrow: 1 }}>
