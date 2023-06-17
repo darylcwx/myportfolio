@@ -161,35 +161,49 @@ export default function Home() {
 				}}
 				transition={{
 					duration: 1,
-					delay: 9,
+					delay: 8,
 				}}
 			>
 				<Typography variant="body2" my={2}>
 					Enjoy your stay!
 				</Typography>
 			</motion.div>
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{
-					opacity: 1,
-				}}
-				transition={{
-					duration: 1,
-					delay: 10,
+
+			<Box
+				sx={{
+					display: "flex",
+					justifyContent: "center",
+					position: "absolute",
+					bottom: "50px",
+					left: "50%",
 				}}
 			>
-				<Box
-					sx={{
-						display: "flex",
-						justifyContent: "center",
-						position: "absolute",
-						bottom: "50px",
-						left: "50%",
+				<motion.div
+					animate={{
+						y: [0, 15, 0],
+					}}
+					transition={{
+						duration: 1,
+						delay: 9,
+						times: [0, 0.5, 1],
+						repeat: Infinity,
+						repeatDelay: 1,
 					}}
 				>
-					<SouthIcon sx={{ fontSize: "32px" }} />
-				</Box>
-			</motion.div>
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{
+							opacity: 1,
+						}}
+						transition={{
+							duration: 0.5,
+							delay: 9,
+						}}
+					>
+						<SouthIcon sx={{ fontSize: "32px" }} />
+					</motion.div>
+				</motion.div>
+			</Box>
 		</Container>
 	);
 }

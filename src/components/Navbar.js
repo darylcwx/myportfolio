@@ -43,52 +43,13 @@ export default function Navbar({ location }) {
 		},
 	};
 	useEffect(() => {
-		setScrollPosition(window.scrollY);
-		// 	const home = document.getElementById("home");
-		// 	const experience = document.getElementById("experience");
-		// 	const skillset = document.getElementById("skillset");
-		// 	const education = document.getElementById("education");
-		// 	const about = document.getElementById("about");
-		// 	console.log(home);
-		// 	if (home && experience && skillset && education && about) {
-		// 		const scrollPosition = window.scrollY;
-		// 		console.log(scrollPosition);
-		// 		console.log("Scroll Position:", scrollPosition);
-		// 		console.log("Home Offset:", home.offsetTop);
-		// 		console.log("Experience Offset:", experience.offsetTop);
-		// 		console.log("Skillset Offset:", skillset.offsetTop);
-		// 		console.log("Education Offset:", education.offsetTop);
-		// 		console.log("About Offset:", about.offsetTop);
-		// 		if (
-		// 			scrollPosition >= home.offsetTop &&
-		// 			scrollPosition < experience.offsetTop
-		// 		) {
-		// 			setLocation("home");
-		// 		} else if (
-		// 			scrollPosition >= experience.offsetTop &&
-		// 			scrollPosition < skillset.offsetTop
-		// 		) {
-		// 			setLocation("experience");
-		// 		} else if (
-		// 			scrollPosition >= skillset.offsetTop &&
-		// 			scrollPosition < education.offsetTop
-		// 		) {
-		// 			setLocation("skillset");
-		// 		} else if (
-		// 			scrollPosition >= education.offsetTop &&
-		// 			scrollPosition < about.offsetTop
-		// 		) {
-		// 			setLocation("education");
-		// 		} else if (scrollPosition >= about.offsetTop) {
-		// 			setLocation("about");
-		// 		}
-		// 	}
-		// };
-
-		// window.addEventListener("scroll", handleScroll);
-		// return () => {
-		// 	window.removeEventListener("scroll", handleScroll);
-		// };
+		const handleScroll = () => {
+			setScrollPosition(window.scrollY);
+		};
+		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
 	}, []);
 
 	return (
