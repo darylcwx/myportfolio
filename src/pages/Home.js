@@ -28,27 +28,75 @@ const Home = forwardRef((props, ref) => {
 		>
 			{xs ? (
 				<>
-					<Box display="flex" justifyContent="center">
-						<Avatar
-							src="/images/me.jpeg"
-							alt="Me"
-							style={{
-								width: 200,
-								height: 200,
-							}}
-						/>
-					</Box>
 					<motion.div
-						initial={{ opacity: 0, scale: 0.5 }}
-						animate={{ opacity: 1, scale: 1 }}
-						transition={{ duration: 0.5 }}
+						animate={{
+							opacity: [0, 1.2, 1.2, 1, 1],
+							scale: [0, 1.2, 1.2, 1, 1],
+							y: [-50, -50, -50, 0, 0],
+						}}
+						transition={{
+							duration: 6,
+							times: [0, 0.1, 0.5, 0.6, 1],
+							delay: 0.75,
+						}}
 					>
-						<div variant="h3" my={2}>
-							Hello!
-						</div>
+						<Box display="flex" justifyContent="center">
+							<Avatar
+								src="/images/me.jpeg"
+								alt="Me"
+								style={{
+									width: 200,
+									height: 200,
+								}}
+							/>
+						</Box>
 					</motion.div>
-					<Typography variant="h5">I'm Daryl.</Typography>
-					<Typography variant="h5">Welcome to my website.</Typography>
+					<motion.div
+						animate={{
+							opacity: [0, 1.2, 1.2, 1, 1],
+							scale: [0, 1.2, 1.2, 1, 1],
+							x: [100, 100, 100, 0, 0],
+						}}
+						transition={{
+							duration: 6,
+							times: [0, 0.1, 0.5, 0.6, 1],
+							delay: 0.75,
+						}}
+					>
+						<Typography variant="h3" my={2}>
+							Hello!
+						</Typography>
+					</motion.div>
+					<motion.div
+						animate={{
+							opacity: [0, 0, 1, 1, 1, 1],
+							scale: [0, 0, 1.2, 1.2, 1, 1],
+							x: [100, 100, 100, 100, 0, 0],
+						}}
+						transition={{
+							duration: 6,
+							times: [0, 0.15, 0.2, 0.55, 0.65, 1],
+							delay: 0.75,
+						}}
+					>
+						<Typography variant="h5">I'm Daryl.</Typography>
+					</motion.div>
+					<motion.div
+						animate={{
+							opacity: [0, 0, 1, 1, 1, 1],
+							scale: [0, 0, 1.2, 1.2, 1, 1],
+							x: [100, 100, 100, 100, 0, 0],
+						}}
+						transition={{
+							duration: 6,
+							times: [0, 0.25, 0.3, 0.6, 0.7, 1],
+							delay: 0.75,
+						}}
+					>
+						<Typography variant="h5">
+							Welcome to my website.
+						</Typography>
+					</motion.div>
 				</>
 			) : (
 				<Box
@@ -83,7 +131,7 @@ const Home = forwardRef((props, ref) => {
 						<motion.div
 							animate={{
 								opacity: [0, 0, 1, 1, 1, 1],
-								scale: [0, 0, 1, 1, 1, 1],
+								scale: [0, 0, 1.2, 1.2, 1, 1],
 								x: [325, 325, 325, 325, 0, 0],
 								y: [100, 100, 100, 100, 0, 0],
 							}}
@@ -98,7 +146,7 @@ const Home = forwardRef((props, ref) => {
 						<motion.div
 							animate={{
 								opacity: [0, 0, 1, 1, 1, 1],
-								scale: [0, 0, 1, 1, 1, 1],
+								scale: [0, 0, 1.2, 1.2, 1, 1],
 								x: [325, 325, 325, 325, 0, 0],
 								y: [100, 100, 100, 100, 0, 0],
 							}}
