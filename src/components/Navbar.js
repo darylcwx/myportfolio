@@ -22,6 +22,7 @@ import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import SchoolIcon from "@mui/icons-material/School";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
+import { motion } from "framer-motion";
 export default function Navbar({ location }) {
 	const { theme, xs, sm, md } = GetThemeAndBP();
 	const trigger = useScrollTrigger({ threshold: 5 });
@@ -290,23 +291,39 @@ export default function Navbar({ location }) {
 							alignItems: "center",
 							cursor: "pointer",
 							padding: "5px 5px",
-							...(location == "home"
-								? {
-										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-										fontSize: "24px",
-								  }
-								: {}),
 						}}
 					>
-						<HorizontalRuleIcon />
-						<Box
-							onClick={() => {
-								scrollTo("home");
-							}}
-							sx={{ paddingLeft: "10px" }}
+						<HorizontalRuleIcon
+							sx={
+								location == "home"
+									? {
+											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+									  }
+									: {}
+							}
+						/>
+						<motion.div
+							initial={false}
+							animate={
+								location == "home"
+									? {
+											scale: 1.5,
+											x: 8,
+											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+									  }
+									: { scale: 1, x: 0, filter: "" }
+							}
 						>
-							Home
-						</Box>
+							<Typography
+								variant="body1"
+								onClick={() => {
+									scrollTo("home");
+								}}
+								sx={{ paddingLeft: "10px" }}
+							>
+								Home
+							</Typography>
+						</motion.div>
 					</Box>
 					<Box
 						sx={{
@@ -315,23 +332,39 @@ export default function Navbar({ location }) {
 							alignItems: "center",
 							cursor: "pointer",
 							padding: "5px 5px",
-							...(location == "experience"
-								? {
-										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-										fontSize: "24px",
-								  }
-								: {}),
 						}}
 					>
-						<HorizontalRuleIcon />
-						<Box
-							onClick={() => {
-								scrollTo("experience");
-							}}
-							sx={{ paddingLeft: "10px" }}
+						<HorizontalRuleIcon
+							sx={
+								location == "experience"
+									? {
+											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+									  }
+									: {}
+							}
+						/>
+						<motion.div
+							initial={false}
+							animate={
+								location == "experience"
+									? {
+											scale: 1.5,
+											x: 17,
+											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+									  }
+									: { scale: 1, x: 0, filter: "" }
+							}
 						>
-							Experience
-						</Box>
+							<Typography
+								variant="body1"
+								onClick={() => {
+									scrollTo("experience");
+								}}
+								sx={{ paddingLeft: "10px" }}
+							>
+								Experience
+							</Typography>
+						</motion.div>
 					</Box>
 
 					<Box
@@ -341,23 +374,39 @@ export default function Navbar({ location }) {
 							alignItems: "center",
 							cursor: "pointer",
 							padding: "5px 5px",
-							...(location == "skillset"
-								? {
-										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-										fontSize: "24px",
-								  }
-								: {}),
 						}}
 					>
-						<HorizontalRuleIcon />
-						<Box
-							onClick={() => {
-								scrollTo("skillset");
-							}}
-							sx={{ paddingLeft: "10px" }}
+						<HorizontalRuleIcon
+							sx={
+								location == "skillset"
+									? {
+											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+									  }
+									: {}
+							}
+						/>
+						<motion.div
+							initial={false}
+							animate={
+								location == "skillset"
+									? {
+											scale: 1.5,
+											x: 10,
+											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+									  }
+									: { scale: 1, x: 0, filter: "" }
+							}
 						>
-							Skillset
-						</Box>
+							<Typography
+								variant="body1"
+								onClick={() => {
+									scrollTo("skillset");
+								}}
+								sx={{ paddingLeft: "10px" }}
+							>
+								Skillset
+							</Typography>
+						</motion.div>
 					</Box>
 					<Box
 						sx={{
@@ -366,23 +415,39 @@ export default function Navbar({ location }) {
 							alignItems: "center",
 							cursor: "pointer",
 							padding: "5px 5px",
-							...(location == "education"
-								? {
-										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-										fontSize: "24px",
-								  }
-								: {}),
 						}}
 					>
-						<HorizontalRuleIcon />
-						<Box
-							onClick={() => {
-								scrollTo("education");
-							}}
-							sx={{ paddingLeft: "10px" }}
+						<HorizontalRuleIcon
+							sx={
+								location == "education"
+									? {
+											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+									  }
+									: {}
+							}
+						/>
+						<motion.div
+							initial={false}
+							animate={
+								location == "education"
+									? {
+											scale: 1.5,
+											x: 15,
+											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+									  }
+									: { scale: 1, x: 0, filter: "" }
+							}
 						>
-							Education
-						</Box>
+							<Typography
+								variant="body1"
+								onClick={() => {
+									scrollTo("education");
+								}}
+								sx={{ paddingLeft: "10px" }}
+							>
+								Education
+							</Typography>
+						</motion.div>
 					</Box>
 					<Box
 						sx={{
@@ -391,23 +456,38 @@ export default function Navbar({ location }) {
 							alignItems: "center",
 							cursor: "pointer",
 							padding: "5px 5px",
-							...(location == "about"
-								? {
-										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-										fontSize: "24px",
-								  }
-								: {}),
 						}}
 					>
-						<HorizontalRuleIcon />
-						<Box
-							onClick={() => {
-								scrollTo("about");
-							}}
-							sx={{ paddingLeft: "10px" }}
+						<HorizontalRuleIcon
+							sx={
+								location == "about"
+									? {
+											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+									  }
+									: {}
+							}
+						/>
+						<motion.div
+							initial={false}
+							animate={
+								location == "about"
+									? {
+											scale: 1.5,
+											x: 15,
+											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+									  }
+									: { scale: 1, x: 0, filter: "" }
+							}
 						>
-							About Me
-						</Box>
+							<Box
+								onClick={() => {
+									scrollTo("about");
+								}}
+								sx={{ paddingLeft: "10px" }}
+							>
+								About Me
+							</Box>
+						</motion.div>
 					</Box>
 				</Box>
 			)}
