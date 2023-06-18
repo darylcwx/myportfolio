@@ -195,6 +195,59 @@ export default function Navbar({ location }) {
 										/>
 									</Link>
 								</>
+							) : sm || md ? (
+								<>
+									<Box>
+										<Link
+											to="/"
+											style={{
+												display: "flex",
+												alignItems: "center",
+											}}
+										>
+											<img
+												src="/images/logo.png"
+												alt="Logo"
+												style={{ height: "30px" }}
+											/>
+										</Link>
+									</Box>
+									<Box sx={{ flexGrow: 1 }} />
+									<Box>
+										<Button
+											onClick={() => {
+												scrollTo("experience");
+											}}
+											style={styles.link}
+										>
+											Experience
+										</Button>
+										<Button
+											onClick={() => {
+												scrollTo("skillset");
+											}}
+											style={styles.link}
+										>
+											Skillset
+										</Button>
+										<Button
+											onClick={() => {
+												scrollTo("education");
+											}}
+											style={styles.link}
+										>
+											Education
+										</Button>
+										<Button
+											onClick={() => {
+												scrollTo("about");
+											}}
+											style={styles.link}
+										>
+											About Me
+										</Button>
+									</Box>
+								</>
 							) : (
 								<>
 									<Box>
@@ -212,40 +265,6 @@ export default function Navbar({ location }) {
 											/>
 										</Link>
 									</Box>
-									{/* <Box>
-									<Button
-										onClick={() => {
-											scrollTo("experience");
-										}}
-										style={styles.link}
-									>
-										Experience
-									</Button>
-									<Button
-										onClick={() => {
-											scrollTo("skillset");
-										}}
-										style={styles.link}
-									>
-										Skillset
-									</Button>
-									<Button
-										onClick={() => {
-											scrollTo("education");
-										}}
-										style={styles.link}
-									>
-										Education
-									</Button>
-									<Button
-										onClick={() => {
-											scrollTo("about");
-										}}
-										style={styles.link}
-									>
-										About Me
-									</Button>
-								</Box> */}
 								</>
 							)}
 						</Toolbar>

@@ -179,25 +179,25 @@ export default function Home() {
 				}}
 			>
 				<motion.div
+					initial={{ opacity: 0 }}
 					animate={{
-						y: [0, 15, 0],
+						opacity: 1,
 					}}
 					transition={{
-						duration: 1,
+						duration: 0.75,
 						delay: 9,
-						times: [0, 0.5, 1],
-						repeat: Infinity,
-						repeatDelay: 1,
 					}}
 				>
 					<motion.div
-						initial={{ opacity: 0 }}
 						animate={{
-							opacity: 1,
+							y: [0, 15, 0],
 						}}
 						transition={{
-							duration: 0.5,
+							duration: 1,
 							delay: 9,
+							times: [0, 0.5, 1],
+							repeat: Infinity,
+							repeatDelay: 1,
 						}}
 					>
 						<SouthIcon sx={{ fontSize: "32px" }} />
