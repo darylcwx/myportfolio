@@ -10,9 +10,40 @@ import About from "./pages/About";
 import Container from "@mui/material/Container";
 import ExperienceContent from "./components/ExperienceContent.js";
 export default function App() {
-	const [location, setLocation] = useState("experience");
+	const [location, setLocation] = useState("skillset");
+	const homeRef = useRef(null);
+	const experienceRef = useRef(null);
+	const skillsetRef = useRef(null);
+	const educationRef = useRef(null);
+	const aboutRef = useRef(null);
 	useEffect(() => {
-		const handleScroll = () => {};
+		const handleScroll = () => {
+			const scrollPosition = window.scrollY;
+			// offSet top may not be correct property
+			if (
+				scrollPosition >= homeRef.current.offsetTop &&
+				scrollPosition < experienceRef.current.offsetTop
+			) {
+				setLocation("home");
+			} else if (
+				scrollPosition >= experienceRef.current.offsetTop &&
+				scrollPosition < skillsetRef.current.offsetTop
+			) {
+				setLocation("experience");
+			} else if (
+				scrollPosition >= skillsetRef.current.offsetTop &&
+				scrollPosition < educationRef.current.offsetTop
+			) {
+				setLocation("skillset");
+			} else if (
+				scrollPosition >= educationRef.current.offsetTop &&
+				scrollPosition < aboutRef.current.offsetTop
+			) {
+				setLocation("education");
+			} else if (scrollPosition >= aboutRef.current.offsetTop) {
+				setLocation("about");
+			}
+		};
 		window.addEventListener("scroll", handleScroll);
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
@@ -49,11 +80,11 @@ export default function App() {
 						/>
 						Your browser does not support the video tag.
 					</video>
-					<Home />
-					<Experience />
-					<Skillset />
-					<Education />
-					<About />
+					<Home ref={homeRef} />
+					<Experience ref={experienceRef} />
+					<Skillset ref={skillsetRef} />
+					<Education ref={educationRef} />
+					<About ref={aboutRef} />
 				</Container>
 			</div>
 			<Socials />

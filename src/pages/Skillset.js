@@ -1,4 +1,5 @@
 import * as React from "react";
+import { forwardRef } from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Carousel from "react-material-ui-carousel";
@@ -22,7 +23,7 @@ import FollowTheSignsIcon from "@mui/icons-material/FollowTheSigns";
 import TimerIcon from "@mui/icons-material/Timer";
 import ContentPasteSearchIcon from "@mui/icons-material/ContentPasteSearch";
 SwiperCore.use([Navigation]);
-export default function Skillset() {
+const Skillset = forwardRef((props, ref) => {
 	const { theme, xs } = GetThemeAndBP();
 	// const styles = {
 	// 	overlay: {
@@ -165,6 +166,7 @@ export default function Skillset() {
 				paddingRight: 0,
 				paddingBottom: "300px",
 			}}
+			ref={ref}
 		>
 			<Typography variant="h2" sx={{ textAlign: "center" }} pb={2}>
 				Skillsets
@@ -218,4 +220,5 @@ export default function Skillset() {
 			</Swiper>
 		</Container>
 	);
-}
+});
+export default Skillset;

@@ -290,22 +290,48 @@ export default function Navbar({ location }) {
 							alignItems: "center",
 							cursor: "pointer",
 							padding: "5px 5px",
-							...(location == "experience"
+							...(location == "home"
 								? {
 										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+										fontSize: "24px",
 								  }
 								: {}),
 						}}
 					>
 						<HorizontalRuleIcon />
-						<Typography
+						<Box
+							onClick={() => {
+								scrollTo("home");
+							}}
+							sx={{ paddingLeft: "10px" }}
+						>
+							Home
+						</Box>
+					</Box>
+					<Box
+						sx={{
+							display: "flex",
+							flexDirection: "row",
+							alignItems: "center",
+							cursor: "pointer",
+							padding: "5px 5px",
+							...(location == "experience"
+								? {
+										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+										fontSize: "24px",
+								  }
+								: {}),
+						}}
+					>
+						<HorizontalRuleIcon />
+						<Box
 							onClick={() => {
 								scrollTo("experience");
 							}}
 							sx={{ paddingLeft: "10px" }}
 						>
 							Experience
-						</Typography>
+						</Box>
 					</Box>
 
 					<Box
@@ -318,19 +344,20 @@ export default function Navbar({ location }) {
 							...(location == "skillset"
 								? {
 										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+										fontSize: "24px",
 								  }
 								: {}),
 						}}
 					>
 						<HorizontalRuleIcon />
-						<Typography
+						<Box
 							onClick={() => {
 								scrollTo("skillset");
 							}}
 							sx={{ paddingLeft: "10px" }}
 						>
 							Skillset
-						</Typography>
+						</Box>
 					</Box>
 					<Box
 						sx={{
@@ -342,19 +369,20 @@ export default function Navbar({ location }) {
 							...(location == "education"
 								? {
 										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+										fontSize: "24px",
 								  }
 								: {}),
 						}}
 					>
 						<HorizontalRuleIcon />
-						<Typography
+						<Box
 							onClick={() => {
 								scrollTo("education");
 							}}
 							sx={{ paddingLeft: "10px" }}
 						>
 							Education
-						</Typography>
+						</Box>
 					</Box>
 					<Box
 						sx={{
@@ -366,19 +394,20 @@ export default function Navbar({ location }) {
 							...(location == "about"
 								? {
 										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+										fontSize: "24px",
 								  }
 								: {}),
 						}}
 					>
 						<HorizontalRuleIcon />
-						<Typography
+						<Box
 							onClick={() => {
 								scrollTo("about");
 							}}
 							sx={{ paddingLeft: "10px" }}
 						>
 							About Me
-						</Typography>
+						</Box>
 					</Box>
 				</Box>
 			)}

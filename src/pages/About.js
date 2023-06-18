@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, forwardRef } from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Carousel from "react-material-ui-carousel";
@@ -18,7 +18,7 @@ import ParaglidingIcon from "@mui/icons-material/Paragliding";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import SportsBarIcon from "@mui/icons-material/SportsBar";
 import AboutPicsComponent from "../components/AboutPicsComponent.js";
-export default function About() {
+const About = forwardRef((props, ref) => {
 	const swiper = useSwiper();
 	const { theme, xs } = GetThemeAndBP();
 	const styles = {
@@ -189,6 +189,7 @@ export default function About() {
 				paddingRight: 0,
 				paddingBottom: "300px",
 			}}
+			ref={ref}
 		>
 			<Typography variant="h2" sx={{ textAlign: "center" }} pb={2}>
 				About
@@ -260,4 +261,5 @@ export default function About() {
 			</Swiper>
 		</Container>
 	);
-}
+});
+export default About;

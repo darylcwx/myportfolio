@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 import ProjectsContent from "../components/ProjectsContent.js";
 import ExperienceContent from "../components/ExperienceContent.js";
 import Button from "@mui/material/Button";
@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
-export default function Experience() {
+const Experience = forwardRef((props, ref) => {
 	const { theme, xs } = GetThemeAndBP();
 	const [isProjects, setIsProjects] = useState(true);
 	const handleSwap = () => {
@@ -31,6 +31,7 @@ export default function Experience() {
 				paddingRight: 0,
 				paddingBottom: "300px",
 			}}
+			ref={ref}
 		>
 			<Typography variant="h2" sx={{ textAlign: "center" }} pb={5}>
 				Experience and Projects
@@ -100,4 +101,5 @@ export default function Experience() {
 			</Box>
 		</Container>
 	);
-}
+});
+export default Experience;

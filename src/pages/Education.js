@@ -1,4 +1,5 @@
 import React from "react";
+import { forwardRef } from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
@@ -9,7 +10,7 @@ import {
 	ParallaxBannerLayer,
 } from "react-scroll-parallax";
 import EducationComponent from "../components/EducationComponent.js";
-export default function Education() {
+const Education = forwardRef((props, ref) => {
 	const educations = [
 		{
 			id: 2,
@@ -62,6 +63,7 @@ export default function Education() {
 				paddingRight: 0,
 				paddingBottom: "300px",
 			}}
+			ref={ref}
 		>
 			<Typography variant="h2" pb={5} sx={{ textAlign: "center" }}>
 				My Education
@@ -125,4 +127,5 @@ export default function Education() {
 			</Parallax>
 		</Container>
 	);
-}
+});
+export default Education;

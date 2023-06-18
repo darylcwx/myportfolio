@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, forwardRef } from "react";
 //import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
@@ -9,11 +9,11 @@ import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 import Avatar from "@mui/material/Avatar";
 import { motion } from "framer-motion";
 import SouthIcon from "@mui/icons-material/South";
-export default function Home() {
+const Home = forwardRef((props, ref) => {
 	const { xs } = GetThemeAndBP();
 	return (
 		<Container
-			name="index"
+			name="home"
 			sx={{
 				height: "calc(100vh - 48px)",
 				width: "80%",
@@ -24,6 +24,7 @@ export default function Home() {
 				paddingRight: 0,
 				marginBottom: "500px",
 			}}
+			ref={ref}
 		>
 			{xs ? (
 				<>
@@ -206,4 +207,5 @@ export default function Home() {
 			</Box>
 		</Container>
 	);
-}
+});
+export default Home;
