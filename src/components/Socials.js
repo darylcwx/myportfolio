@@ -80,13 +80,8 @@ export default function Socials() {
 								color: theme.palette.primary.main,
 							},
 						}}
-					>
-						<a
-							href={social.link}
-							target="_blank"
-							rel="noopener noreferrer"
-						></a>
-					</SpeedDialAction>
+						onClick={() => window.open(social.link, "_blank")}
+					/>
 				))}
 			</SpeedDial>
 		</Box>
