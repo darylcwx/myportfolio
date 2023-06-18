@@ -10,7 +10,7 @@ import About from "./pages/About";
 import Container from "@mui/material/Container";
 import ExperienceContent from "./components/ExperienceContent.js";
 export default function App() {
-	const [location, setLocation] = useState("skillset");
+	const [location, setLocation] = useState("home");
 	const homeRef = useRef(null);
 	const experienceRef = useRef(null);
 	const skillsetRef = useRef(null);
