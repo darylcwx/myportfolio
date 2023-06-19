@@ -23,9 +23,9 @@ import SchoolIcon from "@mui/icons-material/School";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 import { motion } from "framer-motion";
+import { Squash as Hamburger } from "hamburger-react";
 export default function Navbar({ location }) {
 	const { theme, xs, sm, md } = GetThemeAndBP();
-	const trigger = useScrollTrigger({ threshold: 5 });
 	const [isOpen, setIsOpen] = useState(false);
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const toggleDrawer = () => {
@@ -43,6 +43,55 @@ export default function Navbar({ location }) {
 			color: theme.palette.secondary.main,
 		},
 	};
+	const sideNav = {
+		open: (height = 1000) => ({
+			clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+			transition: {
+				type: "spring",
+				stiffness: 20,
+				restDelta: 2,
+			},
+			backdropFilter: "blur(3px)",
+			backgroundColor: "rgba(29, 36, 53, 0.85)",
+		}),
+		closed: {
+			clipPath: "circle(20px at -28px -28px)",
+			transition: {
+				delay: 0.5,
+				type: "spring",
+				stiffness: 400,
+				damping: 40,
+			},
+			backdropFilter: "blur(3px)",
+			backgroundColor: "rgba(29, 36, 53, 0.85)",
+		},
+	};
+	const ul = {
+		open: { transition: { staggerChildren: 0.07, delayChildren: 0.2 } },
+		closed: {
+			transition: {
+				staggerChildren: 0.1,
+				staggerDirection: -1,
+			},
+		},
+	};
+	const li = {
+		open: {
+			y: 0,
+			opacity: 1,
+			transition: {
+				y: { stiffness: 1000 },
+			},
+		},
+		closed: {
+			y: 100,
+			opacity: 0,
+			transition: {
+				y: { stiffness: 1000 },
+			},
+		},
+	};
+
 	useEffect(() => {
 		const handleScroll = () => {
 			setScrollPosition(window.scrollY);
@@ -55,442 +104,588 @@ export default function Navbar({ location }) {
 
 	return (
 		<>
-			<Box sx={{ flexGrow: 1 }}>
-				<Slide appear={false} direction="down" in={!trigger}>
-					<AppBar
-						position="fixed"
-						sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
-						color={scrollPosition < 100 ? "navbarStart" : "navbar"}
-					>
-						<Toolbar variant="dense">
-							{xs ? (
-								<>
-									<Box sx={{ flexGrow: 1 }}>
-										<IconButton
-											size="large"
-											edge="start"
-											color="inherit"
-											onClick={toggleDrawer}
-											sx={{
-												transform: isOpen
-													? "rotate(90deg)"
-													: "rotate(0)",
-												transition:
-													"transform 0.3s ease-in-out",
-											}}
-										>
-											{isOpen ? (
-												<CloseIcon sx={styles.sec} />
-											) : (
-												<MenuIcon />
-											)}
-										</IconButton>
-										<Drawer
-											anchor="left"
-											open={isOpen}
-											onClose={toggleDrawer}
-										>
-											<Box sx={{ flexGrow: 1 }}>
-												<List
-													sx={{
-														marginTop: "56px",
-														padding: 0,
-													}}
-												>
-													<ListItemButton
-														onClick={() => {
-															toggleDrawer();
-															scrollTo(
-																"experience"
-															);
-														}}
-													>
-														<ListItemIcon>
-															<BadgeIcon
-																sx={styles.sec}
-															/>
-														</ListItemIcon>
-														<ListItemText
-															primary="Experience"
-															sx={styles.sec}
-														/>
-													</ListItemButton>
-
-													<ListItemButton
-														onClick={() => {
-															toggleDrawer();
-															scrollTo(
-																"skillset"
-															);
-														}}
-													>
-														<ListItemIcon>
-															<AutoGraphIcon
-																sx={styles.sec}
-															/>
-														</ListItemIcon>
-														<ListItemText
-															primary="Skillset"
-															sx={styles.sec}
-														/>
-													</ListItemButton>
-													<ListItemButton
-														onClick={() => {
-															toggleDrawer();
-															scrollTo(
-																"education"
-															);
-														}}
-													>
-														<ListItemIcon>
-															<SchoolIcon
-																sx={styles.sec}
-															/>
-														</ListItemIcon>
-														<ListItemText
-															primary="Education"
-															sx={styles.sec}
-														/>
-													</ListItemButton>
-													<ListItemButton
-														onClick={() => {
-															toggleDrawer();
-															scrollTo("about");
-														}}
-													>
-														<ListItemIcon>
-															<EmojiPeopleIcon
-																sx={styles.sec}
-															/>
-														</ListItemIcon>
-														<ListItemText
-															primary="About Me"
-															sx={styles.sec}
-														/>
-													</ListItemButton>
-												</List>
-											</Box>
-											<Box p={1}>
-												<Typography variant="caption">
-													Copyright © Daryl Chua 2023.{" "}
-												</Typography>
-												<br></br>
-												<Typography variant="caption">
-													All rights reserved
-												</Typography>
-											</Box>
-										</Drawer>
-									</Box>
-
-									<Link
-										to="/"
-										style={{
-											display: "flex",
-											alignItems: "center",
+			<AppBar
+				elevation={md ? 3 : 0}
+				position="fixed"
+				sx={{
+					zIndex: 5,
+					backdropFilter: md ? "blur(3px)" : "",
+					backgroundColor: md ? "rgba(29, 36, 53, 0.9)" : "",
+				}}
+				color={"navbarStart"}
+			>
+				<Toolbar>
+					{xs ? ( // mobile
+						<>
+							<Box sx={{ flexGrow: 1 }}></Box>
+							<Box
+								style={{
+									display: "flex",
+									alignItems: "center",
+								}}
+								onClick={() => {
+									scrollTo("home");
+								}}
+							>
+								<img
+									src="/images/logo.png"
+									alt="Logo"
+									style={{ height: "30px" }}
+								/>
+							</Box>
+						</>
+					) : md ? ( // app bar normal
+						<>
+							<Box
+								style={{
+									display: "flex",
+									alignItems: "center",
+								}}
+								onClick={() => {
+									scrollTo("home");
+								}}
+							>
+								<img
+									src="/images/logo.png"
+									alt="Logo"
+									style={{ height: "30px" }}
+								/>
+							</Box>
+							<Box sx={{ flexGrow: 1 }} />
+							<Box
+								sx={{
+									display: "flex",
+									flexDirection: "row",
+									justifyContent: "center",
+									alignItems: "center",
+								}}
+							>
+								<motion.div
+									initial={false}
+									whileHover={{ scale: 1.2 }}
+									whileTap={{ scale: 0.9 }}
+									style={{ margin: "0 8px" }}
+								>
+									<Typography
+										sx={{
+											padding: "2px 2px",
+											cursor: "pointer",
+											fontSize: "0.875rem",
+										}}
+										onClick={() => {
+											scrollTo("experience");
 										}}
 									>
-										<img
-											src="/images/logo.png"
-											alt="Logo"
-											style={{ height: "30px" }}
-										/>
-									</Link>
-								</>
-							) : sm || md ? (
-								<>
-									<Box>
-										<Link
-											to="/"
-											style={{
-												display: "flex",
-												alignItems: "center",
-											}}
-										>
-											<img
-												src="/images/logo.png"
-												alt="Logo"
-												style={{ height: "30px" }}
-											/>
-										</Link>
-									</Box>
-									<Box sx={{ flexGrow: 1 }} />
-									<Box>
-										<Button
+										Experience
+									</Typography>
+								</motion.div>
+								<motion.div
+									initial={false}
+									whileHover={{ scale: 1.2 }}
+									whileTap={{ scale: 0.9 }}
+									style={{ margin: "0 8px" }}
+								>
+									<Typography
+										sx={{
+											padding: "2px 2px",
+											cursor: "pointer",
+											fontSize: "0.875rem",
+										}}
+										onClick={() => {
+											scrollTo("skillset");
+										}}
+									>
+										Skillset
+									</Typography>
+								</motion.div>
+								<motion.div
+									initial={false}
+									whileHover={{ scale: 1.2 }}
+									whileTap={{ scale: 0.9 }}
+									style={{ margin: "0 8px" }}
+								>
+									<Typography
+										sx={{
+											padding: "2px 2px",
+											cursor: "pointer",
+											fontSize: "0.875rem",
+										}}
+										onClick={() => {
+											scrollTo("education");
+										}}
+									>
+										Education
+									</Typography>
+								</motion.div>
+								<motion.div
+									initial={false}
+									whileHover={{ scale: 1.2 }}
+									whileTap={{ scale: 0.9 }}
+									style={{ margin: "0 8px" }}
+								>
+									<Typography
+										sx={{
+											padding: "2px 2px",
+											cursor: "pointer",
+											fontSize: "0.875rem",
+										}}
+										onClick={() => {
+											scrollTo("about");
+										}}
+									>
+										About Me
+									</Typography>
+								</motion.div>
+							</Box>
+						</>
+					) : (
+						// appbar with logo only
+						<>
+							<Box
+								style={{
+									display: "flex",
+									alignItems: "center",
+								}}
+								onClick={() => {
+									scrollTo("home");
+								}}
+							>
+								<img
+									src="/images/logo.png"
+									alt="Logo"
+									style={{ height: "30px" }}
+								/>
+							</Box>
+						</>
+					)}
+				</Toolbar>
+			</AppBar>
+			{xs ? (
+				<>
+					<div
+						style={{
+							position: "fixed",
+							top: 0,
+							left: 0,
+							padding: "4px",
+							zIndex: 11,
+						}}
+					>
+						<Hamburger size={20} rounded onToggle={toggleDrawer} />
+						<motion.div
+							initial={false}
+							animate={isOpen ? "open" : "closed"}
+							variants={sideNav}
+							style={{
+								left: 0,
+								top: "56px",
+								width: "300px",
+								height: "calc(100vh - 56px)",
+								position: "fixed",
+								zIndex: 10,
+							}}
+						>
+							<motion.div
+								style={{
+									height: "90%",
+									display: "flex",
+									flexDirection: "column",
+								}}
+								variants={ul}
+							>
+								<Box
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										cursor: "pointer",
+										padding: "10px 15px",
+									}}
+								>
+									<motion.div
+										initial={false}
+										animate={
+											location == "home"
+												? {
+														scale: 1.2,
+														filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+												  }
+												: { scale: 1, filter: "" }
+										}
+										variants={li}
+										whileHover={{ scale: 1.2 }}
+										whileTap={{ scale: 0.9 }}
+									>
+										<Typography
+											variant="body1"
 											onClick={() => {
+												toggleDrawer();
+												scrollTo("home");
+											}}
+											sx={{ paddingLeft: "10px" }}
+										>
+											Home
+										</Typography>
+									</motion.div>
+								</Box>
+								<motion.div
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										cursor: "pointer",
+										padding: "10px 15px",
+									}}
+								>
+									<motion.div
+										initial={false}
+										animate={
+											location == "experience"
+												? {
+														scale: 1.2,
+														filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+												  }
+												: { scale: 1, filter: "" }
+										}
+										variants={li}
+										whileHover={{ scale: 1.2 }}
+										whileTap={{ scale: 0.9 }}
+									>
+										<Typography
+											variant="body1"
+											onClick={() => {
+												toggleDrawer();
 												scrollTo("experience");
 											}}
-											style={styles.link}
+											sx={{ paddingLeft: "10px" }}
 										>
 											Experience
-										</Button>
-										<Button
+										</Typography>
+									</motion.div>
+								</motion.div>
+								<Box
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										cursor: "pointer",
+										padding: "10px 15px",
+									}}
+								>
+									<motion.div
+										initial={false}
+										animate={
+											location == "skillset"
+												? {
+														scale: 1.2,
+														filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+												  }
+												: { scale: 1, filter: "" }
+										}
+										variants={li}
+										whileHover={{ scale: 1.2 }}
+										whileTap={{ scale: 0.9 }}
+									>
+										<Typography
+											variant="body1"
 											onClick={() => {
+												toggleDrawer();
 												scrollTo("skillset");
 											}}
-											style={styles.link}
+											sx={{ paddingLeft: "10px" }}
 										>
 											Skillset
-										</Button>
-										<Button
+										</Typography>
+									</motion.div>
+								</Box>
+								<Box
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										cursor: "pointer",
+										padding: "10px 15px",
+									}}
+								>
+									<motion.div
+										initial={false}
+										animate={
+											location == "education"
+												? {
+														scale: 1.2,
+														filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+												  }
+												: { scale: 1, filter: "" }
+										}
+										variants={li}
+										whileHover={{ scale: 1.2 }}
+										whileTap={{ scale: 0.9 }}
+									>
+										<Typography
+											variant="body1"
 											onClick={() => {
+												toggleDrawer();
 												scrollTo("education");
 											}}
-											style={styles.link}
+											sx={{ paddingLeft: "10px" }}
 										>
 											Education
-										</Button>
-										<Button
+										</Typography>
+									</motion.div>
+								</Box>
+								<Box
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										cursor: "pointer",
+										padding: "10px 15px",
+									}}
+								>
+									<motion.div
+										initial={false}
+										animate={
+											location == "about"
+												? {
+														scale: 1.2,
+														filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+												  }
+												: { scale: 1, filter: "" }
+										}
+										variants={li}
+										whileHover={{ scale: 1.2 }}
+										whileTap={{ scale: 0.9 }}
+									>
+										<Typography
+											variant="body1"
 											onClick={() => {
+												toggleDrawer();
 												scrollTo("about");
 											}}
-											style={styles.link}
+											sx={{ paddingLeft: "10px" }}
 										>
-											About Me
-										</Button>
+											About
+										</Typography>
+									</motion.div>
+								</Box>
+								<Box sx={{ marginTop: "auto" }}>
+									<Box
+										style={{
+											display: "flex",
+											flexDirection: "row",
+											alignItems: "center",
+											cursor: "default",
+											padding: "0px 15px",
+											marginTop: "auto",
+										}}
+									>
+										<motion.div variants={li}>
+											<Typography
+												variant="caption"
+												sx={{ paddingLeft: "10px" }}
+											>
+												Copyright © Daryl Chua 2023.{" "}
+											</Typography>
+										</motion.div>
 									</Box>
-								</>
-							) : (
-								<>
-									<Box>
-										<Link
-											to="/"
-											style={{
-												display: "flex",
-												alignItems: "center",
-											}}
-										>
-											<img
-												src="/images/logo.png"
-												alt="Logo"
-												style={{ height: "30px" }}
-											/>
-										</Link>
+									<Box
+										style={{
+											display: "flex",
+											flexDirection: "row",
+											alignItems: "center",
+											cursor: "default",
+											padding: "0px 15px",
+											marginBottom: "40px",
+										}}
+									>
+										<motion.div variants={li}>
+											<Typography
+												variant="caption"
+												sx={{ paddingLeft: "10px" }}
+											>
+												All rights reserved
+											</Typography>
+										</motion.div>
 									</Box>
-								</>
-							)}
-						</Toolbar>
-					</AppBar>
-				</Slide>
-			</Box>
-			{md ? (
+								</Box>
+							</motion.div>
+						</motion.div>
+					</div>
+				</>
+			) : md ? (
 				<></>
 			) : (
 				<Box
 					sx={{
 						position: "fixed",
 						left: "5px",
-						top: "45%",
+						top: "40%",
 						display: "flex",
 						flexDirection: "column",
 					}}
 				>
-					<Box
-						sx={{
+					<motion.div
+						initial={false}
+						animate={
+							location == "home"
+								? {
+										scale: 1.2,
+										x: "20px",
+										filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+								  }
+								: { scale: 1, x: 0, filter: "" }
+						}
+						whileHover={{ scale: 1.2 }}
+						whileTap={{ scale: 0.9 }}
+						style={{
 							display: "flex",
 							flexDirection: "row",
 							alignItems: "center",
 							cursor: "pointer",
-							padding: "5px 5px",
+							padding: "10px 15px",
 						}}
 					>
-						<HorizontalRuleIcon
-							sx={
-								location == "home"
-									? {
-											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-									  }
-									: {}
-							}
-						/>
-						<motion.div
-							initial={false}
-							animate={
-								location == "home"
-									? {
-											scale: 1.5,
-											x: 8,
-											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-									  }
-									: { scale: 1, x: 0, filter: "" }
-							}
+						<Typography
+							variant="body1"
+							onClick={() => {
+								scrollTo("home");
+							}}
 						>
-							<Typography
-								variant="body1"
-								onClick={() => {
-									scrollTo("home");
-								}}
-								sx={{ paddingLeft: "10px" }}
-							>
-								Home
-							</Typography>
-						</motion.div>
-					</Box>
-					<Box
-						sx={{
+							Home
+						</Typography>
+					</motion.div>
+					<motion.div
+						initial={false}
+						animate={
+							location == "experience"
+								? {
+										scale: 1.2,
+										x: "20px",
+										filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+								  }
+								: { scale: 1, x: 0, filter: "" }
+						}
+						whileHover={{ scale: 1.2 }}
+						whileTap={{ scale: 0.9 }}
+						style={{
 							display: "flex",
 							flexDirection: "row",
 							alignItems: "center",
 							cursor: "pointer",
-							padding: "5px 5px",
+							padding: "10px 15px",
 						}}
 					>
-						<HorizontalRuleIcon
-							sx={
-								location == "experience"
-									? {
-											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-									  }
-									: {}
-							}
-						/>
-						<motion.div
-							initial={false}
-							animate={
-								location == "experience"
-									? {
-											scale: 1.5,
-											x: 17,
-											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-									  }
-									: { scale: 1, x: 0, filter: "" }
-							}
+						<Typography
+							variant="body1"
+							onClick={() => {
+								scrollTo("experience");
+							}}
 						>
-							<Typography
-								variant="body1"
-								onClick={() => {
-									scrollTo("experience");
-								}}
-								sx={{ paddingLeft: "10px" }}
-							>
-								Experience
-							</Typography>
-						</motion.div>
-					</Box>
-
-					<Box
-						sx={{
+							Experience
+						</Typography>
+					</motion.div>
+					<motion.div
+						initial={false}
+						animate={
+							location == "skillset"
+								? {
+										scale: 1.2,
+										x: "20px",
+										filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+								  }
+								: { scale: 1, x: 0, filter: "" }
+						}
+						whileHover={{ scale: 1.2 }}
+						whileTap={{ scale: 0.9 }}
+						style={{
 							display: "flex",
 							flexDirection: "row",
 							alignItems: "center",
 							cursor: "pointer",
-							padding: "5px 5px",
+							padding: "10px 15px",
 						}}
 					>
-						<HorizontalRuleIcon
-							sx={
-								location == "skillset"
-									? {
-											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-									  }
-									: {}
-							}
-						/>
-						<motion.div
-							initial={false}
-							animate={
-								location == "skillset"
-									? {
-											scale: 1.5,
-											x: 10,
-											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-									  }
-									: { scale: 1, x: 0, filter: "" }
-							}
+						<Typography
+							variant="body1"
+							onClick={() => {
+								scrollTo("skillset");
+							}}
 						>
-							<Typography
-								variant="body1"
-								onClick={() => {
-									scrollTo("skillset");
-								}}
-								sx={{ paddingLeft: "10px" }}
-							>
-								Skillset
-							</Typography>
-						</motion.div>
-					</Box>
-					<Box
-						sx={{
+							Skillset
+						</Typography>
+					</motion.div>
+					<motion.div
+						initial={false}
+						animate={
+							location == "education"
+								? {
+										scale: 1.2,
+										x: "20px",
+										filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+								  }
+								: { scale: 1, x: 0, filter: "" }
+						}
+						whileHover={{ scale: 1.2 }}
+						whileTap={{ scale: 0.9 }}
+						style={{
 							display: "flex",
 							flexDirection: "row",
 							alignItems: "center",
 							cursor: "pointer",
-							padding: "5px 5px",
+							padding: "10px 15px",
 						}}
 					>
-						<HorizontalRuleIcon
-							sx={
-								location == "education"
-									? {
-											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-									  }
-									: {}
-							}
-						/>
-						<motion.div
-							initial={false}
-							animate={
-								location == "education"
-									? {
-											scale: 1.5,
-											x: 15,
-											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-									  }
-									: { scale: 1, x: 0, filter: "" }
-							}
+						<Typography
+							variant="body1"
+							onClick={() => {
+								scrollTo("education");
+							}}
 						>
-							<Typography
-								variant="body1"
-								onClick={() => {
-									scrollTo("education");
-								}}
-								sx={{ paddingLeft: "10px" }}
-							>
-								Education
-							</Typography>
-						</motion.div>
-					</Box>
-					<Box
-						sx={{
+							Education
+						</Typography>
+					</motion.div>
+					<motion.div
+						initial={false}
+						animate={
+							location == "about"
+								? {
+										scale: 1.2,
+										x: "20px",
+										filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+								  }
+								: { scale: 1, x: 0, filter: "" }
+						}
+						whileHover={{ scale: 1.2 }}
+						whileTap={{ scale: 0.9 }}
+						style={{
 							display: "flex",
 							flexDirection: "row",
 							alignItems: "center",
 							cursor: "pointer",
-							padding: "5px 5px",
+							padding: "10px 15px",
 						}}
 					>
-						<HorizontalRuleIcon
-							sx={
-								location == "about"
-									? {
-											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-									  }
-									: {}
-							}
-						/>
-						<motion.div
-							initial={false}
-							animate={
-								location == "about"
-									? {
-											scale: 1.5,
-											x: 15,
-											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-									  }
-									: { scale: 1, x: 0, filter: "" }
-							}
+						<Box
+							onClick={() => {
+								scrollTo("about");
+							}}
 						>
-							<Box
-								onClick={() => {
-									scrollTo("about");
-								}}
-								sx={{ paddingLeft: "10px" }}
-							>
-								About Me
-							</Box>
-						</motion.div>
-					</Box>
+							About Me
+						</Box>
+					</motion.div>
 				</Box>
 			)}
+			{/* <motion.div
+				style={{
+					position: "fixed",
+					width: "100vw",
+					height: "100vh",
+					backgroundColor: "rgba(0,0,0, 0.8)",
+					backdropFilter: "blur(3px)",
+					zIndex: 5,
+					display: isOpen ? "block" : "none",
+				}}
+			></motion.div> */}
 		</>
 	);
 }
