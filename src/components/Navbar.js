@@ -51,9 +51,11 @@ export default function Navbar({ location }) {
 				stiffness: 20,
 				restDelta: 2,
 			},
+			backgroundColor: "rgba(29, 36, 53, 0.9)",
+			backdropFilter: "blur(3px)",
 		}),
 		closed: {
-			clipPath: "circle(20px at 28px 28px)",
+			//clipPath: "circle(20px at 28px 28px)",
 			transition: {
 				delay: 0.5,
 				type: "spring",
@@ -100,7 +102,16 @@ export default function Navbar({ location }) {
 
 	return (
 		<>
-			<AppBar position="fixed" sx={{ zIndex: 5 }} color={"navbarStart"}>
+			<AppBar
+				elevation={md ? 3 : 0}
+				position="fixed"
+				sx={{
+					zIndex: 5,
+					backdropFilter: md ? "blur(3px)" : "",
+					backgroundColor: md ? "rgba(29, 36, 53, 0.9)" : "",
+				}}
+				color={"navbarStart"}
+			>
 				<Toolbar>
 					{xs ? ( // mobile
 						<>
@@ -123,74 +134,125 @@ export default function Navbar({ location }) {
 						</>
 					) : md ? ( // app bar normal
 						<>
-							<Box>
-								<Link
-									to="/"
-									style={{
-										display: "flex",
-										alignItems: "center",
-									}}
-								>
-									<img
-										src="/images/logo.png"
-										alt="Logo"
-										style={{ height: "30px" }}
-									/>
-								</Link>
+							<Box
+								style={{
+									display: "flex",
+									alignItems: "center",
+								}}
+								onClick={() => {
+									scrollTo("home");
+								}}
+							>
+								<img
+									src="/images/logo.png"
+									alt="Logo"
+									style={{ height: "30px" }}
+								/>
 							</Box>
 							<Box sx={{ flexGrow: 1 }} />
-							<Box>
-								<Button
-									onClick={() => {
-										scrollTo("experience");
-									}}
-									style={styles.link}
+							<Box
+								sx={{
+									display: "flex",
+									flexDirection: "row",
+									justifyContent: "center",
+									alignItems: "center",
+								}}
+							>
+								<motion.div
+									initial={false}
+									whileHover={{ scale: 1.2 }}
+									whileTap={{ scale: 0.9 }}
+									style={{ margin: "0 8px" }}
 								>
-									Experience
-								</Button>
-								<Button
-									onClick={() => {
-										scrollTo("skillset");
-									}}
-									style={styles.link}
+									<Typography
+										sx={{
+											padding: "2px 2px",
+											cursor: "pointer",
+											fontSize: "0.875rem",
+										}}
+										onClick={() => {
+											scrollTo("experience");
+										}}
+									>
+										Experience
+									</Typography>
+								</motion.div>
+								<motion.div
+									initial={false}
+									whileHover={{ scale: 1.2 }}
+									whileTap={{ scale: 0.9 }}
+									style={{ margin: "0 8px" }}
 								>
-									Skillset
-								</Button>
-								<Button
-									onClick={() => {
-										scrollTo("education");
-									}}
-									style={styles.link}
+									<Typography
+										sx={{
+											padding: "2px 2px",
+											cursor: "pointer",
+											fontSize: "0.875rem",
+										}}
+										onClick={() => {
+											scrollTo("skillset");
+										}}
+									>
+										Skillset
+									</Typography>
+								</motion.div>
+								<motion.div
+									initial={false}
+									whileHover={{ scale: 1.2 }}
+									whileTap={{ scale: 0.9 }}
+									style={{ margin: "0 8px" }}
 								>
-									Education
-								</Button>
-								<Button
-									onClick={() => {
-										scrollTo("about");
-									}}
-									style={styles.link}
+									<Typography
+										sx={{
+											padding: "2px 2px",
+											cursor: "pointer",
+											fontSize: "0.875rem",
+										}}
+										onClick={() => {
+											scrollTo("education");
+										}}
+									>
+										Education
+									</Typography>
+								</motion.div>
+								<motion.div
+									initial={false}
+									whileHover={{ scale: 1.2 }}
+									whileTap={{ scale: 0.9 }}
+									style={{ margin: "0 8px" }}
 								>
-									About Me
-								</Button>
+									<Typography
+										sx={{
+											padding: "2px 2px",
+											cursor: "pointer",
+											fontSize: "0.875rem",
+										}}
+										onClick={() => {
+											scrollTo("about");
+										}}
+									>
+										About Me
+									</Typography>
+								</motion.div>
 							</Box>
 						</>
 					) : (
 						// appbar with logo only
 						<>
-							<Box>
-								<Link
-									to="/"
-									style={{
-										display: "flex",
-										alignItems: "center",
-									}}
-								>
-									<img
-										src="/images/logo.png"
-										alt="Logo"
-										style={{ height: "30px" }}
-									/>
-								</Link>
+							<Box
+								style={{
+									display: "flex",
+									alignItems: "center",
+								}}
+								onClick={() => {
+									scrollTo("home");
+								}}
+							>
+								<img
+									src="/images/logo.png"
+									alt="Logo"
+									style={{ height: "30px" }}
+								/>
 							</Box>
 						</>
 					)}
@@ -198,32 +260,32 @@ export default function Navbar({ location }) {
 			</AppBar>
 			{xs ? (
 				<>
+					<div
+						style={{
+							position: "fixed",
+							top: 0,
+							left: 0,
+							padding: "4px",
+							zIndex: 11,
+						}}
+					>
+						<Hamburger size={20} rounded onToggle={toggleDrawer} />
+					</div>
 					<motion.div
 						initial={false}
 						animate={isOpen ? "open" : "closed"}
 						variants={sideNav}
 						style={{
-							backgroundColor: "rgba(29, 36, 53, 0.95)",
 							left: 0,
-							top: 0,
-							width: "250px",
-							height: "100vh",
+							top: "56px",
+							width: "300px",
+							height: "calc(100vh - 56px)",
 							position: "fixed",
 							zIndex: 10,
+							backgroundColor: "rgba(29, 36, 53, 0.85)",
+							opacity: isOpen ? "100%" : "",
 						}}
 					>
-						<div
-							style={{
-								position: "relative",
-								padding: "4px",
-							}}
-						>
-							<Hamburger
-								size={20}
-								rounded
-								onToggle={toggleDrawer}
-							/>
-						</div>
 						<motion.div
 							style={{
 								height: "90%",
@@ -237,6 +299,7 @@ export default function Navbar({ location }) {
 									display: "flex",
 									flexDirection: "row",
 									alignItems: "center",
+									cursor: "pointer",
 									padding: "10px 15px",
 								}}
 							>
@@ -412,7 +475,7 @@ export default function Navbar({ location }) {
 										display: "flex",
 										flexDirection: "row",
 										alignItems: "center",
-										cursor: "pointer",
+										cursor: "default",
 										padding: "0px 15px",
 										marginTop: "auto",
 									}}
@@ -431,7 +494,7 @@ export default function Navbar({ location }) {
 										display: "flex",
 										flexDirection: "row",
 										alignItems: "center",
-										cursor: "pointer",
+										cursor: "default",
 										padding: "0px 15px",
 										marginBottom: "40px",
 									}}
