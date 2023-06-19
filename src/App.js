@@ -53,7 +53,7 @@ export default function App() {
 	return (
 		<BrowserRouter>
 			<Navbar location={location} />
-			<div style={{ marginTop: "48px" }}>
+			<div style={{ marginTop: "56px" }}>
 				<Container maxWidth="md">
 					<video
 						autoplay="autoplay"
