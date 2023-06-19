@@ -51,17 +51,19 @@ export default function Navbar({ location }) {
 				stiffness: 20,
 				restDelta: 2,
 			},
-			backgroundColor: "rgba(29, 36, 53, 0.9)",
 			backdropFilter: "blur(3px)",
+			backgroundColor: "rgba(29, 36, 53, 0.85)",
 		}),
 		closed: {
-			//clipPath: "circle(20px at 28px 28px)",
+			clipPath: "circle(20px at -28px -28px)",
 			transition: {
 				delay: 0.5,
 				type: "spring",
 				stiffness: 400,
 				damping: 40,
 			},
+			backdropFilter: "blur(3px)",
+			backgroundColor: "rgba(29, 36, 53, 0.85)",
 		},
 	};
 	const ul = {
@@ -270,247 +272,245 @@ export default function Navbar({ location }) {
 						}}
 					>
 						<Hamburger size={20} rounded onToggle={toggleDrawer} />
-					</div>
-					<motion.div
-						initial={false}
-						animate={isOpen ? "open" : "closed"}
-						variants={sideNav}
-						style={{
-							left: 0,
-							top: "56px",
-							width: "300px",
-							height: "calc(100vh - 56px)",
-							position: "fixed",
-							zIndex: 10,
-							backgroundColor: "rgba(29, 36, 53, 0.85)",
-							opacity: isOpen ? "100%" : "",
-						}}
-					>
 						<motion.div
+							initial={false}
+							animate={isOpen ? "open" : "closed"}
+							variants={sideNav}
 							style={{
-								height: "90%",
-								display: "flex",
-								flexDirection: "column",
+								left: 0,
+								top: "56px",
+								width: "300px",
+								height: "calc(100vh - 56px)",
+								position: "fixed",
+								zIndex: 10,
 							}}
-							variants={ul}
 						>
-							<Box
-								style={{
-									display: "flex",
-									flexDirection: "row",
-									alignItems: "center",
-									cursor: "pointer",
-									padding: "10px 15px",
-								}}
-							>
-								<motion.div
-									initial={false}
-									animate={
-										location == "home"
-											? {
-													scale: 1.2,
-													filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
-											  }
-											: { scale: 1, filter: "" }
-									}
-									variants={li}
-									whileHover={{ scale: 1.2 }}
-									whileTap={{ scale: 0.9 }}
-								>
-									<Typography
-										variant="body1"
-										onClick={() => {
-											toggleDrawer();
-											scrollTo("home");
-										}}
-										sx={{ paddingLeft: "10px" }}
-									>
-										Home
-									</Typography>
-								</motion.div>
-							</Box>
 							<motion.div
 								style={{
+									height: "90%",
 									display: "flex",
-									flexDirection: "row",
-									alignItems: "center",
-									cursor: "pointer",
-									padding: "10px 15px",
+									flexDirection: "column",
 								}}
+								variants={ul}
 							>
-								<motion.div
-									initial={false}
-									animate={
-										location == "experience"
-											? {
-													scale: 1.2,
-													filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
-											  }
-											: { scale: 1, filter: "" }
-									}
-									variants={li}
-									whileHover={{ scale: 1.2 }}
-									whileTap={{ scale: 0.9 }}
+								<Box
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										cursor: "pointer",
+										padding: "10px 15px",
+									}}
 								>
-									<Typography
-										variant="body1"
-										onClick={() => {
-											toggleDrawer();
-											scrollTo("experience");
-										}}
-										sx={{ paddingLeft: "10px" }}
+									<motion.div
+										initial={false}
+										animate={
+											location == "home"
+												? {
+														scale: 1.2,
+														filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+												  }
+												: { scale: 1, filter: "" }
+										}
+										variants={li}
+										whileHover={{ scale: 1.2 }}
+										whileTap={{ scale: 0.9 }}
 									>
-										Experience
-									</Typography>
+										<Typography
+											variant="body1"
+											onClick={() => {
+												toggleDrawer();
+												scrollTo("home");
+											}}
+											sx={{ paddingLeft: "10px" }}
+										>
+											Home
+										</Typography>
+									</motion.div>
+								</Box>
+								<motion.div
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										cursor: "pointer",
+										padding: "10px 15px",
+									}}
+								>
+									<motion.div
+										initial={false}
+										animate={
+											location == "experience"
+												? {
+														scale: 1.2,
+														filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+												  }
+												: { scale: 1, filter: "" }
+										}
+										variants={li}
+										whileHover={{ scale: 1.2 }}
+										whileTap={{ scale: 0.9 }}
+									>
+										<Typography
+											variant="body1"
+											onClick={() => {
+												toggleDrawer();
+												scrollTo("experience");
+											}}
+											sx={{ paddingLeft: "10px" }}
+										>
+											Experience
+										</Typography>
+									</motion.div>
 								</motion.div>
+								<Box
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										cursor: "pointer",
+										padding: "10px 15px",
+									}}
+								>
+									<motion.div
+										initial={false}
+										animate={
+											location == "skillset"
+												? {
+														scale: 1.2,
+														filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+												  }
+												: { scale: 1, filter: "" }
+										}
+										variants={li}
+										whileHover={{ scale: 1.2 }}
+										whileTap={{ scale: 0.9 }}
+									>
+										<Typography
+											variant="body1"
+											onClick={() => {
+												toggleDrawer();
+												scrollTo("skillset");
+											}}
+											sx={{ paddingLeft: "10px" }}
+										>
+											Skillset
+										</Typography>
+									</motion.div>
+								</Box>
+								<Box
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										cursor: "pointer",
+										padding: "10px 15px",
+									}}
+								>
+									<motion.div
+										initial={false}
+										animate={
+											location == "education"
+												? {
+														scale: 1.2,
+														filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+												  }
+												: { scale: 1, filter: "" }
+										}
+										variants={li}
+										whileHover={{ scale: 1.2 }}
+										whileTap={{ scale: 0.9 }}
+									>
+										<Typography
+											variant="body1"
+											onClick={() => {
+												toggleDrawer();
+												scrollTo("education");
+											}}
+											sx={{ paddingLeft: "10px" }}
+										>
+											Education
+										</Typography>
+									</motion.div>
+								</Box>
+								<Box
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										cursor: "pointer",
+										padding: "10px 15px",
+									}}
+								>
+									<motion.div
+										initial={false}
+										animate={
+											location == "about"
+												? {
+														scale: 1.2,
+														filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
+												  }
+												: { scale: 1, filter: "" }
+										}
+										variants={li}
+										whileHover={{ scale: 1.2 }}
+										whileTap={{ scale: 0.9 }}
+									>
+										<Typography
+											variant="body1"
+											onClick={() => {
+												toggleDrawer();
+												scrollTo("about");
+											}}
+											sx={{ paddingLeft: "10px" }}
+										>
+											About
+										</Typography>
+									</motion.div>
+								</Box>
+								<Box sx={{ marginTop: "auto" }}>
+									<Box
+										style={{
+											display: "flex",
+											flexDirection: "row",
+											alignItems: "center",
+											cursor: "default",
+											padding: "0px 15px",
+											marginTop: "auto",
+										}}
+									>
+										<motion.div variants={li}>
+											<Typography
+												variant="caption"
+												sx={{ paddingLeft: "10px" }}
+											>
+												Copyright © Daryl Chua 2023.{" "}
+											</Typography>
+										</motion.div>
+									</Box>
+									<Box
+										style={{
+											display: "flex",
+											flexDirection: "row",
+											alignItems: "center",
+											cursor: "default",
+											padding: "0px 15px",
+											marginBottom: "40px",
+										}}
+									>
+										<motion.div variants={li}>
+											<Typography
+												variant="caption"
+												sx={{ paddingLeft: "10px" }}
+											>
+												All rights reserved
+											</Typography>
+										</motion.div>
+									</Box>
+								</Box>
 							</motion.div>
-							<Box
-								style={{
-									display: "flex",
-									flexDirection: "row",
-									alignItems: "center",
-									cursor: "pointer",
-									padding: "10px 15px",
-								}}
-							>
-								<motion.div
-									initial={false}
-									animate={
-										location == "skillset"
-											? {
-													scale: 1.2,
-													filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
-											  }
-											: { scale: 1, filter: "" }
-									}
-									variants={li}
-									whileHover={{ scale: 1.2 }}
-									whileTap={{ scale: 0.9 }}
-								>
-									<Typography
-										variant="body1"
-										onClick={() => {
-											toggleDrawer();
-											scrollTo("skillset");
-										}}
-										sx={{ paddingLeft: "10px" }}
-									>
-										Skillset
-									</Typography>
-								</motion.div>
-							</Box>
-							<Box
-								style={{
-									display: "flex",
-									flexDirection: "row",
-									alignItems: "center",
-									cursor: "pointer",
-									padding: "10px 15px",
-								}}
-							>
-								<motion.div
-									initial={false}
-									animate={
-										location == "education"
-											? {
-													scale: 1.2,
-													filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
-											  }
-											: { scale: 1, filter: "" }
-									}
-									variants={li}
-									whileHover={{ scale: 1.2 }}
-									whileTap={{ scale: 0.9 }}
-								>
-									<Typography
-										variant="body1"
-										onClick={() => {
-											toggleDrawer();
-											scrollTo("education");
-										}}
-										sx={{ paddingLeft: "10px" }}
-									>
-										Education
-									</Typography>
-								</motion.div>
-							</Box>
-							<Box
-								style={{
-									display: "flex",
-									flexDirection: "row",
-									alignItems: "center",
-									cursor: "pointer",
-									padding: "10px 15px",
-								}}
-							>
-								<motion.div
-									initial={false}
-									animate={
-										location == "about"
-											? {
-													scale: 1.2,
-													filter: `drop-shadow(0px 0px 3px ${theme.palette.secondary.main})`,
-											  }
-											: { scale: 1, filter: "" }
-									}
-									variants={li}
-									whileHover={{ scale: 1.2 }}
-									whileTap={{ scale: 0.9 }}
-								>
-									<Typography
-										variant="body1"
-										onClick={() => {
-											toggleDrawer();
-											scrollTo("about");
-										}}
-										sx={{ paddingLeft: "10px" }}
-									>
-										About
-									</Typography>
-								</motion.div>
-							</Box>
-							<Box sx={{ marginTop: "auto" }}>
-								<Box
-									style={{
-										display: "flex",
-										flexDirection: "row",
-										alignItems: "center",
-										cursor: "default",
-										padding: "0px 15px",
-										marginTop: "auto",
-									}}
-								>
-									<motion.div variants={li}>
-										<Typography
-											variant="caption"
-											sx={{ paddingLeft: "10px" }}
-										>
-											Copyright © Daryl Chua 2023.{" "}
-										</Typography>
-									</motion.div>
-								</Box>
-								<Box
-									style={{
-										display: "flex",
-										flexDirection: "row",
-										alignItems: "center",
-										cursor: "default",
-										padding: "0px 15px",
-										marginBottom: "40px",
-									}}
-								>
-									<motion.div variants={li}>
-										<Typography
-											variant="caption"
-											sx={{ paddingLeft: "10px" }}
-										>
-											All rights reserved
-										</Typography>
-									</motion.div>
-								</Box>
-							</Box>
 						</motion.div>
-					</motion.div>
+					</div>
 				</>
 			) : md ? (
 				<></>
