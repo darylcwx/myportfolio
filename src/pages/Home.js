@@ -52,15 +52,14 @@ const Home = forwardRef((props, ref) => {
 						</Box>
 					</motion.div>
 					<motion.div
+						initial={{ opacity: 0, y: 300 }}
 						animate={{
-							opacity: [0, 1.2, 1.2, 1, 1],
-							scale: [0, 1.2, 1.2, 1, 1],
-							x: [100, 100, 100, 0, 0],
+							opacity: 1,
+							y: 0,
 						}}
 						transition={{
-							duration: 6,
-							times: [0, 0.1, 0.5, 0.6, 1],
-							delay: 0.75,
+							duration: 0.75,
+							delay: 1,
 						}}
 					>
 						<Typography variant="h3" my={2}>
@@ -68,29 +67,27 @@ const Home = forwardRef((props, ref) => {
 						</Typography>
 					</motion.div>
 					<motion.div
+						initial={{ opacity: 0, y: 300 }}
 						animate={{
-							opacity: [0, 0, 1, 1, 1, 1],
-							scale: [0, 0, 1.2, 1.2, 1, 1],
-							x: [100, 100, 100, 100, 0, 0],
+							opacity: 1,
+							y: 0,
 						}}
 						transition={{
-							duration: 6,
-							times: [0, 0.15, 0.2, 0.55, 0.65, 1],
-							delay: 0.75,
+							duration: 0.75,
+							delay: 1.75,
 						}}
 					>
 						<Typography variant="h5">I'm Daryl.</Typography>
 					</motion.div>
 					<motion.div
+						initial={{ opacity: 0, y: 300 }}
 						animate={{
-							opacity: [0, 0, 1, 1, 1, 1],
-							scale: [0, 0, 1.2, 1.2, 1, 1],
-							x: [100, 100, 100, 100, 0, 0],
+							opacity: 1,
+							y: 0,
 						}}
 						transition={{
-							duration: 6,
-							times: [0, 0.25, 0.3, 0.6, 0.7, 1],
-							delay: 0.75,
+							duration: 0.75,
+							delay: 2.75,
 						}}
 					>
 						<Typography variant="h5">
@@ -193,7 +190,7 @@ const Home = forwardRef((props, ref) => {
 				}}
 				transition={{
 					duration: 1,
-					delay: 5.5,
+					delay: xs ? 4 : 5.5,
 				}}
 			>
 				<Typography variant="body2" my={2}>
