@@ -22,7 +22,7 @@ const Home = forwardRef((props, ref) => {
 				justifyContent: "center",
 				paddingLeft: 0,
 				paddingRight: 0,
-				marginBottom: "500px",
+				marginBottom: "0px",
 			}}
 			ref={ref}
 		>

@@ -164,7 +164,7 @@ export default function ExperienceContent() {
 							padding: 0,
 							margin: 0,
 						}}
-					>1
+					>
 						{experiences.map((experience) => (
 							<motion.div
 								initial={{ opacity: 0, y: 200 }}

@@ -184,10 +184,10 @@ const About = forwardRef((props, ref) => {
 			name="about"
 			maxWidth="md"
 			sx={{
-				paddingTop: "50px",
+				paddingTop: "150px",
 				paddingLeft: 0,
 				paddingRight: 0,
-				paddingBottom: "300px",
+				paddingBottom: "150px",
 			}}
 			ref={ref}
 		>

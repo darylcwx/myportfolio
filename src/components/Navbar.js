@@ -33,8 +33,8 @@ export default function Navbar({ location }) {
 	};
 	const scrollTo = (element) => {
 		scroller.scrollTo(element, {
-			duration: 700,
-			delay: 50,
+			duration: 1000,
+			delay: 100,
 			smooth: "easeInOut",
 		});
 	};
