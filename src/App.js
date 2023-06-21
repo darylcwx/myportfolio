@@ -11,6 +11,10 @@ import Container from "@mui/material/Container";
 import ExperienceContent from "./components/ExperienceContent.js";
 export default function App() {
 	const [location, setLocation] = useState("home");
+	const videoRef = useRef(null);
+	useEffect(() => {
+		videoRef.current.playbackRate = 0.75;
+	}, []);
 	const homeRef = useRef(null);
 	const experienceRef = useRef(null);
 	const skillsetRef = useRef(null);
@@ -56,6 +60,7 @@ export default function App() {
 			<div style={{ marginTop: "56px" }}>
 				<Container maxWidth="md">
 					<video
+						ref={videoRef}
 						autoplay="autoplay"
 						loop="loop"
 						muted
@@ -63,7 +68,6 @@ export default function App() {
 						playsinline
 						preload="auto"
 						id="myVideo"
-						playbackRate={0.2}
 						style={{
 							position: "fixed",
 							top: 0,
