@@ -6,93 +6,32 @@ import Paper from "@mui/material/Paper";
 import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 import { IconButton, Typography } from "@mui/material";
 import SkillDetails from "./SkillDetails.js";
-import { useSpring, useTransition, animated } from "@react-spring/web";
+import { motion, AnimatePresence } from "framer-motion";
 export default function SkillGrid({ skills }) {
 	const { theme, xs } = GetThemeAndBP();
-	const styles = {
-		glow: {
-			maxWidth: "100%",
-			maxHeight: "100%",
-		},
-		onHover: {
-			transform: "scale(1.2)",
-			transition: "transform 0.3s ease-in-out",
-			filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-		},
-		onUnhover: {
-			transition: "transform 0.3s ease-in-out",
-		},
-	};
 
-	const [image, setImage] = useState(null);
-	const handleMouseEnter = (image) => {
-		setImage(image);
-	};
-	const handleMouseLeave = () => {
-		setImage(null);
-	};
-
-	// handles animation
-	const [animateIn, setAnimateIn] = useState(false);
 	const [selectedSkill, setSelectedSkill] = useState(null);
-	const [mouse, setMouse] = useState({ x: 0, y: -500 });
-	// paper still there (selectedSkill != null), just animated away
+	const handleClick = (skill, e) => {
+		setSelectedSkill(skill);
+	};
 	const handleClose = () => {
-		setAnimateIn(false);
+		setSelectedSkill(null);
 	};
 
 	// handles click outside of paper
 	const paperRef = useRef(null);
+	const containerRef = useRef(null);
 	useEffect(() => {
 		const handleOutsideClick = (event) => {
-			if (paperRef.current && !paperRef.current.contains(event.target)) {
-				handleClose();
-			}
+			console.log(event.target);
+			//if (event.target.id === "paper") {
+			handleClose();
+			//}
 		};
 		document.addEventListener("mousedown", handleOutsideClick);
+
 		return () => {
 			document.removeEventListener("mousedown", handleOutsideClick);
-		};
-	}, []);
-
-	const [height, setHeight] = useState(0);
-	const boxRef = useRef(null);
-	useEffect(() => {
-		if (boxRef) {
-			const height = boxRef.current.clientHeight;
-			if (height != 0) {
-				setHeight(height);
-			}
-		}
-	}, []);
-
-	// animation from image to position
-	const transitions = useSpring({
-		opacity: animateIn ? 1 : 0,
-		scale: animateIn ? 1 : 0,
-		x: animateIn ? 0 : mouse.x,
-		y: animateIn ? -height : mouse.y,
-	});
-
-	const handleClick = (skill, e) => {
-		setAnimateIn(true);
-		setSelectedSkill(skill);
-	};
-	useEffect(() => {
-		const updateMouse = (e) => {
-			if (paperRef.current != null) {
-				const paper = paperRef.current.getBoundingClientRect();
-				const offsetY = -paper.y + e.clientY;
-				const width = window.innerWidth / 2;
-				const offsetX = e.clientX - width;
-				setMouse({ x: offsetX, y: offsetY });
-			}
-		};
-
-		window.addEventListener("mousemove", updateMouse);
-
-		return () => {
-			window.removeEventListener("mousemove", updateMouse);
 		};
 	}, []);
 
@@ -100,7 +39,6 @@ export default function SkillGrid({ skills }) {
 	return (
 		<>
 			<Box
-				ref={boxRef}
 				sx={{
 					width: "100%",
 					display: "flex",
@@ -129,78 +67,89 @@ export default function SkillGrid({ skills }) {
 								}}
 							>
 								{typeof skill.src === "object" ? (
-									<IconButton
-										onMouseEnter={() =>
-											handleMouseEnter(
-												skill.src.type.type.render
-													.displayName
-											)
-										}
-										onMouseLeave={handleMouseLeave}
-										onClick={(e) => handleClick(skill, e)}
-										objectFit="contain"
-										style={{
-											maxWidth: "100%",
-											maxHeight: "100%",
-											...styles.onUnhover,
-											...(image ===
-												skill.src.type.type.render
-													.displayName &&
-												styles.onHover),
+									<motion.div
+										initial={false}
+										whileHover={{
+											scale: 1.2,
+											transition:
+												"transform 0.3s ease-in-out",
+											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
 										}}
+										whileTap={{ scale: 1 }}
+										style={{ filter: "" }}
 									>
-										{React.cloneElement(skill.src, {
-											sx: {
-												fontSize: "100px",
-												color: theme.palette.secondary
-													.main,
-											},
-										})}
-									</IconButton>
+										<IconButton
+											onClick={(e) =>
+												handleClick(skill, e)
+											}
+										>
+											{React.cloneElement(skill.src, {
+												sx: {
+													fontSize: "100px",
+													color: theme.palette
+														.secondary.main,
+												},
+											})}
+										</IconButton>
+									</motion.div>
 								) : (
-									<img
-										src={require(`../../public/images/software/${skill.src}`)}
-										alt={skill.name}
-										loading="lazy"
-										style={{
-											maxWidth: "100%",
-											maxHeight: "100%",
-											...styles.onUnhover,
-											...(image === skill.src &&
-												styles.onHover),
+									<motion.div
+										initial={false}
+										whileHover={{
+											scale: 1.2,
+											transition:
+												"transform 0.3s ease-in-out",
+											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
 										}}
-										onMouseEnter={() =>
-											handleMouseEnter(skill.src)
-										}
-										onMouseLeave={handleMouseLeave}
-										onClick={(e) => handleClick(skill, e)}
-										objectFit="contain"
-									/>
+										whileTap={{ scale: 1 }}
+										style={{ filter: "" }}
+									>
+										<img
+											src={require(`../../public/images/software/${skill.src}`)}
+											alt={skill.name}
+											style={{
+												maxWidth: "100%",
+												maxHeight: "100%",
+											}}
+											onClick={(e) =>
+												handleClick(skill, e)
+											}
+										/>
+									</motion.div>
 								)}
 							</Box>
 						</Grid>
 					))}
 				</Grid>
-				{selectedSkill && (
-					<Box
-						ref={paperRef}
-						sx={{
-							width: "100%",
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "center",
-							position: "absolute",
-							bottom: -200,
-						}}
-					>
-						<animated.div style={transitions}>
-							<SkillDetails
-								skill={selectedSkill}
-								onClose={handleClose}
-							/>
-						</animated.div>
-					</Box>
-				)}
+				<AnimatePresence>
+					{selectedSkill && (
+						<Box
+							id="paper"
+							key="paper"
+							sx={{
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "center",
+								position: "absolute",
+								top: "50%",
+								left: "50%",
+								transform: "translate(-50%, -50%)",
+							}}
+						>
+							<motion.div
+								initial={{ scale: 0, opacity: 0, y: -200 }}
+								animate={{ scale: 1, opacity: 1, y: 0 }}
+								exit={{ scale: 0, opacity: 0, y: -200 }}
+								transition={{ duration: 0.2 }}
+							>
+								<SkillDetails
+									skill={selectedSkill}
+									onClose={handleClose}
+								/>
+							</motion.div>
+						</Box>
+					)}
+				</AnimatePresence>
 			</Box>
 		</>
 	);

@@ -183,6 +183,7 @@ const Skillset = forwardRef((props, ref) => {
 				modules={[Pagination, Navigation, Autoplay]}
 				slidesPerView={1}
 				loop={true}
+				autoHeight={true}
 				autoplay={{ delay: 10000 }}
 				centeredSlides={true}
 				spaceBetween={20}

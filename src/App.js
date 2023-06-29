@@ -1,14 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import Navbar from "./components/Navbar.js";
 import Socials from "./components/Socials.js";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Experience from "./pages/Experience";
 import Skillset from "./pages/Skillset";
 import Education from "./pages/Education";
 import About from "./pages/About";
 import Container from "@mui/material/Container";
-import ExperienceContent from "./components/ExperienceContent.js";
 export default function App() {
 	const [location, setLocation] = useState("home");
 	const videoRef = useRef(null);
