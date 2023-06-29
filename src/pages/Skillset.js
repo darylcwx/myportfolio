@@ -134,7 +134,7 @@ const Skillset = forwardRef((props, ref) => {
 				{ name: "Javascript", src: "js.png", level: 70 },
 				{ name: "Bootstrap", src: "bootstrap.png", level: 70 },
 				{ name: "React", src: "react.png", level: 25 },
-				{ name: "React Spring", src: "reactspring.png", level: 70 },
+				{ name: "Framer Motion", src: "framermotion.png", level: 70 },
 				{ name: "Next.js", src: "nextjs.png", level: 25 },
 				{ name: "Chakra UI", src: "chakraui.jpg", level: 80 },
 				{ name: "Mantine UI", src: "mantine.png", level: 70 },
@@ -185,6 +185,8 @@ const Skillset = forwardRef((props, ref) => {
 					to expanding my skills and knowledge, and I welcome any
 					feedback that can help me achieve my goals.
 				</Typography>
+				{/* need to adjust swiper slide heights. 
+				supposed to be auto but doesn't seem to be working */}
 				<Swiper
 					modules={[Pagination, Navigation, Autoplay]}
 					loop={true}

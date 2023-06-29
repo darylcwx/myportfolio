@@ -70,12 +70,12 @@ export default function SkillGrid({ skills }) {
 										initial={false}
 										whileHover={{
 											scale: 1.2,
-											transition:
-												"transform 0.3s ease-in-out",
 											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
 										}}
 										whileTap={{ scale: 1 }}
-										style={{ filter: "" }}
+										style={{
+											filter: `drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))`,
+										}}
 									>
 										<IconButton
 											onClick={(e) =>
@@ -84,7 +84,7 @@ export default function SkillGrid({ skills }) {
 										>
 											{React.cloneElement(skill.src, {
 												sx: {
-													fontSize: "100px",
+													fontSize: "88px",
 													color: theme.palette
 														.secondary.main,
 												},
@@ -101,7 +101,9 @@ export default function SkillGrid({ skills }) {
 											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
 										}}
 										whileTap={{ scale: 1 }}
-										style={{ filter: "" }}
+										style={{
+											filter: `drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))`,
+										}}
 									>
 										<img
 											src={require(`../../public/images/software/${skill.src}`)}
