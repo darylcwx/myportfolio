@@ -2,9 +2,8 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
-import { IconButton, Typography } from "@mui/material";
+import { IconButton } from "@mui/material";
 import SkillDetails from "./SkillDetails.js";
 import { motion, AnimatePresence } from "framer-motion";
 export default function SkillGrid({ skills }) {
@@ -121,36 +120,36 @@ export default function SkillGrid({ skills }) {
 						</Grid>
 					))}
 				</Grid>
-				<AnimatePresence>
-					{selectedSkill && (
-						<Box
-							id="paper"
-							key="paper"
-							sx={{
-								display: "flex",
-								alignItems: "center",
-								justifyContent: "center",
-								position: "absolute",
-								top: "50%",
-								left: "50%",
-								transform: "translate(-50%, -50%)",
-							}}
-						>
-							<motion.div
-								initial={{ scale: 0, opacity: 0, y: -200 }}
-								animate={{ scale: 1, opacity: 1, y: 0 }}
-								exit={{ scale: 0, opacity: 0, y: -200 }}
-								transition={{ duration: 0.2 }}
-							>
-								<SkillDetails
-									skill={selectedSkill}
-									onClose={handleClose}
-								/>
-							</motion.div>
-						</Box>
-					)}
-				</AnimatePresence>
 			</Box>
+			<AnimatePresence>
+				{selectedSkill && (
+					<Box
+						id="paper"
+						key="paper"
+						sx={{
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+							position: "absolute",
+							top: "50%",
+							left: "50%",
+							transform: "translate(-50%, -50%)",
+						}}
+					>
+						<motion.div
+							initial={{ scale: 0, opacity: 0, y: -200 }}
+							animate={{ scale: 1, opacity: 1, y: 0 }}
+							exit={{ scale: 0, opacity: 0, y: -200 }}
+							transition={{ duration: 0.2 }}
+						>
+							<SkillDetails
+								skill={selectedSkill}
+								onClose={handleClose}
+							/>
+						</motion.div>
+					</Box>
+				)}
+			</AnimatePresence>
 		</>
 	);
 }

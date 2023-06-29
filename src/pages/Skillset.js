@@ -16,6 +16,7 @@ import SwiperCore, {
 } from "swiper";
 import "swiper/swiper-bundle.css";
 import "swiper/css";
+import "../styles/customSwiper.css";
 import SpeakerNotesIcon from "@mui/icons-material/SpeakerNotes";
 import Diversity2Icon from "@mui/icons-material/Diversity2";
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
@@ -92,6 +93,7 @@ const Skillset = forwardRef((props, ref) => {
 					level: 85,
 				},
 			],
+			height: "600px",
 		},
 		{
 			name: "Software",
@@ -120,6 +122,7 @@ const Skillset = forwardRef((props, ref) => {
 					level: 50,
 				},
 			],
+			height: "600px",
 		},
 		{
 			name: "Frameworks",
@@ -145,6 +148,7 @@ const Skillset = forwardRef((props, ref) => {
 				{ name: "PHP", src: "php.png", level: 30 },
 				{ name: "VBA", src: "vba.png", level: 80 },
 			],
+			height: "900px",
 		},
 		{
 			name: "Others",
@@ -154,72 +158,74 @@ const Skillset = forwardRef((props, ref) => {
 				{ name: "Guitar", src: "guitar.png", level: 70 },
 				{ name: "DIY", src: "guitar.jpg", level: 85 },
 			],
+			height: "600px",
 		},
 	];
 	return (
-		<Container
-			name="skillset"
-			maxWidth="md"
-			sx={{
-				paddingTop: "150px",
-				paddingLeft: 0,
-				paddingRight: 0,
-				paddingBottom: "300px",
-			}}
-			ref={ref}
-		>
-			<Typography variant="h2" sx={{ textAlign: "center" }} pb={2}>
-				Skillsets
-			</Typography>
-			<Typography variant="body1" pb={5}>
-				Here are my skillsets, which I believe are above average
-				compared to peers at my level. However, I recognize that there
-				is always room for improvement and growth, which makes my
-				self-rating highly subjective. Therefore, I am committed to
-				expanding my skills and knowledge, and I welcome any feedback
-				that can help me achieve my goals.
-			</Typography>
-			<Swiper
-				modules={[Pagination, Navigation, Autoplay]}
-				slidesPerView={1}
-				loop={true}
-				autoHeight={true}
-				autoplay={{ delay: 10000 }}
-				centeredSlides={true}
-				spaceBetween={20}
-				pagination={{
-					clickable: true,
+		<>
+			<Container
+				name="skillset"
+				maxWidth="md"
+				sx={{
+					paddingTop: "150px",
+					paddingLeft: 0,
+					paddingRight: 0,
+					paddingBottom: "300px",
 				}}
-				navigation
-				onSwiper={(swiper) => console.log(swiper)}
-				style={{
-					height: 700,
-					width: "100%",
-					"--swiper-pagination-color": "#f9ebe0",
-					"--swiper-pagination-bullet-inactive-color": "#f9ebe0",
-					"--swiper-navigation-color": "#f9ebe0",
-					"--swiper-navigation-size": "32px",
-					"--swiper-navigation-sides-offset": "0px",
-				}}
+				ref={ref}
 			>
-				{skillsets.map((skillset, i) => {
-					return (
-						<SwiperSlide key={i}>
-							<Box>
-								<Typography
-									variant="h4"
-									pb={2}
-									sx={{ textAlign: "center" }}
-								>
-									{skillset.name}
-								</Typography>
-								<SkillsGrid skills={skillset.skills} />
-							</Box>
-						</SwiperSlide>
-					);
-				})}
-			</Swiper>
-		</Container>
+				<Typography variant="h2" sx={{ textAlign: "center" }} pb={2}>
+					Skillsets
+				</Typography>
+				<Typography variant="body1" pb={5}>
+					Here are my skillsets, which I believe are above average
+					compared to peers at my level. However, I recognize that
+					there is always room for improvement and growth, which makes
+					my self-rating highly subjective. Therefore, I am committed
+					to expanding my skills and knowledge, and I welcome any
+					feedback that can help me achieve my goals.
+				</Typography>
+				<Swiper
+					modules={[Pagination, Navigation, Autoplay]}
+					loop={true}
+					autoHeight={true}
+					autoplay={{ delay: 10000 }}
+					centeredSlides={true}
+					spaceBetween={20}
+					pagination={{
+						clickable: true,
+					}}
+					navigation
+					onSwiper={(swiper) => console.log(swiper)}
+					style={{
+						height: "auto",
+						width: "100%",
+						"--swiper-pagination-color": "#f9ebe0",
+						"--swiper-pagination-bullet-inactive-color": "#f9ebe0",
+						"--swiper-navigation-color": "#f9ebe0",
+						"--swiper-navigation-size": "32px",
+						"--swiper-navigation-sides-offset": "0px",
+					}}
+				>
+					{skillsets.map((skillset, i) => {
+						return (
+							<SwiperSlide key={i}>
+								<Box sx={{ height: skillset.height }}>
+									<Typography
+										variant="h4"
+										pb={2}
+										sx={{ textAlign: "center" }}
+									>
+										{skillset.name}
+									</Typography>
+									<SkillsGrid skills={skillset.skills} />
+								</Box>
+							</SwiperSlide>
+						);
+					})}
+				</Swiper>
+			</Container>
+		</>
 	);
 });
 export default Skillset;
