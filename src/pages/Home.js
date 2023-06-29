@@ -10,7 +10,7 @@ import Avatar from "@mui/material/Avatar";
 import { motion } from "framer-motion";
 import SouthIcon from "@mui/icons-material/South";
 const Home = forwardRef((props, ref) => {
-	const { xs } = GetThemeAndBP();
+	const { xs, sm } = GetThemeAndBP();
 	return (
 		<Container
 			name="home"
@@ -26,7 +26,7 @@ const Home = forwardRef((props, ref) => {
 			}}
 			ref={ref}
 		>
-			{xs ? (
+			{sm ? (
 				<>
 					<motion.div
 						animate={{
@@ -112,7 +112,7 @@ const Home = forwardRef((props, ref) => {
 							animate={{
 								opacity: [0, 1.2, 1.2, 1, 1],
 								scale: [0, 1.2, 1.2, 1, 1],
-								x: [325, 325, 325, 0, 0],
+								x: [300, 300, 300, 0, 0],
 								y: [100, 100, 100, 0, 0],
 							}}
 							transition={{
@@ -129,7 +129,7 @@ const Home = forwardRef((props, ref) => {
 							animate={{
 								opacity: [0, 0, 1, 1, 1, 1],
 								scale: [0, 0, 1.2, 1.2, 1, 1],
-								x: [325, 325, 325, 325, 0, 0],
+								x: [300, 300, 300, 300, 0, 0],
 								y: [100, 100, 100, 100, 0, 0],
 							}}
 							transition={{
@@ -144,7 +144,7 @@ const Home = forwardRef((props, ref) => {
 							animate={{
 								opacity: [0, 0, 1, 1, 1, 1],
 								scale: [0, 0, 1.2, 1.2, 1, 1],
-								x: [325, 325, 325, 325, 0, 0],
+								x: [220, 220, 220, 220, 0, 0],
 								y: [100, 100, 100, 100, 0, 0],
 							}}
 							transition={{
