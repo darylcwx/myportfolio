@@ -37,92 +37,78 @@ export default function SkillGrid({ skills }) {
 	// to fix clickAway, can ignore for now
 	return (
 		<>
-			<Box
-				sx={{
-					width: "100%",
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "center",
-					position: "absolute",
-				}}
-			>
-				<Grid container spacing={2}>
-					{skills.map((skill) => (
-						<Grid
-							key={skill.name}
-							item
-							xs={6}
-							sm={4}
-							md={3}
-							sx={{ display: "flex", justifyContent: "center" }}
+			<Grid container spacing={2} sx={{ paddingBottom: "50px" }}>
+				{skills.map((skill) => (
+					<Grid
+						key={skill.name}
+						item
+						xs={6}
+						sm={4}
+						md={3}
+						sx={{ display: "flex", justifyContent: "center" }}
+					>
+						<Box
+							sx={{
+								width: "100px",
+								height: "100px",
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "center",
+							}}
 						>
-							<Box
-								sx={{
-									width: "100px",
-									height: "100px",
-									display: "flex",
-									alignItems: "center",
-									justifyContent: "center",
-								}}
-							>
-								{typeof skill.src === "object" ? (
-									<motion.div
-										initial={false}
-										whileHover={{
-											scale: 1.2,
-											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-										}}
-										whileTap={{ scale: 1 }}
-										style={{
-											filter: `drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))`,
-										}}
+							{typeof skill.src === "object" ? (
+								<motion.div
+									initial={false}
+									whileHover={{
+										scale: 1.2,
+										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+									}}
+									whileTap={{ scale: 1 }}
+									style={{
+										filter: `drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))`,
+									}}
+								>
+									<IconButton
+										onClick={(e) => handleClick(skill, e)}
 									>
-										<IconButton
-											onClick={(e) =>
-												handleClick(skill, e)
-											}
-										>
-											{React.cloneElement(skill.src, {
-												sx: {
-													fontSize: "88px",
-													color: theme.palette
-														.secondary.main,
-												},
-											})}
-										</IconButton>
-									</motion.div>
-								) : (
-									<motion.div
-										initial={false}
-										whileHover={{
-											scale: 1.2,
-											transition:
-												"transform 0.3s ease-in-out",
-											filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
-										}}
-										whileTap={{ scale: 1 }}
+										{React.cloneElement(skill.src, {
+											sx: {
+												fontSize: "88px",
+												color: theme.palette.secondary
+													.main,
+											},
+										})}
+									</IconButton>
+								</motion.div>
+							) : (
+								<motion.div
+									initial={false}
+									whileHover={{
+										scale: 1.2,
+										transition:
+											"transform 0.3s ease-in-out",
+										filter: `drop-shadow(0px 0px 7px ${theme.palette.secondary.main})`,
+									}}
+									whileTap={{ scale: 1 }}
+									style={{
+										filter: `drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))`,
+									}}
+								>
+									<img
+										src={require(`../../public/images/software/${skill.src}`)}
+										alt={skill.name}
 										style={{
-											filter: `drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))`,
+											maxWidth: "100%",
+											maxHeight: "100%",
 										}}
-									>
-										<img
-											src={require(`../../public/images/software/${skill.src}`)}
-											alt={skill.name}
-											style={{
-												maxWidth: "100%",
-												maxHeight: "100%",
-											}}
-											onClick={(e) =>
-												handleClick(skill, e)
-											}
-										/>
-									</motion.div>
-								)}
-							</Box>
-						</Grid>
-					))}
-				</Grid>
-			</Box>
+										onClick={(e) => handleClick(skill, e)}
+									/>
+								</motion.div>
+							)}
+						</Box>
+					</Grid>
+				))}
+			</Grid>
 			<AnimatePresence>
 				{selectedSkill && (
 					<Box

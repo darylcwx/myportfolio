@@ -212,7 +212,7 @@ const Skillset = forwardRef((props, ref) => {
 					{skillsets.map((skillset, i) => {
 						return (
 							<SwiperSlide key={i}>
-								<Box sx={{ height: skillset.height }}>
+								<Box sx={{ height: "auto" }}>
 									<Typography
 										variant="h4"
 										pb={2}
