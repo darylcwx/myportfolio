@@ -73,7 +73,7 @@ export default function SkillGrid({ skills }) {
 									>
 										{React.cloneElement(skill.src, {
 											sx: {
-												fontSize: "88px",
+												fontSize: "96px",
 												color: theme.palette.secondary
 													.main,
 											},

@@ -13,7 +13,7 @@ export default function Project({
 	const { theme, xs } = GetThemeAndBP();
 	return (
 		<div key={title}>
-			<Box py={5}>
+			<Box py={10}>
 				<Typography variant="h4" py={2}>
 					{title}
 				</Typography>
@@ -28,9 +28,11 @@ export default function Project({
 					<img src={`/images/projects/${src}`} alt="" width="100%" />
 				)}
 
-				<Typography variant="body1" py={1}>
-					{description}
-				</Typography>
+				<Typography
+					variant="body1"
+					py={1}
+					dangerouslySetInnerHTML={{ __html: description }}
+				></Typography>
 				<Stack
 					direction={{ xs: "column", sm: "row" }}
 					spacing={2}

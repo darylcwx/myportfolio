@@ -1,6 +1,8 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
 import Project from "./Project.js";
+import { skillsets } from "../pages/Skillset.js";
 export default function ProjectsContent() {
 	const projects = [
 		{
@@ -18,9 +20,9 @@ export default function ProjectsContent() {
 					src: "chakraui.jpg",
 				},
 				{
-					name: "React Spring",
-					link: "https://www.react-spring.dev/",
-					src: "reactspring.png",
+					name: "Framer Motion",
+					link: "https://www.framer.com/motion/",
+					src: "framermotion.png",
 				},
 				{
 					name: "Telegram Bot API",
@@ -43,8 +45,8 @@ export default function ProjectsContent() {
 			description: `I've always admired how artists showcase their work through their Instagram portfolios. As a passionate programmer with a keen interest in UI/UX and front-end design, I couldn't resist the opportunity to create my own portfolio website. Drawing upon my years of study and professional experience, I embarked on this journey to highlight my experience in the field. I truly hope that this project will always be a WIP, because it simply means that I never stop learning and growing!`,
 		},
 		{
-			title: "Seiko Couturier Landing Page",
-			src: "seikocouturier.png",
+			title: "Seiko Mods Artisan",
+			src: "smodsartisan.png",
 			frameworks: [
 				{
 					name: "Next.js",
@@ -75,16 +77,17 @@ export default function ProjectsContent() {
 			platforms: [
 				{
 					name: "Vercel App",
-					link: "https://seiko-couturier.vercel.app/",
+					link: "https://smods-artisan.vercel.app/",
 					src: "vercel2.png",
 				},
 				{
 					name: "Github",
-					link: "https://github.com/darylcwx/seiko-couturier",
+					link: "https://github.com/darylcwx/smods-artisan",
 					src: "github.png",
 				},
 			],
-			description: `A landing page designed for a friend of mine who is venturing into monetizing his hobbies, Seiko Mods is a page I'm exploring to implement a small store, which displays products and has online payment. WIP.`,
+			description: `A landing page designed for the watches I have custom made so far, SMods Artisan is a website I'm exploring to implement a small store, which displays products and has online payment. WIP.
+			<br><br><i>You make watches?</i><br>Yes I do. Click on the Vercel site below to find out more! 🤩`,
 		},
 		{
 			title: "Receipt Calculator",
@@ -242,6 +245,36 @@ export default function ProjectsContent() {
 					improvement. Therefore, I am always excited to take on new
 					projects and will put in the effort necessary to see them
 					through to completion.
+					<br></br>
+					<br></br>If you are looking for a quick summary of the tech
+					stack I am familiar with, here it is:
+					<Stack
+						direction="row"
+						spacing={4}
+						flexWrap="wrap"
+						sx={{ paddingTop: 2, paddingBottom: 2 }}
+					>
+						{skillsets[4].skills.map((skill) => (
+							<Box
+								sx={{
+									width: "45px",
+									height: "45px",
+									display: "flex",
+									alignItems: "center",
+									justifyContent: "center",
+								}}
+							>
+								<img
+									src={require(`../../public/images/software/${skill.src}`)}
+									alt={skill.name}
+									style={{
+										maxWidth: "100%",
+										maxHeight: "100%",
+									}}
+								/>
+							</Box>
+						))}
+					</Stack>
 				</Typography>
 				<Box>
 					{projects.map((project) => (
