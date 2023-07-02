@@ -126,14 +126,9 @@ export default function ProjectsContent() {
 			WIP: Experimentation with automated Paylah! requests.`,
 		},
 		{
-			title: "Chess.com but worse",
+			title: "Chess Game",
 			src: "chessgame.png",
 			frameworks: [
-				{
-					name: "React",
-					link: "https://reactjs.org/",
-					src: "react.png",
-				},
 				{
 					name: "Next.js",
 					link: "https://nextjs.org/",
@@ -145,17 +140,22 @@ export default function ProjectsContent() {
 					src: "chakraui.jpg",
 				},
 				{
+					name: "Tailwind CSS",
+					link: "https://tailwindcss.com/",
+					src: "tailwind.png",
+				},
+				{
 					name: "Telegram Bot API",
 					link: "https://core.telegram.org/",
 					src: "telegram.png",
 				},
 			],
 			platforms: [
-				{
-					name: "Vercel App",
-					link: "https://null.vercel.app/",
-					src: "vercel2.png",
-				},
+				// {
+				// 	name: "Vercel App",
+				// 	link: "https://null.vercel.app/",
+				// 	src: "vercel2.png",
+				// },
 				{
 					name: "Github",
 					link: "https://github.com/jadatanjq/chess-game",
