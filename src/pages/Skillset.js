@@ -191,6 +191,9 @@ const Skillset = forwardRef((props, ref) => {
 					}}
 				>
 					{skillsets.map((skillset, i) => {
+						if (skillset.name === "Familiar Tech Stack") {
+							return null;
+						}
 						return (
 							<SwiperSlide key={i}>
 								<Box sx={{ height: "auto" }}>
