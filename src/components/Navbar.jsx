@@ -280,7 +280,7 @@ export default function Navbar({ location }) {
 								left: 0,
 								top: "56px",
 								width: "300px",
-								height: "calc(100vh - 56px)",
+								height: "calc(100vh)",
 								position: "fixed",
 								zIndex: 10,
 							}}
@@ -495,7 +495,6 @@ export default function Navbar({ location }) {
 											alignItems: "center",
 											cursor: "default",
 											padding: "0px 15px",
-											marginBottom: "40px",
 										}}
 									>
 										<motion.div variants={li}>
