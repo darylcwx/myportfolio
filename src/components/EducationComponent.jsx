@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 export default function EducationComponent({
 	id,

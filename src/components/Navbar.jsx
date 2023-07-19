@@ -9,7 +9,7 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
-import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP";
 import { Link, useLocation } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";

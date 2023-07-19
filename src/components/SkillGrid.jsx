@@ -2,9 +2,9 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP";
 import { IconButton } from "@mui/material";
-import SkillDetails from "./SkillDetails.js";
+import SkillDetails from "./SkillDetails.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 export default function SkillGrid({ skills }) {
 	const { theme, xs } = GetThemeAndBP();

@@ -9,7 +9,7 @@ import {
 	ParallaxBanner,
 	ParallaxBannerLayer,
 } from "react-scroll-parallax";
-import EducationComponent from "../components/EducationComponent.js";
+import EducationComponent from "../components/EducationComponent";
 const Education = forwardRef((props, ref) => {
 	const educations = [
 		{

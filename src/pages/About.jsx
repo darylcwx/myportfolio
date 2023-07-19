@@ -5,7 +5,7 @@ import Paper from "@mui/material/Paper";
 import Carousel from "react-material-ui-carousel";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
@@ -17,7 +17,7 @@ import WatchIcon from "@mui/icons-material/Watch";
 import ParaglidingIcon from "@mui/icons-material/Paragliding";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import SportsBarIcon from "@mui/icons-material/SportsBar";
-import AboutPicsComponent from "../components/AboutPicsComponent.js";
+import AboutPicsComponent from "../components/AboutPicsComponent";
 const About = forwardRef((props, ref) => {
 	const swiper = useSwiper();
 	const { theme, xs } = GetThemeAndBP();

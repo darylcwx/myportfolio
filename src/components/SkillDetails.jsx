@@ -6,7 +6,7 @@ import Slider from "@mui/material/Slider";
 import { Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP";
 
 export default function SkillDetails({ skill, onClose }) {
 	const { theme, xs } = GetThemeAndBP();

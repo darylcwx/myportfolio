@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import Navbar from "./components/Navbar.js";
-import Socials from "./components/Socials.js";
+import Navbar from "./components/Navbar";
+import Socials from "./components/Socials";
 import { BrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Experience from "./pages/Experience";

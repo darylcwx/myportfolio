@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useState, forwardRef } from "react";
-import ProjectsContent from "../components/ProjectsContent.js";
-import ExperienceContent from "../components/ExperienceContent.js";
+import ProjectsContent from "../components/ProjectsContent";
+import ExperienceContent from "../components/ExperienceContent";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
+import { GetThemeAndBP } from "../utils/getThemeAndBP";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 const Experience = forwardRef((props, ref) => {
@@ -14,6 +14,9 @@ const Experience = forwardRef((props, ref) => {
 	const [isProjects, setIsProjects] = useState(true);
 	const handleSwap = () => {
 		setIsProjects(!isProjects);
+	};
+	const scrollTo = (element) => {
+		element.current.scrollIntoView({ behavior: "smooth" });
 	};
 	const styles = {
 		overlay: {
@@ -97,7 +100,11 @@ const Experience = forwardRef((props, ref) => {
 			</Box>
 
 			<Box>
-				{isProjects ? <ProjectsContent /> : <ExperienceContent />}
+				{isProjects ? (
+					<ProjectsContent scrollTo={scrollTo} />
+				) : (
+					<ExperienceContent />
+				)}
 			</Box>
 		</Container>
 	);

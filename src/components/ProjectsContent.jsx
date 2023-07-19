@@ -1,9 +1,15 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import Project from "./Project.js";
-import { skillsets } from "../pages/Skillset.js";
-export default function ProjectsContent() {
+import Project from "./Project";
+import { skillsets } from "../pages/Skillset";
+import { scroller } from "react-scroll";
+export default function ProjectsContent({ scrollTo }) {
+	const style = {
+		color: "inherit",
+		textDecoration: "none",
+		cursor: "pointer",
+	};
 	const projects = [
 		{
 			title: "This very website!",
@@ -42,7 +48,9 @@ export default function ProjectsContent() {
 					src: "github.png",
 				},
 			],
-			description: `I've always admired how artists showcase their work through their Instagram portfolios. As a passionate programmer with a keen interest in UI/UX and front-end design, I couldn't resist the opportunity to create my own portfolio website. Drawing upon my years of study and professional experience, I embarked on this journey to highlight my experience in the field. I truly hope that this project will always be a WIP, because it simply means that I never stop learning and growing!`,
+			description: `I've always admired how artists in their respective fields showcase their work through their Instagram/website portfolios. 
+			As a passionate programmer with a keen interest in design, I couldn't resist the opportunity to create my own portfolio website. 
+			I truly hope that this application will always be a WIP, because it simply means that I never stop learning and growing!`,
 		},
 		{
 			title: "Seiko Mods Artisan",
@@ -86,8 +94,10 @@ export default function ProjectsContent() {
 					src: "github.png",
 				},
 			],
-			description: `A landing page designed for the watches I have custom made so far, SMods Artisan is a website I'm exploring to implement a small store, which displays products and has online payment. WIP.
-			<br><br><i>You make watches?</i><br>Yes I do. Click on the Vercel site below to find out more! 🤩`,
+			description: `A landing page designed for the watches I have custom made so far, Seiko Mods Artisan is a website I'm exploring to implement a small online store, 
+			which allows me to explore all about React and various APIs that could help support my application. WIP.
+			<br><br><i>You make watches?</i>
+			<br>Yes I do. Click the picture above to find out more! 🤩`,
 		},
 		{
 			title: "Receipt Calculator",
@@ -122,49 +132,51 @@ export default function ProjectsContent() {
 				},
 			],
 
-			description: `A small project inspired by having people in my life who wish to ensure a correct split of a bill, Receipt Calculator endeavours to solve this real-world problem. By allowing users to input names, food/items, prices, and the participation of each person, the exact share and how much money to transfer for each person can be calculated. OCR implemented recently, check the app out on Vercel!
-			WIP: Experimentation with automated Paylah! requests.`,
+			description: `A small project inspired by having people in my life who wish to ensure a correct split of a bill, Receipt Calculator endeavours to solve this real-world problem. 
+			By allowing users to input names, food/items, prices, and the participation of each person, the exact share and how much money to transfer for each person can be calculated. 
+			<br><br>Optical Character Recognition through taking a picture of the receipt was implemented recently!
+			WIP: Experimentation with Paylah! API.`,
 		},
-		{
-			title: "Chess Game",
-			src: "chessgame.png",
-			frameworks: [
-				{
-					name: "Next.js",
-					link: "https://nextjs.org/",
-					src: "nextjs.png",
-				},
-				{
-					name: "Chakra UI",
-					link: "https://chakra-ui.com/",
-					src: "chakraui.jpg",
-				},
-				{
-					name: "Tailwind CSS",
-					link: "https://tailwindcss.com/",
-					src: "tailwind.png",
-				},
-				{
-					name: "Telegram Bot API",
-					link: "https://core.telegram.org/",
-					src: "telegram.png",
-				},
-			],
-			platforms: [
-				// {
-				// 	name: "Vercel App",
-				// 	link: "https://null.vercel.app/",
-				// 	src: "vercel2.png",
-				// },
-				{
-					name: "Github",
-					link: "https://github.com/jadatanjq/chess-game",
-					src: "github.png",
-				},
-			],
-			description: `A microservice architecture based application that runs online chess games for 2 friends.
-			WIP.`,
-		},
+		// {
+		// 	title: "Chess Game",
+		// 	src: "chessgame.png",
+		// 	frameworks: [
+		// 		{
+		// 			name: "Next.js",
+		// 			link: "https://nextjs.org/",
+		// 			src: "nextjs.png",
+		// 		},
+		// 		{
+		// 			name: "Chakra UI",
+		// 			link: "https://chakra-ui.com/",
+		// 			src: "chakraui.jpg",
+		// 		},
+		// 		{
+		// 			name: "Tailwind CSS",
+		// 			link: "https://tailwindcss.com/",
+		// 			src: "tailwind.png",
+		// 		},
+		// 		{
+		// 			name: "Telegram Bot API",
+		// 			link: "https://core.telegram.org/",
+		// 			src: "telegram.png",
+		// 		},
+		// 	],
+		// 	platforms: [
+		// 		// {
+		// 		// 	name: "Vercel App",
+		// 		// 	link: "https://null.vercel.app/",
+		// 		// 	src: "vercel2.png",
+		// 		// },
+		// 		{
+		// 			name: "Github",
+		// 			link: "https://github.com/jadatanjq/chess-game",
+		// 			src: "github.png",
+		// 		},
+		// 	],
+		// 	description: `A microservice architecture based application that runs online chess games for 2 friends.
+		// 	WIP.`,
+		// },
 		{
 			title: "Bukit Better Driving Center",
 			src: "https://www.youtube.com/embed/8TnJ-BvkvGo",
@@ -181,6 +193,11 @@ export default function ProjectsContent() {
 					link: "https://greensock.com/gsap/",
 					src: "gsap.png",
 				},
+				{
+					name: "Firebase",
+					link: "https://firebase.google.com/",
+					src: "firebase.png",
+				},
 			],
 			platforms: [
 				{
@@ -194,8 +211,7 @@ export default function ProjectsContent() {
 					src: "github.png",
 				},
 			],
-			description: `Bukit Better Driving Center is a school project designed to revamp what was inspired by Bukit Batok Driving Center's website. 
-			It further inspired me to put what I have learned in SMU's Web Application Development module into a practical and relevant use case, thus the birth of my own website.`,
+			description: `Bukit Better Driving Center is a school project designed to revamp what was inspired by Bukit Batok Driving Center's website. It was my first step to leverage on proper frameworks and databases to build a practical and relevant use case, which later on result in the birth of my own website.`,
 		},
 		{
 			title: "Microsoft Excel Order Tracking System",
@@ -225,8 +241,8 @@ export default function ProjectsContent() {
 					src: "onedrive.png",
 				},
 			],
-			description: `A modified fork of an order tracking system that I freelanced to build, employees enter a new order through a Google Form, which upon submission, is detected by Zapier. The order details are pulled into an .xlsm file on OneDrive which is then used to run macros. 
-			Macros include, but are not limited to, generating invoices, receipts, and delivery orders for the specified orders, as well as preparing a ready-to-send templated email to the client. The video starts at 7:01 as anything prior was in an effort for a school project.`,
+			description: `This Order Tracking system was a side project that I freelanced to build. Employees enter a new order through a Google Form, which Zapier detects upon submission. Order details are then pulled into a OneDrive excel file. 
+			Macros help to generate invoices, receipts, and delivery orders, as well as preparing a ready-to-send templated email to the client.<br><br>Beyond theoretical knowledge, this was my first proper project that physically introduced me into the world of automation.`,
 		},
 	];
 	return (
