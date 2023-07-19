@@ -25,7 +25,17 @@ export default function Project({
 						frameBorder="0"
 					></iframe>
 				) : (
-					<img src={`/images/projects/${src}`} alt="" width="100%" />
+					<Link
+						href={platforms[0].link}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img
+							src={`/images/projects/${src}`}
+							alt=""
+							width="100%"
+						/>
+					</Link>
 				)}
 
 				<Typography
