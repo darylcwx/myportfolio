@@ -1,15 +1,16 @@
 import * as React from "react";
-import { forwardRef } from "react";
+import { forwardRef, useState } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { GetThemeAndBP } from "../utils/getThemeAndBP.js";
 import Avatar from "@mui/material/Avatar";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import SouthIcon from "@mui/icons-material/South";
 const Home = forwardRef((props, ref) => {
 	const { xs, sm } = GetThemeAndBP();
+	const [rerender, setRerender] = useState(true);
 	return (
 		<Container
 			name="home"
@@ -181,39 +182,44 @@ const Home = forwardRef((props, ref) => {
 					</motion.div>
 				</Box>
 			)}
-			<motion.div
-				initial={{ opacity: 0, y: 500 }}
-				animate={{
-					opacity: 1,
-					y: 0,
-				}}
-				transition={{
-					duration: 1,
-					delay: xs ? 4 : 5.5,
-				}}
-			>
-				<Typography variant="body2" my={2}>
-					Here, you can find the highlights of my career, education,
-					and skill sets, and perhaps even get to know me a little
-					better.
-				</Typography>
-			</motion.div>
-			<motion.div
-				initial={{ opacity: 0, y: 500 }}
-				animate={{
-					opacity: 1,
-					y: 0,
-				}}
-				transition={{
-					duration: 1,
-					delay: 8,
-				}}
-			>
-				<Typography variant="body2" my={2}>
-					Enjoy your stay!
-				</Typography>
-			</motion.div>
-
+			<Box>
+				<motion.div
+					key={sm}
+					initial={{ opacity: 0, y: 500 }}
+					animate={{
+						opacity: 1,
+						y: 0,
+					}}
+					transition={{
+						duration: 1,
+						delay: sm ? 4 : 5.5,
+					}}
+				>
+					<Typography variant="body2" my={2}>
+						Here, you can find the highlights of my career,
+						education, skill sets, and perhaps even get to know me a
+						little better.
+					</Typography>
+				</motion.div>
+			</Box>
+			<Box>
+				<motion.div
+					key={sm}
+					initial={{ opacity: 0, y: 500 }}
+					animate={{
+						opacity: 1,
+						y: 0,
+					}}
+					transition={{
+						duration: 1,
+						delay: sm ? 8 : 8.5,
+					}}
+				>
+					<Typography variant="body2" my={2}>
+						Enjoy your stay!
+					</Typography>
+				</motion.div>
+			</Box>
 			<Box
 				sx={{
 					display: "flex",
@@ -224,13 +230,14 @@ const Home = forwardRef((props, ref) => {
 				}}
 			>
 				<motion.div
+					key={sm}
 					initial={{ opacity: 0 }}
 					animate={{
 						opacity: 1,
 					}}
 					transition={{
 						duration: 0.75,
-						delay: 9,
+						delay: 9.5,
 					}}
 				>
 					<motion.div
