@@ -6,6 +6,7 @@ import { GetThemeAndBP } from "../utils/getThemeAndBP";
 import { IconButton } from "@mui/material";
 import SkillDetails from "./SkillDetails.jsx";
 import { motion, AnimatePresence } from "framer-motion";
+import ClickAwayListener from "@mui/base/ClickAwayListener";
 export default function SkillGrid({ skills }) {
 	const { theme, xs } = GetThemeAndBP();
 
@@ -109,33 +110,36 @@ export default function SkillGrid({ skills }) {
 					</Grid>
 				))}
 			</Grid>
+
 			<AnimatePresence>
 				{selectedSkill && (
-					<Box
-						id="paper"
-						key="paper"
-						sx={{
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "center",
-							position: "absolute",
-							top: "50%",
-							left: "50%",
-							transform: "translate(-50%, -50%)",
-						}}
-					>
-						<motion.div
-							initial={{ scale: 0, opacity: 0, y: -200 }}
-							animate={{ scale: 1, opacity: 1, y: 0 }}
-							exit={{ scale: 0, opacity: 0, y: -200 }}
-							transition={{ duration: 0.2 }}
+					<ClickAwayListener onClickAway={handleClose}>
+						<Box
+							id="paper"
+							key="paper"
+							sx={{
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "center",
+								position: "absolute",
+								top: "50%",
+								left: "50%",
+								transform: "translate(-50%, -50%)",
+							}}
 						>
-							<SkillDetails
-								skill={selectedSkill}
-								onClose={handleClose}
-							/>
-						</motion.div>
-					</Box>
+							<motion.div
+								initial={{ scale: 0, opacity: 0, y: -200 }}
+								animate={{ scale: 1, opacity: 1, y: 0 }}
+								exit={{ scale: 0, opacity: 0, y: -200 }}
+								transition={{ duration: 0.2 }}
+							>
+								<SkillDetails
+									skill={selectedSkill}
+									onClose={handleClose}
+								/>
+							</motion.div>
+						</Box>
+					</ClickAwayListener>
 				)}
 			</AnimatePresence>
 		</>
