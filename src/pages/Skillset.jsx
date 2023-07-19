@@ -1,22 +1,13 @@
 import * as React from "react";
 import { forwardRef } from "react";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Carousel from "react-material-ui-carousel";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { GetThemeAndBP } from "../utils/getThemeAndBP";
 import SkillsGrid from "../components/SkillGrid";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, {
-	EffectCoverflow,
-	Pagination,
-	Navigation,
-	Autoplay,
-} from "swiper";
+import SwiperCore, { Pagination, Navigation, Autoplay } from "swiper";
 import "swiper/swiper-bundle.css";
 import "swiper/css";
-import "../styles/customSwiper.css";
 import SpeakerNotesIcon from "@mui/icons-material/SpeakerNotes";
 import Diversity2Icon from "@mui/icons-material/Diversity2";
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
@@ -156,8 +147,6 @@ export const skillsets = [
 ];
 
 const Skillset = forwardRef((props, ref) => {
-	const { theme, xs } = GetThemeAndBP();
-
 	return (
 		<>
 			<Container

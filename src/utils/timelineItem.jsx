@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { GetThemeAndBP } from "./getThemeAndBP";
 export default function MyTimelineItem(experience) {
-	const { theme, xs } = GetThemeAndBP();
+	const { xs } = GetThemeAndBP();
 	const dotSize = 100;
 	const avatarSize = 95;
 	return (

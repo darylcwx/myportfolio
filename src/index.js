@@ -42,8 +42,9 @@ const darkTheme = createTheme({
 			main: "rgba(0, 0, 0, 0.0)",
 		},
 		navbar: {
-			//main: "rgba(29, 36, 53, 0.7)",
+			large: "rgba(0, 0, 0, 0.0)",
 			main: "rgba(29, 36, 53, 0.9)",
+			footer: "rgba(29, 36, 53, 0.5)",
 		},
 		background: {
 			paper: "#1D2435",

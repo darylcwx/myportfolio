@@ -7,6 +7,7 @@ import Experience from "./pages/Experience";
 import Skillset from "./pages/Skillset";
 import Education from "./pages/Education";
 import About from "./pages/About";
+import Copyright from "./pages/Copyright";
 import Container from "@mui/material/Container";
 export default function App() {
 	const [location, setLocation] = useState("home");
@@ -89,6 +90,7 @@ export default function App() {
 					<Education ref={educationRef} />
 					<About ref={aboutRef} />
 				</Container>
+				<Copyright />
 			</div>
 			<Socials />
 		</BrowserRouter>

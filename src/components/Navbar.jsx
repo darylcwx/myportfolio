@@ -38,11 +38,6 @@ export default function Navbar({ location }) {
 			smooth: "easeInOut",
 		});
 	};
-	const styles = {
-		sec: {
-			color: theme.palette.secondary.main,
-		},
-	};
 	const sideNav = {
 		open: (height = 1000) => ({
 			clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
@@ -110,9 +105,10 @@ export default function Navbar({ location }) {
 				sx={{
 					zIndex: 5,
 					backdropFilter: md ? "blur(3px)" : "",
-					backgroundColor: md ? "rgba(29, 36, 53, 0.9)" : "",
+					backgroundColor: md
+						? theme.palette.navbar.main
+						: theme.palette.navbar.large,
 				}}
-				color={"navbarStart"}
 			>
 				<Toolbar>
 					{xs ? ( // mobile
@@ -484,7 +480,7 @@ export default function Navbar({ location }) {
 												variant="caption"
 												sx={{ paddingLeft: "10px" }}
 											>
-												Copyright © Daryl Chua 2023.{" "}
+												Copyright © 2023 Daryl Chua{" "}
 											</Typography>
 										</motion.div>
 									</Box>

@@ -1,16 +1,15 @@
 import * as React from "react";
-import { forwardRef, useState } from "react";
+import { forwardRef } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { GetThemeAndBP } from "../utils/getThemeAndBP";
 import Avatar from "@mui/material/Avatar";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import SouthIcon from "@mui/icons-material/South";
 const Home = forwardRef((props, ref) => {
-	const { xs, sm } = GetThemeAndBP();
-	const [rerender, setRerender] = useState(true);
+	const { sm } = GetThemeAndBP();
 	return (
 		<Container
 			name="home"

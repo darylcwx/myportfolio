@@ -10,19 +10,13 @@ import { GetThemeAndBP } from "../utils/getThemeAndBP";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 const Experience = forwardRef((props, ref) => {
-	const { theme, xs } = GetThemeAndBP();
+	const { xs } = GetThemeAndBP();
 	const [isProjects, setIsProjects] = useState(true);
 	const handleSwap = () => {
 		setIsProjects(!isProjects);
 	};
 	const scrollTo = (element) => {
 		element.current.scrollIntoView({ behavior: "smooth" });
-	};
-	const styles = {
-		overlay: {
-			backgroundColor: "rgba(0, 0, 0, 0.85)",
-			minHeight: "calc(100vh - 48px)",
-		},
 	};
 	return (
 		<Container
