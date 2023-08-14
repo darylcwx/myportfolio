@@ -161,7 +161,11 @@ export default function EducationComponent({
 										{showButton && (
 											<motion.div
 												initial={false}
-												animate={{ x: 47, y: -28 }}
+												animate={
+													xs
+														? { x: 38, y: -28 }
+														: { x: 47, y: -28 }
+												}
 												exit={{ x: 500 }}
 												transition={{
 													duration: 0.2,
