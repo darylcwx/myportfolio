@@ -87,7 +87,7 @@ export const skillsets = [
 		],
 	},
 	{
-		name: "Technology Stack",
+		name: "Tech Stack",
 		skills: [
 			{ name: "HTML", src: "html.png", level: 75 },
 			{ name: "CSS", src: "css.png", level: 70 },
@@ -171,8 +171,6 @@ const Skillset = forwardRef((props, ref) => {
 					to expanding my skills and knowledge, and I welcome any
 					feedback that can help me achieve my goals.
 				</Typography>
-				{/* need to adjust swiper slide heights. 
-				supposed to be auto but doesn't seem to be working */}
 				<Swiper
 					modules={[Pagination, Navigation, Autoplay]}
 					loop={true}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
@@ -9,7 +9,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { GetThemeAndBP } from "../utils/getThemeAndBP";
 
 export default function SkillDetails({ skill, onClose }) {
-	const { theme, xs } = GetThemeAndBP();
+	const { theme } = GetThemeAndBP();
 	const styles = {
 		sec: {
 			color: theme.palette.secondary.main,
@@ -46,7 +46,6 @@ export default function SkillDetails({ skill, onClose }) {
 					components={{ Thumb: "false" }}
 					componentsProps={{ Track: { ...styles.sec } }}
 				/>
-				{/* <Typography variant="body1">{skill.level}</Typography> */}
 			</Paper>
 		</Box>
 	);

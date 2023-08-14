@@ -103,7 +103,7 @@ export default function Navbar({ location }) {
 				elevation={md ? 3 : 0}
 				position="fixed"
 				sx={{
-					zIndex: 5,
+					zIndex: !xs && !md ? 0 : 3,
 					backdropFilter: md ? "blur(3px)" : "",
 					backgroundColor: md
 						? theme.palette.navbar.main
@@ -264,7 +264,7 @@ export default function Navbar({ location }) {
 							top: 0,
 							left: 0,
 							padding: "4px",
-							zIndex: 11,
+							zIndex: 3,
 						}}
 					>
 						<Hamburger size={20} rounded onToggle={toggleDrawer} />
@@ -278,7 +278,6 @@ export default function Navbar({ location }) {
 								width: "300px",
 								height: "calc(100vh)",
 								position: "fixed",
-								zIndex: 10,
 							}}
 						>
 							<motion.div
@@ -309,8 +308,6 @@ export default function Navbar({ location }) {
 												: { scale: 1, filter: "" }
 										}
 										variants={li}
-										whileHover={{ scale: 1.2 }}
-										whileTap={{ scale: 0.9 }}
 									>
 										<Typography
 											variant="body1"
@@ -344,8 +341,6 @@ export default function Navbar({ location }) {
 												: { scale: 1, filter: "" }
 										}
 										variants={li}
-										whileHover={{ scale: 1.2 }}
-										whileTap={{ scale: 0.9 }}
 									>
 										<Typography
 											variant="body1"
@@ -379,8 +374,6 @@ export default function Navbar({ location }) {
 												: { scale: 1, filter: "" }
 										}
 										variants={li}
-										whileHover={{ scale: 1.2 }}
-										whileTap={{ scale: 0.9 }}
 									>
 										<Typography
 											variant="body1"
@@ -414,8 +407,6 @@ export default function Navbar({ location }) {
 												: { scale: 1, filter: "" }
 										}
 										variants={li}
-										whileHover={{ scale: 1.2 }}
-										whileTap={{ scale: 0.9 }}
 									>
 										<Typography
 											variant="body1"
@@ -449,8 +440,6 @@ export default function Navbar({ location }) {
 												: { scale: 1, filter: "" }
 										}
 										variants={li}
-										whileHover={{ scale: 1.2 }}
-										whileTap={{ scale: 0.9 }}
 									>
 										<Typography
 											variant="body1"
@@ -517,6 +506,7 @@ export default function Navbar({ location }) {
 						top: "40%",
 						display: "flex",
 						flexDirection: "column",
+						zIndex: 3,
 					}}
 				>
 					<motion.div
@@ -670,17 +660,6 @@ export default function Navbar({ location }) {
 					</motion.div>
 				</Box>
 			)}
-			{/* <motion.div
-				style={{
-					position: "fixed",
-					width: "100vw",
-					height: "100vh",
-					backgroundColor: "rgba(0,0,0, 0.8)",
-					backdropFilter: "blur(3px)",
-					zIndex: 5,
-					display: isOpen ? "block" : "none",
-				}}
-			></motion.div> */}
 		</>
 	);
 }

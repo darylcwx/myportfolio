@@ -87,7 +87,10 @@ export default function App() {
 					<Home ref={homeRef} />
 					<Experience ref={experienceRef} />
 					<Skillset ref={skillsetRef} />
-					<Education ref={educationRef} />
+				</Container>
+
+				<Education ref={educationRef} />
+				<Container maxWidth="md">
 					<About ref={aboutRef} />
 				</Container>
 				<Copyright />

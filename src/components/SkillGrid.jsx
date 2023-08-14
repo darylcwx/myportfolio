@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { GetThemeAndBP } from "../utils/getThemeAndBP";
@@ -8,7 +8,7 @@ import SkillDetails from "./SkillDetails.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
 export default function SkillGrid({ skills }) {
-	const { theme, xs } = GetThemeAndBP();
+	const { theme } = GetThemeAndBP();
 
 	const [selectedSkill, setSelectedSkill] = useState(null);
 	const handleClick = (skill, e) => {
@@ -19,14 +19,9 @@ export default function SkillGrid({ skills }) {
 	};
 
 	// handles click outside of paper
-	const paperRef = useRef(null);
-	const containerRef = useRef(null);
 	useEffect(() => {
 		const handleOutsideClick = (event) => {
-			console.log(event.target);
-			//if (event.target.id === "paper") {
 			handleClose();
-			//}
 		};
 		document.addEventListener("mousedown", handleOutsideClick);
 
@@ -34,8 +29,6 @@ export default function SkillGrid({ skills }) {
 			document.removeEventListener("mousedown", handleOutsideClick);
 		};
 	}, []);
-
-	// to fix clickAway, can ignore for now
 	return (
 		<>
 			<Grid container spacing={2} sx={{ paddingBottom: "50px" }}>

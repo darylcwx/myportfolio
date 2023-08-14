@@ -1,12 +1,9 @@
 import React from "react";
 import { forwardRef } from "react";
 import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import {
-	Parallax,
-	ParallaxBanner,
-	ParallaxBannerLayer,
-} from "react-scroll-parallax";
+import { Parallax } from "react-scroll-parallax";
 import EducationComponent from "../components/EducationComponent";
 const Education = forwardRef((props, ref) => {
 	const educations = [
@@ -18,7 +15,7 @@ const Education = forwardRef((props, ref) => {
 			awards: [],
 			coCurricular: ["SMU Blockchain Club", "SMU Muay Thai"],
 			period: "2021 to ~2025",
-			gpa: "Cumulative GPA: 3.43",
+			gpa: "3.43",
 			image: "./images/education/smu.jpg",
 			first: true,
 		},
@@ -36,7 +33,7 @@ const Education = forwardRef((props, ref) => {
 				"Head of Welfare for ICT Welcoming Camp (2018)",
 			],
 			period: "2016 to 2019",
-			gpa: "Cumulative GPA: 3.61",
+			gpa: "3.61",
 			image: "./images/education/np.jpg",
 		},
 		{
@@ -52,13 +49,12 @@ const Education = forwardRef((props, ref) => {
 		},
 	];
 	return (
-		<Container
+		<Box
 			name="education"
-			maxWidth="md"
 			sx={{
 				paddingTop: "150px",
-				paddingLeft: 0,
-				paddingRight: 0,
+				paddingLeft: "0px",
+				paddingRight: "0px",
 				paddingBottom: "300px",
 			}}
 			ref={ref}
@@ -70,60 +66,8 @@ const Education = forwardRef((props, ref) => {
 				{educations.map((education) => (
 					<EducationComponent key={education.id} {...education} />
 				))}
-				{/* <ParallaxBanner
-					style={{
-						height: "100vh",
-					}}
-				>
-					<Box sx={{ ...styles.blur }}>
-						<ParallaxBannerLayer
-							speed={-10}
-							image="./images/education/smu.jpg"
-							style={{
-								backgroundSize: "cover",
-							}}
-						/>
-					</Box>
-					<Box sx={{ ...styles.overlay }}></Box>
-					<ParallaxBannerLayer style={{ ...styles.center }}>
-						<h1>My Headline</h1>
-					</ParallaxBannerLayer>
-				</ParallaxBanner>
-				<ParallaxBanner
-					style={{
-						height: "100vh",
-					}}
-				>
-					<Box sx={{ ...styles.blur }}>
-						<ParallaxBannerLayer
-							speed={-10}
-							image="./images/education/np1.jpg"
-							style={{ backgroundSize: "cover" }}
-						/>
-					</Box>
-					<Box sx={{ ...styles.overlay }} />
-					<ParallaxBannerLayer style={{ ...styles.center }}>
-						<h1>My Headline</h1>
-					</ParallaxBannerLayer>
-				</ParallaxBanner>
-				<ParallaxBanner
-					style={{
-						height: "100vh",
-					}}
-				>
-					<Box sx={{ ...styles.blur }}>
-						<ParallaxBannerLayer
-							speed={-10}
-							image="./images/education/acsbr.jpg"
-						/>
-					</Box>
-					<Box sx={{ ...styles.overlay }} />
-					<ParallaxBannerLayer style={{ ...styles.center }}>
-						<h1>My Headline</h1>
-					</ParallaxBannerLayer>
-				</ParallaxBanner> */}
 			</Parallax>
-		</Container>
+		</Box>
 	);
 });
 export default Education;

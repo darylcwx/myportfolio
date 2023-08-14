@@ -51,7 +51,7 @@ export default function Socials() {
 		},
 	];
 	return (
-		<Box sx={{ position: "fixed", bottom: 0, right: 0 }}>
+		<Box sx={{ position: "fixed", bottom: 0, right: 0, zIndex: 3 }}>
 			<SpeedDial
 				ariaLabel="Quick Actions Button"
 				sx={{
