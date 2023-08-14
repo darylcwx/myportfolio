@@ -128,7 +128,6 @@ export const skillsets = [
 			{ name: "Video editing", src: "videoediting.jpg", level: 60 },
 			{ name: "Horology", src: "horology.png", level: 50 },
 			{ name: "Guitar", src: "guitar.png", level: 70 },
-			{ name: "DIY", src: "guitar.jpg", level: 70 },
 		],
 	},
 	{
