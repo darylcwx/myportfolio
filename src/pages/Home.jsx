@@ -194,13 +194,14 @@ const Home = forwardRef((props, ref) => {
 						delay: sm ? 4 : 5.5,
 					}}
 				>
-					<Typography variant="body2" my={2}>
+					<Typography variant="body2" pt={4}>
 						Here, you can find the highlights of my career,
 						education, skill sets, and perhaps even get to know me a
 						little better.
 					</Typography>
 				</motion.div>
 			</Box>
+			{/* Enjoy your stay */}
 			<Box>
 				<motion.div
 					key={sm}
@@ -214,11 +215,12 @@ const Home = forwardRef((props, ref) => {
 						delay: sm ? 8 : 8.5,
 					}}
 				>
-					<Typography variant="body2" my={2}>
+					<Typography variant="body2" pt={2}>
 						Enjoy your stay!
 					</Typography>
 				</motion.div>
 			</Box>
+			{/* Arrow down */}
 			<Box
 				sx={{
 					display: "flex",

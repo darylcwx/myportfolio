@@ -33,7 +33,7 @@ export default function AboutPicsComponent({ about }) {
 					]}
 					autoplay={{ delay: 5000 }}
 					style={{
-						height: 380,
+						height: 550,
 						"--swiper-pagination-color": "#f9ebe0",
 						"--swiper-pagination-bullet-inactive-color": "#f9ebe0",
 						"--swiper-navigation-color": "#f9ebe0",

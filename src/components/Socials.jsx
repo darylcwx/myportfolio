@@ -23,11 +23,6 @@ export default function Socials() {
 	const toggleStack = () => {
 		setIsOpen(!isOpen);
 	};
-	const handleClickAway = () => {
-		if (isOpen) {
-			toggleStack();
-		}
-	};
 	const socials = [
 		{
 			icon: <EmailIcon sx={{ fontSize: "24px" }} />,
@@ -54,6 +49,7 @@ export default function Socials() {
 		<Box sx={{ position: "fixed", bottom: 0, right: 0, zIndex: 3 }}>
 			<SpeedDial
 				ariaLabel="Quick Actions Button"
+				tooltipTitle="Contact me? :)"
 				sx={{
 					position: "absolute",
 					bottom: 16,
@@ -66,7 +62,6 @@ export default function Socials() {
 					},
 				}}
 				icon={<LinkIcon sx={{ fontSize: "24px" }} />}
-				transitionDuration={{ appear: 300, enter: 300, exit: 300 }}
 			>
 				{socials.map((social) => (
 					<SpeedDialAction

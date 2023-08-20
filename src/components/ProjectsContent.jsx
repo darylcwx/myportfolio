@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Project from "./Project";
-import { skillsets } from "../pages/Skillset";
+import skillsets from "../constants/skillsets";
 import { scroller } from "react-scroll";
 export default function ProjectsContent({ scrollTo }) {
 	const style = {
