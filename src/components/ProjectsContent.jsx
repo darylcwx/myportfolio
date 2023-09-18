@@ -4,14 +4,7 @@ import Stack from "@mui/material/Stack";
 import Project from "./Project";
 import skillsets from "../constants/skillsets";
 import projects from "../constants/projects";
-import { scroller } from "react-scroll";
 export default function ProjectsContent({ scrollTo }) {
-	const style = {
-		color: "inherit",
-		textDecoration: "none",
-		cursor: "pointer",
-	};
-
 	return (
 		<>
 			<Box>

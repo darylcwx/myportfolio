@@ -1,28 +1,15 @@
 import * as React from "react";
-import { useState } from "react";
 import Box from "@mui/material/Box";
-import Fab from "@mui/material/Fab";
-import Stack from "@mui/material/Stack";
-import Tooltip from "@mui/material/Tooltip";
-import IconButton from "@mui/material/IconButton";
 import LinkIcon from "@mui/icons-material/Link";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import EmailIcon from "@mui/icons-material/Email";
 import SpeedDial from "@mui/material/SpeedDial";
-import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
-import ClickAwayListener from "@mui/base/ClickAwayListener";
-import ClearIcon from "@mui/icons-material/Clear";
 import { useTheme } from "@mui/material/styles";
 export default function Socials() {
 	const theme = useTheme();
-	const [isOpen, setIsOpen] = useState(false);
-
-	const toggleStack = () => {
-		setIsOpen(!isOpen);
-	};
 	const socials = [
 		{
 			icon: <EmailIcon sx={{ fontSize: "24px" }} />,

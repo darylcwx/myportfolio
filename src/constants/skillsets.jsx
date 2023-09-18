@@ -84,24 +84,14 @@ const skillsets = [
 		name: "Tech Stack",
 		skills: [
 			{ name: "HTML", src: "html.png", level: 75 },
-			{ name: "CSS", src: "css.png", level: 70 },
-			{ name: "Javascript", src: "js.png", level: 75 },
-			{ name: "Bootstrap", src: "bootstrap.png", level: 80 },
+			{ name: "CSS", src: "css.png", level: 65 },
+			{ name: "Javascript", src: "js.png", level: 70 },
 
-			{ name: "React", src: "react.png", level: 70 },
+			{ name: "React", src: "react.png", level: 65 },
 			{ name: "Next.js", src: "nextjs.png", level: 50 },
-			{ name: "Tailwind", src: "tailwind.png", level: 80 },
-			{ name: "Framer Motion", src: "framermotion.png", level: 60 },
-			{ name: "Chakra UI", src: "chakraui.jpg", level: 40 },
-			{ name: "Material UI", src: "mui.png", level: 55 },
-			{ name: "Mantine UI", src: "mantine.png", level: 55 },
-
 			{ name: "Vue.js", src: "vue.png", level: 50 },
-			{ name: "Quasar", src: "quasar.png", level: 20 },
-			{ name: "Vuetify", src: "vuetify.png", level: 20 },
-			{ name: "GSAP", src: "gsap.png", level: 20 },
 
-			{ name: "SQL", src: "sql.png", level: 60 },
+			{ name: "MySQL", src: "sql.png", level: 60 },
 			{ name: "Oracle", src: "oracle.png", level: 40 },
 			{ name: "MongoDB", src: "mongodb.png", level: 30 },
 			{ name: "Handlebars", src: "handlebars.png", level: 40 },
@@ -115,6 +105,16 @@ const skillsets = [
 			{ name: "C#", src: "csharp.png", level: 15 },
 
 			{ name: "Telegram API", src: "telegram.png", level: 30 },
+
+			{ name: "Bootstrap", src: "bootstrap.png", level: 80 },
+			{ name: "Tailwind", src: "tailwind.png", level: 80 },
+			{ name: "Framer Motion", src: "framermotion.png", level: 60 },
+			{ name: "Chakra UI", src: "chakraui.jpg", level: 40 },
+			{ name: "Material UI", src: "mui.png", level: 55 },
+			{ name: "Mantine UI", src: "mantine.png", level: 55 },
+			{ name: "Quasar", src: "quasar.png", level: 20 },
+			{ name: "Vuetify", src: "vuetify.png", level: 20 },
+			{ name: "GSAP", src: "gsap.png", level: 20 },
 		],
 	},
 	{
@@ -132,7 +132,6 @@ const skillsets = [
 			{ name: "HTML", src: "html.png", level: 75 },
 			{ name: "CSS", src: "css.png", level: 70 },
 			{ name: "Javascript", src: "js.png", level: 75 },
-			{ name: "Bootstrap", src: "bootstrap.png", level: 80 },
 			{ name: "React", src: "react.png", level: 70 },
 			{ name: "Next.js", src: "nextjs.png", level: 50 },
 			{ name: "SQL", src: "sql.png", level: 60 },

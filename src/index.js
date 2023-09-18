@@ -86,7 +86,7 @@ const darkTheme = createTheme({
 		},
 	},
 	shape: {
-		borderRadius: 4,
+		borderRadius: 8,
 	},
 	typography: {
 		fontSize: 12,
@@ -172,9 +172,6 @@ const darkTheme = createTheme({
 			lineHeight: 1.66,
 			letterSpacing: "0.03333em",
 		},
-	},
-	shape: {
-		borderRadius: 8,
 	},
 	transitions: {
 		easing: {

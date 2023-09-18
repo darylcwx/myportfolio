@@ -7,7 +7,6 @@ import { GetThemeAndBP } from "../utils/getThemeAndBP";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper";
 import "swiper/swiper-bundle.css";
 import "swiper/css";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
@@ -15,9 +14,6 @@ import WatchIcon from "@mui/icons-material/Watch";
 import ParaglidingIcon from "@mui/icons-material/Paragliding";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import SportsBarIcon from "@mui/icons-material/SportsBar";
-import CelebrationIcon from "@mui/icons-material/Celebration";
-import EmojiFoodBeverageIcon from "@mui/icons-material/EmojiFoodBeverage";
-import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfied";
 import AboutPicsComponent from "../components/AboutPicsComponent";
 const About = forwardRef((props, ref) => {
 	const { theme } = GetThemeAndBP();

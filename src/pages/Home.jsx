@@ -195,9 +195,10 @@ const Home = forwardRef((props, ref) => {
 					}}
 				>
 					<Typography variant="body2" pt={4}>
-						Here, you can find the highlights of my career,
-						education, skill sets, and perhaps even get to know me a
-						little better.
+						I'm a penultimate student in Singapore Management
+						University (SMU) specializing in Cloud Solutions and
+						Business Analytics. My skills lean towards that of a
+						frontend developer but I'd love to keep my options open!
 					</Typography>
 				</motion.div>
 			</Box>
@@ -216,7 +217,7 @@ const Home = forwardRef((props, ref) => {
 					}}
 				>
 					<Typography variant="body2" pt={2}>
-						Enjoy your stay!
+						Enjoy your visit!
 					</Typography>
 				</motion.div>
 			</Box>

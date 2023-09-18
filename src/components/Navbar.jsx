@@ -1,31 +1,14 @@
 import { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
-import Slide from "@mui/material/Slide";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { scroller } from "react-scroll";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import Button from "@mui/material/Button";
-import MenuIcon from "@mui/icons-material/Menu";
 import { GetThemeAndBP } from "../utils/getThemeAndBP";
-import { Link, useLocation } from "react-router-dom";
 import Typography from "@mui/material/Typography";
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import CloseIcon from "@mui/icons-material/Close";
-import BadgeIcon from "@mui/icons-material/Badge";
-import AutoGraphIcon from "@mui/icons-material/AutoGraph";
-import SchoolIcon from "@mui/icons-material/School";
-import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
-import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 import { motion } from "framer-motion";
 import { Squash as Hamburger } from "hamburger-react";
 export default function Navbar({ location }) {
-	const { theme, xs, sm, md } = GetThemeAndBP();
+	const { theme, xs, md } = GetThemeAndBP();
 	const [isOpen, setIsOpen] = useState(false);
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const toggleDrawer = () => {

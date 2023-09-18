@@ -1,17 +1,11 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { GetThemeAndBP } from "../utils/getThemeAndBP";
 import Timeline from "@mui/lab/Timeline";
-import TimelineItem, { timelineItemClasses } from "@mui/lab/TimelineItem";
-import TimelineOppositeContent, {
-	timelineOppositeContentClasses,
-} from "@mui/lab/TimelineOppositeContent";
+import { timelineOppositeContentClasses } from "@mui/lab/TimelineOppositeContent";
 import MyTimelineItem from "../utils/timelineItem";
 import { motion } from "framer-motion";
-import experiences from "../constants/experiences"
+import experiences from "../constants/experiences";
 export default function ExperienceContent() {
-	const { theme, xs } = GetThemeAndBP();
-	
 	return (
 		<>
 			<Box>

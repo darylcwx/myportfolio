@@ -10,7 +10,7 @@ export default function Project({
 	platforms,
 	description,
 }) {
-	const { theme, xs } = GetThemeAndBP();
+	const { xs } = GetThemeAndBP();
 	return (
 		<div key={title}>
 			<Box py={10}>
@@ -19,6 +19,7 @@ export default function Project({
 				</Typography>
 				{src.includes("youtube") ? (
 					<iframe
+						title={title}
 						width="100%"
 						height={xs ? "200" : "400"}
 						src={src}
@@ -32,7 +33,7 @@ export default function Project({
 					>
 						<img
 							src={`/images/projects/${src}`}
-							alt=""
+							alt={title}
 							width="100%"
 						/>
 					</Link>
@@ -90,6 +91,7 @@ export default function Project({
 											maxWidth: "100%",
 											maxHeight: "100%",
 										}}
+										alt={framework.name}
 									/>
 								</Box>
 								<Typography
@@ -140,6 +142,7 @@ export default function Project({
 											maxWidth: "100%",
 											maxHeight: "100%",
 										}}
+										alt={platform.name}
 									/>
 								</Box>
 								<Typography variant="caption" mt={1}>

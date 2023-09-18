@@ -8,12 +8,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination, Navigation, Autoplay } from "swiper";
 import "swiper/swiper-bundle.css";
 import "swiper/css";
-import SpeakerNotesIcon from "@mui/icons-material/SpeakerNotes";
-import Diversity2Icon from "@mui/icons-material/Diversity2";
-import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
-import FollowTheSignsIcon from "@mui/icons-material/FollowTheSigns";
-import TimerIcon from "@mui/icons-material/Timer";
-import ContentPasteSearchIcon from "@mui/icons-material/ContentPasteSearch";
 import skillsets from "../constants/skillsets";
 SwiperCore.use([Navigation]);
 
