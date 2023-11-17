@@ -10,17 +10,11 @@ export default function ProjectsContent({ scrollTo }) {
 			<Box>
 				<Typography variant="body1">
 					As a highly motivated and enthusiastic individual, I thrive
-					on taking on new challenges and collaborating with others to
-					accomplish shared goals. Below are some of the projects I
-					have completed since I have learnt how to code, which
-					highlights my passion for learning and my determination to
-					deliver quality work.
-					<br></br>
-					<br></br>I believe that no matter how big or small the
-					project, there are always lesson to learn and room for
-					improvement. Therefore, I am always excited to take on new
-					projects and will put in the effort necessary to see them
-					through to completion.
+					on taking on new challenges and collaborating with others.
+					Below are some of the projects I have completed since I have
+					learnt how to code. I believe that no matter how big or
+					small the project, there are always lessons to learn and
+					room for improvement.
 					<br></br>
 					<br></br>If you are looking for a quick summary of the tech
 					stack I am familiar with, here it is:
@@ -28,8 +22,7 @@ export default function ProjectsContent({ scrollTo }) {
 						direction="row"
 						spacing={4}
 						flexWrap="wrap"
-						sx={{ paddingTop: 2, paddingBottom: 2 }}
-					>
+						sx={{ paddingTop: 2, paddingBottom: 2 }}>
 						{skillsets[4].skills.map((skill) => (
 							<Box
 								sx={{
@@ -38,8 +31,7 @@ export default function ProjectsContent({ scrollTo }) {
 									display: "flex",
 									alignItems: "center",
 									justifyContent: "center",
-								}}
-							>
+								}}>
 								<img
 									src={require(`../../public/images/software/${skill.src}`)}
 									alt={skill.name}
@@ -54,7 +46,10 @@ export default function ProjectsContent({ scrollTo }) {
 				</Typography>
 				<Box>
 					{projects.map((project) => (
-						<Project key={project.title} {...project} />
+						<Project
+							key={project.title}
+							{...project}
+						/>
 					))}
 				</Box>
 			</Box>

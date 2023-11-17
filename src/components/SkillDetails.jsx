@@ -9,44 +9,48 @@ import CloseIcon from "@mui/icons-material/Close";
 import { GetThemeAndBP } from "../utils/getThemeAndBP";
 
 export default function SkillDetails({ skill, onClose }) {
-	const { theme } = GetThemeAndBP();
-	const styles = {
-		sec: {
-			color: theme.palette.secondary.main,
-		},
-	};
-	return (
-		<Box>
-			<Paper
-				elevation={12}
-				sx={{
-					padding: "24px",
-				}}
-			>
-				<Stack
-					direction="row"
-					justifyContent="space-between"
-					alignItems="center"
-				>
-					<Typography variant="h5">{skill.name}</Typography>
-					<IconButton aria-label="close" onClick={onClose}>
-						<CloseIcon
-							fontSize="small"
-							sx={{
-								fontSize: "24px",
-								color: theme.palette.secondary.main,
-							}}
-						/>
-					</IconButton>
-				</Stack>
-				<Slider
-					disabled
-					value={skill.level}
-					sx={{ ...styles.sec }}
-					components={{ Thumb: "false" }}
-					componentsProps={{ Track: { ...styles.sec } }}
-				/>
-			</Paper>
-		</Box>
-	);
+  const { theme } = GetThemeAndBP();
+  const styles = {
+    sec: {
+      color: theme.palette.secondary.main,
+    },
+  };
+  return (
+    <Box>
+      <Paper
+        elevation={12}
+        sx={{
+          minWidth: "300px",
+          padding: "24px",
+          borderRadius: "8px",
+        }}>
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center">
+          <Typography variant="h5">{skill.name}</Typography>
+          <IconButton aria-label="close" onClick={onClose}>
+            <CloseIcon
+              fontSize="small"
+              sx={{
+                fontSize: "24px",
+                color: theme.palette.secondary.main,
+              }}
+            />
+          </IconButton>
+        </Stack>
+        <Typography variant="body1" sx={{ py: 2, whiteSpace: "pre-line" }}>
+          {skill.description}
+        </Typography>
+
+        <Slider
+          disabled
+          value={skill.level}
+          sx={{ ...styles.sec }}
+          components={{ Thumb: "false" }}
+          componentsProps={{ Track: { ...styles.sec } }}
+        />
+      </Paper>
+    </Box>
+  );
 }
