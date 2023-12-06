@@ -11,9 +11,10 @@ const skillsets = [
       {
         name: "AWS Certified Solutions Architect - Associate",
         src: "aws saa.png",
-        description:
-          "Validation Number:\n0X84MG6CVEE11K5T\n\nDate of Validity:\nNov 16, 2023 - Nov 16, 2026",
-        level: 70,
+        issueDate: "Nov 16, 2023",
+        expirationDate: "Nov 16, 2026",
+        validLink: "https://aws.amazon.com/verification",
+        validNumber: "0X84MG6CVEE11K5T",
       },
     ],
   },
@@ -114,7 +115,6 @@ const skillsets = [
       {
         name: "Leadership",
         src: <FollowTheSignsIcon />,
-        size: "xl",
         level: 85,
       },
       {

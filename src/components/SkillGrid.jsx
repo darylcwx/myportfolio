@@ -1,37 +1,79 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import Slider from "@mui/material/Slider";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import Link from "@mui/material/Link";
 import { GetThemeAndBP } from "../utils/getThemeAndBP";
-import { IconButton } from "@mui/material";
-import SkillDetails from "./SkillDetails.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
-export default function SkillGrid({ skills }) {
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import Tooltip from "@mui/material/Tooltip";
+
+export default function SkillGrid({ category, skills }) {
+  const ref = useRef(null);
   const { theme } = GetThemeAndBP();
 
   const [selectedSkill, setSelectedSkill] = useState(null);
-  const handleClick = (skill, e) => {
+  const handleClick = (category, skill, e) => {
     setSelectedSkill(skill);
   };
   const handleClose = () => {
     setSelectedSkill(null);
   };
 
+  const [tooltip, setTooltip] = useState(
+    <>
+      Copy to clipboard{" "}
+      <ContentCopyIcon fontSize="16px" style={{ verticalAlign: "middle" }} />
+    </>
+  );
+  const handleCopy = () => {
+    navigator.clipboard.writeText(selectedSkill.validNumber);
+    setTooltip(
+      <>
+        Copied!{" "}
+        <CheckCircleIcon fontSize="16px" style={{ verticalAlign: "middle" }} />
+      </>
+    );
+    setTimeout(() => {
+      setTooltip(
+        <>
+          Copy to clipboard{" "}
+          <ContentCopyIcon
+            fontSize="16px"
+            style={{ verticalAlign: "middle" }}
+          />
+        </>
+      );
+    }, 3000);
+  };
+
+  useEffect(() => {
+    console.log(category);
+  }, []);
+
   // handles click outside of paper
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      handleClose();
+      if (ref.current && !ref.current.contains(event.target)) {
+        handleClose();
+      }
     };
     document.addEventListener("mousedown", handleOutsideClick);
-
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
   return (
     <>
-      <Grid container spacing={2} sx={{ paddingBottom: "50px" }}>
+      <Grid container spacing={2} sx={{ position: "relative" }}>
         {skills.map((skill) => (
           <Grid
             key={skill.name}
@@ -59,7 +101,7 @@ export default function SkillGrid({ skills }) {
                   style={{
                     filter: `drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))`,
                   }}>
-                  <IconButton onClick={(e) => handleClick(skill, e)}>
+                  <IconButton onClick={(e) => handleClick(category, skill, e)}>
                     {React.cloneElement(skill.src, {
                       sx: {
                         fontSize: "96px",
@@ -87,41 +129,117 @@ export default function SkillGrid({ skills }) {
                       maxWidth: "100%",
                       maxHeight: "100%",
                     }}
-                    onClick={(e) => handleClick(skill, e)}
+                    onClick={(e) => handleClick(category, skill, e)}
                   />
                 </motion.div>
               )}
             </Box>
           </Grid>
         ))}
+        <AnimatePresence>
+          {selectedSkill && (
+            <ClickAwayListener ref={ref} onClickAway={handleClose}>
+              <Box
+                id="paper"
+                key="paper"
+                sx={{
+                  display: "flex",
+                  position: "absolute",
+                  left: "50%",
+                  transform: "translateX(-47.5%)",
+                }}>
+                <motion.div
+                  initial={{ scale: 0, opacity: 0, y: -100 }}
+                  animate={{ scale: 1, opacity: 1, y: 0 }}
+                  exit={{ scale: 0, opacity: 0, y: -100 }}
+                  transition={{ duration: 0.2 }}>
+                  <Paper
+                    elevation={12}
+                    sx={{
+                      minWidth: "350px",
+                      padding: "24px",
+                      borderRadius: "8px",
+                    }}>
+                    <Box sx={{ textAlign: "end" }}>
+                      <IconButton
+                        aria-label="close"
+                        onClick={handleClose}
+                        sx={{ padding: "0" }}>
+                        <CloseIcon
+                          fontSize="small"
+                          sx={{
+                            fontSize: "24px",
+                            color: theme.palette.secondary.main,
+                          }}
+                        />
+                      </IconButton>
+                    </Box>
+                    <Typography variant="h6" sx={{ paddingBottom: "16px" }}>
+                      {selectedSkill.name}
+                    </Typography>
+                    {category == "Certifications" ? (
+                      <>
+                        <Typography variant="body2">
+                          Validate at:{" "}
+                          <Link
+                            href={selectedSkill.validLink}
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            AWS verification
+                          </Link>
+                          <br></br>
+                          Validation Number:{" "}
+                          <Tooltip
+                            title={tooltip}
+                            sx={{
+                              backgroundColor: theme.palette.secondary.main,
+                              color: theme.palette.primary.main,
+                            }}>
+                            <Box
+                              component="span"
+                              sx={{
+                                cursor: "pointer",
+                                color: theme.palette.secondary.main,
+                              }}
+                              onClick={handleCopy}>
+                              {selectedSkill.validNumber}
+                            </Box>
+                          </Tooltip>
+                          <br></br>
+                          <br></br>
+                          Issue Date: {selectedSkill.issueDate}
+                          <br></br>
+                          Expiration Date: {selectedSkill.expirationDate}
+                        </Typography>
+                      </>
+                    ) : (
+                      <>
+                        <Typography
+                          variant="body2"
+                          sx={{ whiteSpace: "pre-line" }}>
+                          {selectedSkill.description}
+                        </Typography>
+                        <Slider
+                          disabled
+                          value={selectedSkill.level}
+                          sx={{
+                            color: theme.palette.secondary.main,
+                            padding: "0px",
+                          }}
+                          components={{ Thumb: "false" }}
+                          componentsProps={{
+                            Track: { color: theme.palette.secondary.main },
+                          }}
+                        />
+                      </>
+                    )}
+                  </Paper>
+                </motion.div>
+              </Box>
+            </ClickAwayListener>
+          )}
+        </AnimatePresence>
       </Grid>
-
-      <AnimatePresence>
-        {selectedSkill && (
-          <ClickAwayListener onClickAway={handleClose}>
-            <Box
-              id="paper"
-              key="paper"
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "absolute",
-                top: "50px",
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}>
-              <motion.div
-                initial={{ scale: 0, opacity: 0, y: -100 }}
-                animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: 0, opacity: 0, y: -100 }}
-                transition={{ duration: 0.2 }}>
-                <SkillDetails skill={selectedSkill} onClose={handleClose} />
-              </motion.div>
-            </Box>
-          </ClickAwayListener>
-        )}
-      </AnimatePresence>
     </>
   );
 }

@@ -1,19 +1,19 @@
-import * as React from "react";
-import { forwardRef } from "react";
+import { forwardRef, useState } from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import SkillsGrid from "../components/SkillGrid";
-import Grid from "@mui/material/Grid";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Pagination, Navigation, Autoplay } from "swiper";
-import "swiper/swiper-bundle.css";
-import "swiper/css";
+import TabContext from "@mui/lab/TabContext";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import TabPanel from "@mui/lab/TabPanel";
 import skillsets from "../constants/skillsets";
-import certificates from "../constants/certs";
-SwiperCore.use([Navigation]);
 
 const Skillset = forwardRef((props, ref) => {
+  const [value, setValue] = useState(0);
+  const handleTabChange = (event, newValue) => {
+    setValue(newValue);
+  };
   return (
     <>
       <Container
@@ -36,53 +36,34 @@ const Skillset = forwardRef((props, ref) => {
           Therefore, I am committed to expanding my skills and knowledge, and I
           welcome any feedback that can help me achieve my goals.
         </Typography>
-		<Box>
-          <Typography variant="h4" pb={0} sx={{ textAlign: "center" }}>
-            Certificates
-          </Typography>
-          <Grid></Grid>
-        </Box>
-        <Box sx={{ minHeight: "100px" }}>
-          <Swiper
-            modules={[Pagination, Navigation, Autoplay]}
-            loop={true}
-            autoHeight={true}
-            centeredSlides={true}
-            spaceBetween={20}
-            pagination={{
-              clickable: true,
-            }}
-            navigation
-            onSwiper={(swiper) => console.log(swiper)}
-            style={{
-              width: "100%",
-              height: "auto",
-              minHeight: "400px",
-              "--swiper-pagination-color": "#f9ebe0",
-              "--swiper-pagination-bullet-inactive-color": "#f9ebe0",
-              "--swiper-navigation-color": "#f9ebe0",
-              "--swiper-navigation-size": "32px",
-              "--swiper-navigation-sides-offset": "0px",
-            }}>
-            {skillsets.map((skillset, i) => {
-              if (skillset.name === "Familiar Tech Stack") {
-                return null;
-              }
-              return (
-                <SwiperSlide key={i}>
-                  <Box sx={{ height: "auto" }}>
-                    <Typography
-                      variant="h4"
-                      pb={2}
-                      sx={{ textAlign: "center" }}>
-                      {skillset.name}
-                    </Typography>
-                    <SkillsGrid skills={skillset.skills} />
-                  </Box>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+        <Box>
+          <TabContext value={value}>
+            <Tabs
+              onChange={handleTabChange}
+              textColor="white"
+              indicatorColor="primary"
+              variant="scrollable"
+              scrollButtons
+              allowScrollButtonsMobile>
+              {skillsets.map((skillset, i) => {
+                return skillset.name === "Familiar Tech Stack" ? null : (
+                  <Tab label={skillset.name} value={i} />
+                );
+              })}
+            </Tabs>
+            <Box>
+              {skillsets.map((skillset, i) => {
+                return skillset.name === "Familiar Tech Stack" ? null : (
+                  <TabPanel value={i} sx={{ padding: "0", paddingTop: "24px" }}>
+                    <SkillsGrid
+                      category={skillset.name}
+                      skills={skillset.skills}
+                    />
+                  </TabPanel>
+                );
+              })}
+            </Box>
+          </TabContext>
         </Box>
       </Container>
     </>
