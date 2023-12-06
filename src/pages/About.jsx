@@ -36,7 +36,6 @@ const About = forwardRef((props, ref) => {
         paddingTop: "150px",
         paddingLeft: 0,
         paddingRight: 0,
-        paddingBottom: "150px",
       }}
       ref={ref}>
       <Typography variant="h2" sx={{ textAlign: "center" }} pb={2}>
@@ -66,7 +65,8 @@ const About = forwardRef((props, ref) => {
         slidesPerView={1}
         rewind={true}
         centeredSlides={true}
-        spaceBetween={20}>
+        spaceBetween={20}
+        autoHeight={true}>
         {about.map((about, i) => {
           return (
             <SwiperSlide key={i}>
@@ -78,9 +78,13 @@ const About = forwardRef((props, ref) => {
                 {about.header}
               </Typography>
               {about.tab === "Pictures" ? (
-                <AboutPicsComponent about={about} />
+                <Box sx={{ paddingBottom: "40px" }}>
+                  <AboutPicsComponent about={about} />
+                </Box>
               ) : about.tab === "Other" ? (
-                <AboutMusic />
+                <Box sx={{ paddingBottom: "40px" }}>
+                  <AboutMusic />
+                </Box>
               ) : (
                 about.items.map((item, j) => {
                   return (

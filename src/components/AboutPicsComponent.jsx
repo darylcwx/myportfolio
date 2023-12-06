@@ -27,7 +27,7 @@ export default function AboutPicsComponent({ about }) {
           navigation
           modules={[EffectCoverflow, Pagination, Navigation]}
           style={{
-            height: 550,
+            height: 400,
             "--swiper-pagination-color": "#f9ebe0",
             "--swiper-pagination-bullet-inactive-color": "#f9ebe0",
             "--swiper-navigation-color": "#f9ebe0",
