@@ -23,8 +23,7 @@ const Home = forwardRef((props, ref) => {
 				paddingRight: 0,
 				marginBottom: "0px",
 			}}
-			ref={ref}
-		>
+			ref={ref}>
 			{sm ? (
 				<>
 					<motion.div
@@ -37,9 +36,10 @@ const Home = forwardRef((props, ref) => {
 							duration: 6,
 							times: [0, 0.1, 0.5, 0.6, 1],
 							delay: 0.75,
-						}}
-					>
-						<Box display="flex" justifyContent="center">
+						}}>
+						<Box
+							display="flex"
+							justifyContent="center">
 							<Avatar
 								src="/images/me.jpeg"
 								alt="Me"
@@ -59,9 +59,10 @@ const Home = forwardRef((props, ref) => {
 						transition={{
 							duration: 0.75,
 							delay: 1,
-						}}
-					>
-						<Typography variant="h3" my={2}>
+						}}>
+						<Typography
+							variant="h3"
+							my={2}>
 							Hello!
 						</Typography>
 					</motion.div>
@@ -74,8 +75,7 @@ const Home = forwardRef((props, ref) => {
 						transition={{
 							duration: 0.75,
 							delay: 1.75,
-						}}
-					>
+						}}>
 						<Typography variant="h5">I'm Daryl.</Typography>
 					</motion.div>
 					<motion.div
@@ -87,8 +87,7 @@ const Home = forwardRef((props, ref) => {
 						transition={{
 							duration: 0.75,
 							delay: 2.75,
-						}}
-					>
+						}}>
 						<Typography variant="h5">
 							Welcome to my website.
 						</Typography>
@@ -99,14 +98,12 @@ const Home = forwardRef((props, ref) => {
 					sx={{
 						display: "flex",
 						justifyContent: "space-between",
-					}}
-				>
+					}}>
 					<Stack
 						sx={{
 							display: "flex",
 							justifyContent: "end",
-						}}
-					>
+						}}>
 						<motion.div
 							animate={{
 								opacity: [0, 1.2, 1.2, 1, 1],
@@ -118,9 +115,10 @@ const Home = forwardRef((props, ref) => {
 								duration: 6,
 								times: [0, 0.1, 0.5, 0.6, 1],
 								delay: 0.75,
-							}}
-						>
-							<Typography variant="h3" my={2}>
+							}}>
+							<Typography
+								variant="h2"
+								my={2}>
 								Hello!
 							</Typography>
 						</motion.div>
@@ -135,9 +133,8 @@ const Home = forwardRef((props, ref) => {
 								duration: 6,
 								times: [0, 0.15, 0.2, 0.55, 0.65, 1],
 								delay: 0.75,
-							}}
-						>
-							<Typography variant="h5">I'm Daryl.</Typography>
+							}}>
+							<Typography variant="h4">I'm Daryl.</Typography>
 						</motion.div>
 						<motion.div
 							animate={{
@@ -150,8 +147,7 @@ const Home = forwardRef((props, ref) => {
 								duration: 6,
 								times: [0, 0.25, 0.3, 0.6, 0.7, 1],
 								delay: 0.75,
-							}}
-						>
+							}}>
 							<Typography variant="h5">
 								Welcome to my website.
 							</Typography>
@@ -168,8 +164,7 @@ const Home = forwardRef((props, ref) => {
 							duration: 6,
 							times: [0, 0.1, 0.7, 0.8, 1],
 							delay: 0.75,
-						}}
-					>
+						}}>
 						<Avatar
 							src="/images/me.jpeg"
 							alt="Me"
@@ -192,9 +187,10 @@ const Home = forwardRef((props, ref) => {
 					transition={{
 						duration: 1,
 						delay: sm ? 4 : 5.5,
-					}}
-				>
-					<Typography variant="body2" pt={4}>
+					}}>
+					<Typography
+						variant="body2"
+						pt={4}>
 						I'm a penultimate student in Singapore Management
 						University (SMU) specializing in Cloud Solutions and
 						Business Analytics. My skills lean towards that of a
@@ -214,9 +210,10 @@ const Home = forwardRef((props, ref) => {
 					transition={{
 						duration: 1,
 						delay: sm ? 8 : 8.5,
-					}}
-				>
-					<Typography variant="body2" pt={2}>
+					}}>
+					<Typography
+						variant="body2"
+						pt={2}>
 						Enjoy your visit!
 					</Typography>
 				</motion.div>
@@ -229,8 +226,7 @@ const Home = forwardRef((props, ref) => {
 					position: "absolute",
 					bottom: "50px",
 					left: "50%",
-				}}
-			>
+				}}>
 				<motion.div
 					key={sm}
 					initial={{ opacity: 0 }}
@@ -240,8 +236,7 @@ const Home = forwardRef((props, ref) => {
 					transition={{
 						duration: 0.75,
 						delay: 9.5,
-					}}
-				>
+					}}>
 					<motion.div
 						animate={{
 							y: [0, 15, 0],
@@ -252,8 +247,7 @@ const Home = forwardRef((props, ref) => {
 							times: [0, 0.5, 1],
 							repeat: Infinity,
 							repeatDelay: 1,
-						}}
-					>
+						}}>
 						<SouthIcon sx={{ fontSize: "32px" }} />
 					</motion.div>
 				</motion.div>

@@ -36,14 +36,14 @@ export default function SkillGrid({ skills }) {
           <Grid
             key={skill.name}
             item
-            xs={6}
+            xs={4}
             sm={4}
             md={3}
             sx={{ display: "flex", justifyContent: "center" }}>
             <Box
               sx={{
-                width: "100px",
-                height: "100px",
+                width: "80px",
+                height: "80px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -107,14 +107,14 @@ export default function SkillGrid({ skills }) {
                 alignItems: "center",
                 justifyContent: "center",
                 position: "absolute",
-                top: "50%",
+                top: "50px",
                 left: "50%",
-                transform: "translate(-50%, -50%)",
+                transform: "translateX(-50%)",
               }}>
               <motion.div
-                initial={{ scale: 0, opacity: 0, y: -200 }}
+                initial={{ scale: 0, opacity: 0, y: -100 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: 0, opacity: 0, y: -200 }}
+                exit={{ scale: 0, opacity: 0, y: -100 }}
                 transition={{ duration: 0.2 }}>
                 <SkillDetails skill={selectedSkill} onClose={handleClose} />
               </motion.div>

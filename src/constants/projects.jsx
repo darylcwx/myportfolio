@@ -37,8 +37,7 @@ const projects = [
 			},
 		],
 		description: `I've always admired how artists in their respective fields showcase their work through their Instagram/website portfolios. 
-        As a passionate programmer with a keen interest in design, I couldn't resist the opportunity to create my own portfolio website. 
-        I truly hope that this application will always be a WIP, because it simply means that I never stop learning and growing!`,
+        With that said, I couldn't resist the opportunity to create my own portfolio website.`,
 	},
 	{
 		title: "Seiko Mods Artisan",
@@ -87,8 +86,8 @@ const projects = [
 				src: "github.png",
 			},
 		],
-		description: `A landing page designed for the watches I have custom made so far, Seiko Mods Artisan is a website I'm exploring to implement a small online store, 
-        which allows me to explore all about React and various APIs that could help support my application. WIP.
+		description: `A web app designed for the watches I have custom made so far, Seiko Mods Artisan is a website I'm exploring to implement a small online store, 
+        which allowed me to explore React and NextJS. WIP.
         <br><br><i>You make watches?</i>
         <br>Yes I do. Click the picture above to find out more! 🤩`,
 	},
@@ -125,10 +124,9 @@ const projects = [
 			},
 		],
 
-		description: `A small project inspired by having people in my life who wish to ensure a correct split of a bill, Receipt Calculator endeavours to solve this real-world problem. 
-        By allowing users to input names, food/items, prices, and the participation of each person, the exact share and how much money to transfer for each person can be calculated. 
-        <br><br>Optical Character Recognition through taking a picture of the receipt was implemented recently!
-        WIP: Experimentation with Paylah! API.`,
+		description: `Inspired by real world problems wishing to ensure the correct split of a bill, Receipt Calculator solves this problem. 
+        Through names, food/items, prices, and the participation of each person, each person's share can be calculated. 
+        Optical Character Recognition through taking a picture of the receipt was implemented recently!`,
 	},
 	// {
 	// 	title: "Chess Game",

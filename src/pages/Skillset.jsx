@@ -36,49 +36,54 @@ const Skillset = forwardRef((props, ref) => {
           Therefore, I am committed to expanding my skills and knowledge, and I
           welcome any feedback that can help me achieve my goals.
         </Typography>
-        <Box>
+		<Box>
           <Typography variant="h4" pb={0} sx={{ textAlign: "center" }}>
             Certificates
           </Typography>
           <Grid></Grid>
         </Box>
-        <Swiper
-          modules={[Pagination, Navigation, Autoplay]}
-          loop={true}
-          autoHeight={true}
-          autoplay={{ delay: 10000 }}
-          centeredSlides={true}
-          spaceBetween={20}
-          pagination={{
-            clickable: true,
-          }}
-          navigation
-          onSwiper={(swiper) => console.log(swiper)}
-          style={{
-            height: "auto",
-            width: "100%",
-            "--swiper-pagination-color": "#f9ebe0",
-            "--swiper-pagination-bullet-inactive-color": "#f9ebe0",
-            "--swiper-navigation-color": "#f9ebe0",
-            "--swiper-navigation-size": "32px",
-            "--swiper-navigation-sides-offset": "0px",
-          }}>
-          {skillsets.map((skillset, i) => {
-            if (skillset.name === "Familiar Tech Stack") {
-              return null;
-            }
-            return (
-              <SwiperSlide key={i}>
-                <Box sx={{ height: "auto" }}>
-                  <Typography variant="h4" pb={2} sx={{ textAlign: "center" }}>
-                    {skillset.name}
-                  </Typography>
-                  <SkillsGrid skills={skillset.skills} />
-                </Box>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+        <Box sx={{ minHeight: "100px" }}>
+          <Swiper
+            modules={[Pagination, Navigation, Autoplay]}
+            loop={true}
+            autoHeight={true}
+            centeredSlides={true}
+            spaceBetween={20}
+            pagination={{
+              clickable: true,
+            }}
+            navigation
+            onSwiper={(swiper) => console.log(swiper)}
+            style={{
+              width: "100%",
+              height: "auto",
+              minHeight: "400px",
+              "--swiper-pagination-color": "#f9ebe0",
+              "--swiper-pagination-bullet-inactive-color": "#f9ebe0",
+              "--swiper-navigation-color": "#f9ebe0",
+              "--swiper-navigation-size": "32px",
+              "--swiper-navigation-sides-offset": "0px",
+            }}>
+            {skillsets.map((skillset, i) => {
+              if (skillset.name === "Familiar Tech Stack") {
+                return null;
+              }
+              return (
+                <SwiperSlide key={i}>
+                  <Box sx={{ height: "auto" }}>
+                    <Typography
+                      variant="h4"
+                      pb={2}
+                      sx={{ textAlign: "center" }}>
+                      {skillset.name}
+                    </Typography>
+                    <SkillsGrid skills={skillset.skills} />
+                  </Box>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </Box>
       </Container>
     </>
   );
