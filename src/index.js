@@ -165,6 +165,13 @@ const darkTheme = createTheme({
       lineHeight: 1.5,
       letterSpacing: "0.01071em",
     },
+    body3: {
+      fontFamily: `"Open Sans", "Roboto", "Helvetica", "Arial", sans-serif`,
+      fontWeight: 500,
+      fontSize: "0.75rem",
+      lineHeight: 1.5,
+      letterSpacing: "0.01071em",
+    },
     button: {
       fontFamily: `"Open Sans", "Roboto", "Helvetica", "Arial", sans-serif`,
       fontWeight: 500,

@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import Stack from "@mui/material/Stack";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
@@ -54,10 +53,6 @@ export default function SkillGrid({ category, skills }) {
       );
     }, 3000);
   };
-
-  useEffect(() => {
-    console.log(category);
-  }, []);
 
   // handles click outside of paper
   useEffect(() => {

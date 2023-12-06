@@ -1,19 +1,25 @@
-import { forwardRef, useState } from "react";
-import Box from "@mui/material/Box";
+import { forwardRef, useState, useRef } from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import SkillsGrid from "../components/SkillGrid";
-import TabContext from "@mui/lab/TabContext";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import TabPanel from "@mui/lab/TabPanel";
 import skillsets from "../constants/skillsets";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
+import "swiper/css";
 
 const Skillset = forwardRef((props, ref) => {
-  const [value, setValue] = useState(0);
-  const handleTabChange = (event, newValue) => {
-    setValue(newValue);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef(null);
+  const handleTabChange = (event, newIndex) => {
+    setActiveIndex(newIndex);
+    swiperRef.current.swiper.slideTo(newIndex);
   };
+  const handleSlideChange = (swiper) => {
+    setActiveIndex(swiper.activeIndex);
+  };
+
   return (
     <>
       <Container
@@ -36,35 +42,36 @@ const Skillset = forwardRef((props, ref) => {
           Therefore, I am committed to expanding my skills and knowledge, and I
           welcome any feedback that can help me achieve my goals.
         </Typography>
-        <Box>
-          <TabContext value={value}>
-            <Tabs
-              onChange={handleTabChange}
-              textColor="white"
-              indicatorColor="primary"
-              variant="scrollable"
-              scrollButtons
-              allowScrollButtonsMobile>
-              {skillsets.map((skillset, i) => {
-                return skillset.name === "Familiar Tech Stack" ? null : (
-                  <Tab label={skillset.name} value={i} />
-                );
-              })}
-            </Tabs>
-            <Box>
-              {skillsets.map((skillset, i) => {
-                return skillset.name === "Familiar Tech Stack" ? null : (
-                  <TabPanel value={i} sx={{ padding: "0", paddingTop: "24px" }}>
-                    <SkillsGrid
-                      category={skillset.name}
-                      skills={skillset.skills}
-                    />
-                  </TabPanel>
-                );
-              })}
-            </Box>
-          </TabContext>
-        </Box>
+        <Tabs
+          value={activeIndex}
+          onChange={handleTabChange}
+          textColor="white"
+          indicatorColor="secondary"
+          variant="scrollable"
+          scrollButtons
+          allowScrollButtonsMobile>
+          {skillsets.map((skillset, i) => {
+            return skillset.name === "Familiar Tech Stack" ? null : (
+              <Tab label={skillset.name} value={i} />
+            );
+          })}
+        </Tabs>
+        <Swiper
+          ref={swiperRef}
+          onSlideChange={handleSlideChange}
+          slidesPerView={1}
+          rewind={true}
+          centeredSlides={true}
+          spaceBetween={20}
+          style={{ paddingTop: "24px" }}>
+          {skillsets.map((skillset, i) => {
+            return skillset.name === "Familiar Tech Stack" ? null : (
+              <SwiperSlide key={i}>
+                <SkillsGrid category={skillset.name} skills={skillset.skills} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
       </Container>
     </>
   );
