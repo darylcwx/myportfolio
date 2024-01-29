@@ -22,7 +22,7 @@ const skillsets = [
     name: "Tech Stack",
     skills: [
       { name: "HTML", src: "html.png", level: 75 },
-      { name: "CSS", src: "css.png", level: 65 },
+      { name: "CSS", src: "css.png", level: 55 },
       { name: "Javascript", src: "js.png", level: 70 },
 
       { name: "React", src: "react.png", level: 65 },
@@ -32,7 +32,7 @@ const skillsets = [
       { name: "MySQL", src: "sql.png", level: 60 },
       { name: "Oracle", src: "oracle.png", level: 40 },
       { name: "MongoDB", src: "mongodb.png", level: 30 },
-      { name: "Handlebars", src: "handlebars.png", level: 40 },
+      { name: "Handlebars", src: "handlebars.png", level: 30 },
 
       { name: "Python", src: "python.png", level: 70 },
       { name: "Flask", src: "flask.png", level: 30 },
