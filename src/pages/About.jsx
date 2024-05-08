@@ -62,13 +62,13 @@ const About = forwardRef((props, ref) => {
         {/* <Tab label="fun facts" /> */}
       </Tabs>
       <Swiper
+        autoHeight={true}
         ref={swiperRef}
         onSlideChange={handleSlideChange}
         slidesPerView={1}
         rewind={true}
         centeredSlides={true}
         spaceBetween={20}
-        autoHeight={true}
       >
         {about.map((about, key) => {
           return (

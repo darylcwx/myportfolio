@@ -13,10 +13,7 @@ export default function Project({
   const { xs } = GetThemeAndBP();
   return (
     <div>
-      <Box py={10}>
-        <Typography variant="h4" py={2}>
-          {title}
-        </Typography>
+      <Box>
         {src.includes("youtube") ? (
           <iframe
             title={title}

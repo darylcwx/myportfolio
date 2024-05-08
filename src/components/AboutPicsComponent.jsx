@@ -26,7 +26,7 @@ export default function AboutPicsComponent({ about }) {
         navigation
         modules={[EffectCoverflow, Pagination, Navigation]}
         style={{
-          height: 400,
+          height: "500px",
           "--swiper-pagination-color": "#f9ebe0",
           "--swiper-pagination-bullet-inactive-color": "#f9ebe0",
           "--swiper-navigation-color": "#f9ebe0",
@@ -34,6 +34,7 @@ export default function AboutPicsComponent({ about }) {
           "--swiper-navigation-top-offset": "50%",
           "--swiper-navigation-sides-offset": "8px",
         }}
+        className="pb-4"
       >
         {about.items.map((item, key) => (
           <div key={key}>

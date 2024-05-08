@@ -13,12 +13,12 @@ const Education = forwardRef((props, ref) => {
         paddingTop: "150px",
         paddingLeft: "0px",
         paddingRight: "0px",
-        paddingBottom: "300px",
+        paddingBottom: "150px",
       }}
       ref={ref}
     >
       <Typography variant="h2" pb={5} sx={{ textAlign: "center" }}>
-        My Education
+        Education
       </Typography>
       <Parallax easing="easeInOut">
         {educations.map((education, key) => (

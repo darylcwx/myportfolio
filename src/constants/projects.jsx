@@ -161,58 +161,6 @@ const projects = [
         With that said, I couldn't resist the opportunity to create my own portfolio website.`,
   },
   {
-    title: "Seiko Mods Artisan",
-    src: "smodsartisan.png",
-    frameworks: [
-      {
-        name: "Next.js",
-        link: "https://nextjs.org/",
-        src: "nextjs.png",
-      },
-      {
-        name: "Mantine UI",
-        link: "https://mantine.dev/",
-        src: "mantine.png",
-      },
-      {
-        name: "Tailwind CSS",
-        link: "https://tailwindcss.com/",
-        src: "tailwind.png",
-      },
-      {
-        name: "MongoDB",
-        link: "https://www.mongodb.com/",
-        src: "mongodb.png",
-      },
-      {
-        name: "Framer Motion",
-        link: "https://www.framer.com/motion/?gad=1",
-        src: "framermotion.png",
-      },
-      {
-        name: "Telegram Bot API",
-        link: "https://core.telegram.org/",
-        src: "telegram.png",
-      },
-    ],
-    platforms: [
-      {
-        name: "Vercel App",
-        link: "https://smods-artisan.vercel.app/",
-        src: "vercel2.png",
-      },
-      {
-        name: "Github",
-        link: "https://github.com/darylcwx/smods-artisan",
-        src: "github.png",
-      },
-    ],
-    description: `A web app designed for the watches I have custom made so far, Seiko Mods Artisan is a website I'm exploring to implement a small online store, 
-        which allowed me to explore React and NextJS. WIP.
-        <br><br><i>You make watches?</i>
-        <br>Yes I do. Click the picture above to find out more! 🤩`,
-  },
-  {
     title: "Receipt Calculator",
     src: "receiptcalculator.png",
     frameworks: [
