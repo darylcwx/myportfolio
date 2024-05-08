@@ -5,6 +5,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { GetThemeAndBP } from "../utils/getThemeAndBP";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
+import { Key } from "@mui/icons-material";
 export default function EducationComponent({
   id,
   school,
@@ -75,7 +76,8 @@ export default function EducationComponent({
       style={{
         height: "100vh",
         zIndex: 5,
-      }}>
+      }}
+    >
       <Box sx={{ ...styles.blur }}>
         <ParallaxBannerLayer
           speed={-20}
@@ -97,44 +99,41 @@ export default function EducationComponent({
           <Container maxWidth="md">
             <Typography
               sx={{ paddingBottom: "0.5rem" }}
-              variant={xs ? "h5" : "h2"}>
+              variant={xs ? "h5" : "h2"}
+            >
               {school}
             </Typography>
             <Typography
               sx={{ paddingBottom: "1.5rem" }}
-              variant={xs ? "h6" : "h4"}>
+              variant={xs ? "h6" : "h4"}
+            >
               {degree}
             </Typography>
             <Box sx={{ paddingBottom: "1rem" }}>
-              {tracks.map((track) => {
-                return (
-                  <Typography key={track} variant={xs ? "h6" : "h5"}>
-                    {track}
-                  </Typography>
-                );
-              })}
+              {tracks.map((track, key) => (
+                <Typography key={key} variant={xs ? "h6" : "h5"}>
+                  {track}
+                </Typography>
+              ))}
             </Box>
             <Box sx={{ paddingBottom: "1rem" }}>
-              {awards.map((award) => {
-                return (
-                  <Typography key={award} variant={xs ? "body1" : "body1"}>
-                    {award}
-                  </Typography>
-                );
-              })}
+              {awards.map((award, key) => (
+                <Typography key={key} variant={xs ? "body1" : "body1"}>
+                  {award}
+                </Typography>
+              ))}
             </Box>
             <Box sx={{ paddingBottom: "1rem" }}>
-              {coCurricular.map((cca) => {
-                return (
-                  <Typography key={cca} variant={xs ? "body2" : "body1"}>
-                    {cca}
-                  </Typography>
-                );
-              })}
+              {coCurricular.map((cca, key) => (
+                <Typography key={key} variant={xs ? "body2" : "body1"}>
+                  {cca}
+                </Typography>
+              ))}
             </Box>
             <Typography
               sx={{ paddingBottom: "0.5rem" }}
-              variant={xs ? "body2" : "body1"}>
+              variant={xs ? "body2" : "body1"}
+            >
               {period}
             </Typography>
           </Container>

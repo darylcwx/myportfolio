@@ -10,7 +10,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Link from "@mui/material/Link";
 import { GetThemeAndBP } from "../utils/getThemeAndBP";
 import { motion, AnimatePresence } from "framer-motion";
-import ClickAwayListener from "@mui/base/ClickAwayListener";
+import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Tooltip from "@mui/material/Tooltip";
@@ -69,14 +69,15 @@ export default function SkillGrid({ category, skills }) {
   return (
     <>
       <Grid container spacing={2} sx={{ position: "relative" }}>
-        {skills.map((skill) => (
+        {skills.map((skill, key) => (
           <Grid
-            key={skill.name}
+            key={key}
             item
             xs={4}
             sm={4}
             md={3}
-            sx={{ display: "flex", justifyContent: "center" }}>
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
             <Box
               sx={{
                 width: "80px",
@@ -84,7 +85,8 @@ export default function SkillGrid({ category, skills }) {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-              }}>
+              }}
+            >
               {typeof skill.src === "object" ? (
                 <motion.div
                   initial={false}
@@ -95,7 +97,8 @@ export default function SkillGrid({ category, skills }) {
                   whileTap={{ scale: 1 }}
                   style={{
                     filter: `drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))`,
-                  }}>
+                  }}
+                >
                   <IconButton onClick={(e) => handleClick(category, skill, e)}>
                     {React.cloneElement(skill.src, {
                       sx: {
@@ -116,7 +119,8 @@ export default function SkillGrid({ category, skills }) {
                   whileTap={{ scale: 1 }}
                   style={{
                     filter: `drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))`,
-                  }}>
+                  }}
+                >
                   <img
                     src={require(`../../public/images/software/${skill.src}`)}
                     alt={skill.name}
@@ -142,24 +146,28 @@ export default function SkillGrid({ category, skills }) {
                   position: "absolute",
                   left: "50%",
                   transform: "translateX(-47.5%)",
-                }}>
+                }}
+              >
                 <motion.div
                   initial={{ scale: 0, opacity: 0, y: -100 }}
                   animate={{ scale: 1, opacity: 1, y: 0 }}
                   exit={{ scale: 0, opacity: 0, y: -100 }}
-                  transition={{ duration: 0.2 }}>
+                  transition={{ duration: 0.2 }}
+                >
                   <Paper
                     elevation={12}
                     sx={{
                       minWidth: "350px",
                       padding: "24px",
                       borderRadius: "8px",
-                    }}>
+                    }}
+                  >
                     <Box sx={{ textAlign: "end" }}>
                       <IconButton
                         aria-label="close"
                         onClick={handleClose}
-                        sx={{ padding: "0" }}>
+                        sx={{ padding: "0" }}
+                      >
                         <CloseIcon
                           fontSize="small"
                           sx={{
@@ -179,7 +187,8 @@ export default function SkillGrid({ category, skills }) {
                           <Link
                             href={selectedSkill.validLink}
                             target="_blank"
-                            rel="noopener noreferrer">
+                            rel="noopener noreferrer"
+                          >
                             AWS verification
                           </Link>
                           <br></br>
@@ -189,14 +198,16 @@ export default function SkillGrid({ category, skills }) {
                             sx={{
                               backgroundColor: theme.palette.secondary.main,
                               color: theme.palette.primary.main,
-                            }}>
+                            }}
+                          >
                             <Box
                               component="span"
                               sx={{
                                 cursor: "pointer",
                                 color: theme.palette.secondary.main,
                               }}
-                              onClick={handleCopy}>
+                              onClick={handleCopy}
+                            >
                               {selectedSkill.validNumber}
                             </Box>
                           </Tooltip>
@@ -211,7 +222,8 @@ export default function SkillGrid({ category, skills }) {
                       <>
                         <Typography
                           variant="body2"
-                          sx={{ whiteSpace: "pre-line" }}>
+                          sx={{ whiteSpace: "pre-line" }}
+                        >
                           {selectedSkill.description}
                         </Typography>
                         <Slider

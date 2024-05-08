@@ -8,7 +8,7 @@ export default function ProjectsContent({ scrollTo }) {
   return (
     <>
       <Box>
-        <Typography variant="body1">
+        <Typography component="span" variant="body1">
           As a highly motivated and enthusiastic individual, I thrive on taking
           on new challenges and collaborating with others. Below are some of the
           projects I have completed since I have learnt how to code. I believe
@@ -25,16 +25,19 @@ export default function ProjectsContent({ scrollTo }) {
             sx={{
               paddingTop: 2,
               paddingBottom: 2,
-            }}>
-            {skillsets[5].skills.map((skill) => (
+            }}
+          >
+            {skillsets[5].skills.map((skill, key) => (
               <Box
+                key={key}
                 sx={{
                   width: "45px",
                   height: "45px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                }}>
+                }}
+              >
                 <img
                   src={require(`../../public/images/software/${skill.src}`)}
                   alt={skill.name}
@@ -48,8 +51,8 @@ export default function ProjectsContent({ scrollTo }) {
           </Stack>
         </Typography>
         <Box>
-          {projects.map((project) => (
-            <Project key={project.title} {...project} />
+          {projects.map((project, key) => (
+            <Project key={key} {...project} />
           ))}
         </Box>
       </Box>

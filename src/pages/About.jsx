@@ -37,7 +37,8 @@ const About = forwardRef((props, ref) => {
         paddingLeft: 0,
         paddingRight: 0,
       }}
-      ref={ref}>
+      ref={ref}
+    >
       <Typography variant="h2" sx={{ textAlign: "center" }} pb={2}>
         About
       </Typography>
@@ -51,8 +52,9 @@ const About = forwardRef((props, ref) => {
         value={activeIndex}
         onChange={handleTabChange}
         centered
-        textColor="white"
-        indicatorColor="secondary">
+        textColor="inherit"
+        indicatorColor="secondary"
+      >
         <Tab label="values" />
         <Tab label="hobbies" />
         <Tab label="Pictures" />
@@ -66,29 +68,27 @@ const About = forwardRef((props, ref) => {
         rewind={true}
         centeredSlides={true}
         spaceBetween={20}
-        autoHeight={true}>
-        {about.map((about, i) => {
+        autoHeight={true}
+      >
+        {about.map((about, key) => {
           return (
-            <SwiperSlide key={i}>
+            <SwiperSlide key={key}>
               <Typography
                 variant="h5"
                 pt={5}
                 pb={5}
-                sx={{ textAlign: "center" }}>
+                sx={{ textAlign: "center" }}
+              >
                 {about.header}
               </Typography>
               {about.tab === "Pictures" ? (
                 <Box sx={{ paddingBottom: "40px" }}>
                   <AboutPicsComponent about={about} />
                 </Box>
-              ) : about.tab === "Other" ? (
-                <Box sx={{ paddingBottom: "40px" }}>
-                  <AboutMusic />
-                </Box>
               ) : (
-                about.items.map((item, j) => {
-                  return (
-                    <Box key={j}>
+                about.items.map((item, key) => (
+                  <div key={key}>
+                    <Box>
                       <Typography variant="h6" sx={{ display: "flex" }}>
                         {item.title}
                         <Box
@@ -96,19 +96,21 @@ const About = forwardRef((props, ref) => {
                             marginLeft: "8px",
                             display: "flex",
                             alignItems: "center",
-                          }}>
+                          }}
+                        >
                           {item.icon}
                         </Box>
                       </Typography>
-                      <Typography variant="body1" pb={5}>
+                      <Box pb={5}>
                         {item.quote ? (
-                          <>
+                          <div>
                             <blockquote
                               style={{
                                 backgroundColor: theme.palette.navbar.footer,
                                 padding: "15px 20px",
                                 borderRadius: 8,
-                              }}>
+                              }}
+                            >
                               <q>
                                 <i>{item.quote}</i>
                               </q>
@@ -116,13 +118,14 @@ const About = forwardRef((props, ref) => {
                                 sx={{
                                   textAlign: "right",
                                   paddingTop: "8px",
-                                }}>
+                                }}
+                              >
                                 —{item.cite}
                               </Box>
                             </blockquote>
 
                             {item.description}
-                          </>
+                          </div>
                         ) : item.link ? (
                           <>
                             {item.description}
@@ -131,17 +134,18 @@ const About = forwardRef((props, ref) => {
                               href={item.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              sx={{ marginLeft: "4px", marginTop: "4px" }}>
+                              sx={{ marginLeft: "4px", marginTop: "4px" }}
+                            >
                               Can I see?
                             </Button>
                           </>
                         ) : (
                           <>{item.description}</>
                         )}
-                      </Typography>
+                      </Box>
                     </Box>
-                  );
-                })
+                  </div>
+                ))
               )}
             </SwiperSlide>
           );

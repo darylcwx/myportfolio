@@ -178,7 +178,6 @@ const Home = forwardRef((props, ref) => {
 			)}
 			<Box>
 				<motion.div
-					key={sm}
 					initial={{ opacity: 0, y: 500 }}
 					animate={{
 						opacity: 1,
@@ -201,7 +200,6 @@ const Home = forwardRef((props, ref) => {
 			{/* Enjoy your stay */}
 			<Box>
 				<motion.div
-					key={sm}
 					initial={{ opacity: 0, y: 500 }}
 					animate={{
 						opacity: 1,
@@ -228,7 +226,6 @@ const Home = forwardRef((props, ref) => {
 					left: "50%",
 				}}>
 				<motion.div
-					key={sm}
 					initial={{ opacity: 0 }}
 					animate={{
 						opacity: 1,

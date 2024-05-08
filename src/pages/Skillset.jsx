@@ -31,7 +31,8 @@ const Skillset = forwardRef((props, ref) => {
           paddingRight: 0,
           paddingBottom: "300px",
         }}
-        ref={ref}>
+        ref={ref}
+      >
         <Typography variant="h2" sx={{ textAlign: "center" }} pb={2}>
           Skillsets
         </Typography>
@@ -45,16 +46,17 @@ const Skillset = forwardRef((props, ref) => {
         <Tabs
           value={activeIndex}
           onChange={handleTabChange}
-          textColor="white"
+          textColor="inherit"
           indicatorColor="secondary"
           variant="scrollable"
           scrollButtons
-          allowScrollButtonsMobile>
-          {skillsets.map((skillset, i) => {
-            return skillset.name === "Familiar Tech Stack" ? null : (
-              <Tab label={skillset.name} value={i} />
-            );
-          })}
+          allowScrollButtonsMobile
+        >
+          {skillsets.map((skillset, key) =>
+            skillset.name === "Familiar Tech Stack" ? null : (
+              <Tab key={key} label={skillset.name} value={key} />
+            )
+          )}
         </Tabs>
         <Swiper
           ref={swiperRef}
@@ -63,10 +65,11 @@ const Skillset = forwardRef((props, ref) => {
           rewind={true}
           centeredSlides={true}
           spaceBetween={20}
-          style={{ paddingTop: "24px" }}>
-          {skillsets.map((skillset, i) => {
+          style={{ paddingTop: "24px" }}
+        >
+          {skillsets.map((skillset, key) => {
             return skillset.name === "Familiar Tech Stack" ? null : (
-              <SwiperSlide key={i}>
+              <SwiperSlide key={key}>
                 <SkillsGrid category={skillset.name} skills={skillset.skills} />
               </SwiperSlide>
             );
