@@ -1,6 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import LinkIcon from "@mui/icons-material/Link";
+import FileOpenIcon from "@mui/icons-material/FileOpen";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TelegramIcon from "@mui/icons-material/Telegram";
@@ -30,6 +31,11 @@ export default function Socials() {
       icon: <LinkedInIcon sx={{ fontSize: "24px" }} />,
       name: "LinkedIn",
       link: "https://www.linkedin.com/in/darylchuawx/",
+    },
+    {
+      icon: <FileOpenIcon sx={{ fontSize: "24px" }} />,
+      name: "Clicking this button downloads my resume!",
+      link: "darylchua_resume.pdf",
     },
   ];
   return (
@@ -61,7 +67,16 @@ export default function Socials() {
                 color: theme.palette.primary.main,
               },
             }}
-            onClick={() => window.open(social.link, "_blank")}
+            onClick={() => {
+              if (social.link.startsWith("http")) {
+                window.open(social.link, "_blank");
+              } else {
+                var a = document.createElement("a");
+                a.href = social.link;
+                a.download = "darylchua_resume.pdf";
+                a.click();
+              }
+            }}
           />
         ))}
       </SpeedDial>
