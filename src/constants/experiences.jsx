@@ -1,16 +1,26 @@
 const experiences = [
   {
+    id: 10,
+    company: "Anthony Law Corporation (Final Year Project)",
+    position: "Software Engineer / Product Owner",
+    startDate: "May 2024",
+    endDate: "November 2024",
+    year: "2024",
+    img: "alc.jpeg",
+    description: `- Partnered closely with stakeholders to prioritize product features and establish sprint goals, employing Agile methodologies to streamline development
+      - Acted as the main liaison with clients to define requirements, drive sprint reviews, and incorporate feedback
+      - Developed, tested, and optimized software solutions to ensure robust performance and high-quality deliverables`
+  },
+  {
     id: 9,
     company: "NTT Global Ltd.",
     position: "Software Engineer Intern",
     startDate: "May 2023",
-    endDate: "Tentatively Aug 2023",
+    endDate: "Aug 2023",
     year: "2023",
     img: "ntt.jpeg",
-    description: `
-            - Contributed as a key member of a dev team spearheading a $10 million project, overseeing the end-to-end implementation of a web-based safety platform for a prominent client dealing with national incident reporting and management 
-			- Played a pivotal role in achieving project milestones and revenue objectives by successfully executing migration of sensitive data for the client using a combination of migration tools (C#) and SQL
-			`,
+    description: `- Enhanced a web-based safety platform for a national client, addressing complex frontend and backend issues and resolving Jira tickets within a Scrum team
+      - Spearheaded the refactoring of a legacy C# application to migrate sensitive data that achieved project milestones and revenue objectives`,
   },
   {
     id: 8,
